@@ -1,0 +1,11 @@
+$primary: #274e13;
+$secondary: black;
+$tertiary: white;
+// $body-bg-dark: #272b30;
+
+$theme-colors: map-merge($theme-colors, (
+  "primary": $primary,
+  "secondary": $secondary,
+  "tertiary": $tertiary
+  // "body-bg-dark": $body-bg-dark
+));

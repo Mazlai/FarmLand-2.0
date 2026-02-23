@@ -1,0 +1,10 @@
+<div [class]="'form-floating ' + cssClasses" [style]="style">
+  <input [(ngModel)]="value"
+         (change)="valueChange.emit(value)"
+         [type]="type"
+         [id]="componentId"
+         [placeholder]="label"
+         [disabled]="disabled"
+         class="form-control">
+  <label [for]="componentId">{{ label }}</label>
+</div>

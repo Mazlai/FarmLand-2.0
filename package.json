@@ -1,0 +1,30 @@
+{
+  "name": "farmland",
+  "version": "1.0.0",
+  "scripts": {
+    "install": "cd frontend && npm i && cd ../backend/api-gateway && npm i && cd ../user-service && npm i && cd ../farm-service && npm i",
+    "prepare": "husky"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "backend/user-service/**/*.ts": [
+      "npm --prefix backend/user-service run lint"
+    ],
+    "backend/farm-service/**/*.ts": [
+      "npm --prefix backend/farm-service run lint"
+    ],
+    "backend/api-gateway/**/*.ts": [
+      "npm --prefix backend/api-gateway run lint"
+    ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^10.1.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.5.3"
+  }
+}

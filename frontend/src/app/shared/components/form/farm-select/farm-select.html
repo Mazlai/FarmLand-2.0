@@ -1,0 +1,10 @@
+<select [(ngModel)]="value"
+        (change)="valueChange.emit(value)"
+        [class]="'form-select ' + cssClasses"
+        [disabled]="disabled"
+        [style]="style">
+  <option selected disabled [value]="undefined">{{ label }}</option>
+  @for (option of selectableValues; track $index) {
+    <option [value]="option.value">{{ option.label }}</option>
+  }
+</select>

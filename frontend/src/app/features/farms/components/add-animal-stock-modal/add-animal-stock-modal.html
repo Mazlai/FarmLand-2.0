@@ -1,0 +1,88 @@
+<!-- Overlay avec blur -->
+@if (isVisible) {
+  <div class="modal-overlay" (click)="isVisible = false">
+    <div class="modal-container" (click)="$event.stopPropagation()">
+      <!-- Header -->
+      <div class="modal-header d-flex justify-content-between align-items-center">
+        <h4 class="modal-title mb-0">Ajouter un stock</h4>
+        <button type="button" class="btn-close" (click)="isVisible = false" aria-label="Fermer">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <form #animalForm="ngForm" (ngSubmit)="onSubmitAsync(animalForm)">
+          <!-- Type d'animal -->
+          <div class="form-group mb-3">
+            <select
+              class="form-control"
+              [(ngModel)]="newAnimalStock.animalTypeId"
+              name="animalType"
+              required
+              #animalTypeField="ngModel">
+              <option value="NaN" disabled>Type d'animal</option>
+              @for (type of selectableAnimalTypes; track type.id) {
+                <option [value]="type.id">
+                  {{ type.label }}
+                </option>
+              }
+            </select>
+            @if (animalTypeField.invalid && animalTypeField.touched) {
+              <div class="invalid-feedback">
+                Veuillez sélectionner un type d'animal
+              </div>
+            }
+          </div>
+
+          <!-- Description -->
+          <div class="form-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Description"
+              maxlength="25"
+              [(ngModel)]="newAnimalStock.description"
+              name="description"/>
+          </div>
+
+          <!-- Compte -->
+          <div class="form-group mb-4">
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Compte"
+              [(ngModel)]="newAnimalStock.count"
+              name="countAnimals"
+              min="0"
+              required
+              #countField="ngModel"/>
+            @if (countField.invalid && countField.touched) {
+              <div class="invalid-feedback">
+                Le nombre d'animaux est requis
+              </div>
+            }
+          </div>
+
+          <!-- Buttons -->
+          <div class="modal-footer gap-3 justify-content-center w-100">
+            <farm-button
+              [kind]="FarmButtonKind.SECONDARY"
+              label="Annuler"
+              style="flex-grow: 1"
+              cssClasses="w-100"
+              (onClick)="isVisible = false"/>
+            <farm-button
+              [kind]="FarmButtonKind.PRIMARY"
+              label="Ajouter"
+              style="flex-grow: 1"
+              cssClasses="w-100"
+              [disabled]="!animalForm.valid || isNaN(newAnimalStock.animalTypeId)"
+              [isLoading]="isLoading"
+              (onClick)="onSubmitAsync(animalForm)"/>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+}

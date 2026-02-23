@@ -1,0 +1,18 @@
+<div class="d-flex align-items-center justify-content-between mb-4 px-3">
+  <!-- Logo + Titre -->
+  <div class="d-flex align-items-center gap-2">
+    <img src="/farmland_logo.png" alt="logo" class="farm-logo" style="width: 32px; height: 32px;">
+    <h3 class="text-primary mb-0">FarmLand</h3>
+  </div>
+
+  <!-- Utilisateur + Logout -->
+  <div class="d-flex align-items-center gap-3">
+    <div class="d-flex align-items-center p-2 px-3 bg-success rounded-pill text-white">
+      <i class="fas fa-user-circle fa-lg me-2"></i>
+      <span class="fw-bold">{{ userName }}</span>
+    </div>
+    <button (click)="signOutUserAsync()" class="btn border-0 p-0 bg-transparent">
+      <i class="fas fa-power-off fa-2x text-success"></i>
+    </button>
+  </div>
+</div>

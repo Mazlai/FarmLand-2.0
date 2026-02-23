@@ -1,0 +1,15 @@
+.animal-stock-item {
+  background-color: #e8e8e8;
+  border-radius: 12px;
+
+  .delete-icon {
+    display: none;
+    margin-left: -0.25em;
+    margin-top: -0.5em;
+    cursor: pointer;
+  }
+
+  &:hover > .delete-icon {
+    display: block;
+  }
+}

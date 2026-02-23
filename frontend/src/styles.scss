@@ -1,0 +1,13 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/mixins";
+@import "bootstrap-icons";
+
+@import "styles/colors";
+@import "styles/properties";
+
+@import "styles/elements/inputs";
+@import "styles/elements/selects";
+
+@import "../node_modules/bootstrap/scss/bootstrap";

@@ -1,0 +1,19 @@
+services:
+
+  angular_app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: angular_app
+    restart: unless-stopped
+    ports:
+      - "4200:4200"
+    networks:
+      - farmland_network
+    volumes:
+      - ./:/app
+    working_dir: /app
+
+networks:
+  farmland_network:
+    external: true

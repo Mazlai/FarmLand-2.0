@@ -1,0 +1,28 @@
+<div (keyup.enter)="signUpUserAsync()"
+     class="d-flex justify-content-center align-items-center w-100 h-100">
+  <div class="px-4 px-md-5 py-5 overflow-auto w-100 mh-100">
+    <div class="d-flex justify-content-center w-100">
+      <div class="d-flex flex-column align-items-center gap-3 w-100" style="max-width: 500px">
+        <h3 class="text-primary">Créer un compte fermier</h3>
+        <farm-input [(value)]="newUser.firstName" label="Prénom"/>
+        <farm-input [(value)]="newUser.lastName" label="Nom"/>
+        <farm-input [(value)]="newUser.birthDate" [type]="FarmInputType.DATE" label="Date de naissance"/>
+        <farm-select [(value)]="newUser.gender"
+                     [selectableValues]="selectableGenders"
+                     label="Gender"
+                     [style]="'height: 58px'"/>
+        <farm-input [(value)]="newUser.email" [type]="FarmInputType.EMAIL" label="Adresse mail"/>
+        <farm-input [(value)]="newUser.phone" label="N° de téléphone"/>
+        <farm-input [(value)]="newUser.password" [type]="FarmInputType.PASSWORD" label="Mot de passe"/>
+        <farm-button [disabled]="!isFormValid()"
+                     [isLoading]="isLoading"
+                     (onClick)="signUpUserAsync()"
+                     label="Créer le compte"
+                     cssClasses="w-100 mt-3"
+                     class="w-100"
+                     [style]="'height: 50px'"/>
+        <a routerLink="/sign-in" class="link-primary">Déjà un compte ? Se connecter</a>
+      </div>
+    </div>
+  </div>
+</div>

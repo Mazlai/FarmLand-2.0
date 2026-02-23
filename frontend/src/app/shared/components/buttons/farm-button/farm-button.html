@@ -1,0 +1,10 @@
+<button (click)="onClick.emit()"
+        [type]="isSubmit ? 'submit' : 'button'"
+        [class]="'btn btn-' + kind + ' ' + cssClasses"
+        [disabled]="disabled || isLoading"
+        [style]="style">
+  @if (isLoading) {
+    <span class="spinner-border spinner-border-sm"></span>
+  }
+  {{ label }}
+</button>

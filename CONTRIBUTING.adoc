@@ -1,0 +1,95 @@
+= Guide de contribution
+:icons: font
+:toc: macro
+:toc-title: Table des matières
+:toclevels: 4
+:sectnums:
+
+Ce document détail des informations et les processus à respecter pour contribuer au projet à partir de ce repository GitHub.
+
+toc::[]
+
+== Issues GitHub
+
+Les tâches tournant autour du projet sont suivies au travers d'issues GitHub. Il est possible d'ouvrir une issue GitHub en tant que feature à implémenter ou bug à corriger.
+
+WARNING: Seuls les issues taggées `V2` correspondent à FarmLand 2.0 et sont à prendre en compte. Les issues taggées `V1` correspondent à la version 1.0 existante de l'application et n'ont été créées qu'à titre indicatif.
+
+image::images/issues.jpg[,650]
+
+Un projet GitHub a été mis en place avec des boards permettant de suivre plus facilement l'avancement de chaque tâche (voir document link:GOVERNANCE.adoc["GOVERNANCE"]).
+
+== Stratégie de branches
+Le projet adopte une stratégie de branches inspirée du modèle GitFlow. Elle permet de structurer le développement, sécuriser les mises en production et garantir une collaboration efficace entre les développeurs.
+
+=== Nommage des branches
+Les branches respectent les conventions suivantes :
+
+* `main` : Contient la dernière version stable de l’application en production.
+Chaque merge sur cette branche correspond à une release officielle et est
+associé à un tag de version.
+* `develop` : Branche d’intégration principale.
+Elle contient la version stable en cours de développement.
+* `feature/xxx` : Branche dédiée au développement d’une fonctionnalité. Créée à partir de `develop`.
+* `feature/SU/xxx` : Sous-branche permettant de développer un scénario utilisateur spécifique lié à une feature.
+* `release/xxx` : Branche utilisée pour préparer une nouvelle version de l'application (stabilisation, corrections mineures, versioning).
+* `hotfix/xxx` : Branche dédiée aux correctifs urgents sur une version en production.
+
+=== Process / workflows mis en place et à respecter
+Pour développer une nouvelle fonctionnalité, apporter un correctif ou faire une release d'une nouvelle version de l'application, suivre les processus décrits ci-dessous.
+
+==== Branche de feature et de scénario utilisateur
+
+. Prendre une issue existante ou ouvrir une issue en se basant sur le template dédié aux features
+. Créer une branche à partir de l'issue (et à partir de la branche `develop`)
+. Si nécessaire, créer des sous-branches `feature/SU/xxx` implémentant les scénarios utilisateurs spécifiques à la feature
+. Une fois un scénario utilisateur terminé et validé -> Merge sur la branche `feature/xxx` correspondante *via une Pull Request*
+. Une fois la feature complète terminée et validée -> Merge sur la branche `develop` *via une Pull request*
++
+WARNING: Avant de merge une Pull Request sur une branche `feature/xxx` ou sur la branche `develop`, vérifier que l'issue correspondant au scénario utilisateur ou à la feature est bien associée à la Pull Request.
+. Une fois la Pull Request fusionnée, la branche de la feature sera supprimée et l'issue associée fermée (et marquée comme "Done" dans les boards du projet GitHub)
+
+Les commits effectués sur des branches feature doivent respecter le format `Feature: <message>` et ceux effectués sur la branche d'un scénario utilisateur, le format `SU: <message>`.
+
+WARNING: La branche `develop` doit tout le temps contenir une version stable du code. Un ruleset GitHub a été mis en place afin qu'il ne soit pas possible de directement pousser du code sur cette branche.
+
+==== Branche de release
+
+. Lorsque toutes les features prévues sur le sprint sont terminées et merge dans `develop` -> Une branche `release/xxx` peut être créée depuis `develop`
+. Une fois la branche prête -> Merge sur la branche `main` *via une Pull request* et créer un tag correspondant <<version_no, au numéro de la version>>
+. Une fois la Pull Request fusionnée, la branche de la release sera supprimée
+. Merge en retour `main` dans `develop` afin de conserver l’historique et les correctifs
+
+Les commits effectués sur des branches release doivent respecter le format `Release: x.x.x`.
+
+WARNING: La branche `main` doit tout le temps contenir une version complète, taggée et stable de l'application. Un ruleset GitHub a été mis en place afin qu'il ne soit pas possible de directement pousser du code cette branche.
+
+===== Numéro de version [[version_no]]
+Pour la release d'une nouvelle version de l'application, suivre l'exemple et les explications ci-dessous.
+
+*Exemple :*
+
+Version `1.4.2` de l'application :
+
+* `1` : version (majeure) de l'application -> ne change que si un lot majeur d'évolutions est apporté à l'application
+* `4` : numéro d'évolution -> ne change que lorsque des petites évolutions sont apportées à l'application
+* `2` : numéros de correctif -> change à chaque fois qu'un correctif est apporté à l'application
+
+==== Branche de correctif
+
+. Prendre une issue existante ou ouvrir une issue en se basant sur le template dédié aux retours de bugs
+. Créer une branche `hotfix/xxx` depuis la branche `main`
+. Associer toutes les issues à prendre en compte dans le correctif à la branche
+. Une fois le correctif terminé et validé, suivre les étapes pour effectuer une release en partant de la branche du correctif plutôt que de `develop`
++
+WARNING: Avant de merge une Pull Request sur la branche `develop`, vérifier que l'issue correspondant au scénario utilisateur ou à la feature est bien associée à la Pull Request.
+. Une fois la Pull Request fusionnée, la branche du correctif sera supprimée et les issues associées fermées (et marquées comme "Done" dans les boards du projet GitHub)
+
+Les commits effectués sur des branches release doivent respecter le format `Fix: <message>`.
+
+=== Commandes à privilégier
+Utiliser des commandes Git classiques (add, commit, push, etc)
+
+Privilégier les Pull Requests pour merge les branches entre elles.
+
+Éviter les rebases, reset hard ou toute autre manipulation qui pourrait nuire à la cohérence et à la continuité de l'historique des commits.

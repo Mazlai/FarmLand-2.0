@@ -1,73 +1,123 @@
-= FarmLand
+= FarmLand 2.0
 :icons: font
 :toc: macro
 :toclevels: 3
+:toc-title: Table des matières
 :sectnums:
 
-//image::frontend/public/farmland_logo.png[,100]
-
-FarmLand is a web application that encourages farmers' digital transition by allowing them to easily manage their animal stocks.
-Thanks to FarmLand, farmers can create their own account and manage their animal stocks from any device.
-
-image::images/farmland_demo.png[,650]
+FarmLand (2.0) est une application web encourageant la transition numérique auprès des fermiers en proposant une solution clé en main facilitant la gestion de stocks d’animaux et de matériel.
 
 toc::[]
 
+== FarmLand
+La plateforme FarmLand permet aux agriculteurs de créer facilement un compte et de suivre en temps réel, leurs stocks d’animaux et de matériels à partir de n’importe quel appareil (ordinateur, tablette ou smartphone). Dans sa version 2.0, l'application offre également la possibilité de connecter des outils de recensement tels que des scanners, détecteurs ou compteurs automatiques pour faciliter le processus de comptage auprès des fermiers.
+
+=== FarmLand 1.0
+Une première version de FarmLand a déjà été développée afin de poser les fondations du projet et de valider les besoins essentiels du terrain. Cette version initiale se concentre sur un périmètre fonctionnel restreint, intégrant les fonctionnalités de base suivantes :
+
+* *L’authentification* : Un compte fermier peut être créé via la page dédiée à gauche. Les utilisateurs disposant d’un compte fermier peuvent se connecter avec leur adresse email et leur mot de passe à droite.
+
+image::images/v1/v1_auth.jpg[,450]
+
+image::images/v1/v1_acc_creation.jpg[,450]
+
+* *La gestion de stocks d’animaux* : Une fois connecté, la page de gestion de stocks d’animaux permet aux fermiers de consulter la liste complète de ses stocks d’animaux, d’ajouter, de modifier ou de supprimer les stocks d’animaux.
+
+image::images/v1/v1_stocks.jpg[,650]
+
+image::images/v1/v1_stock_form.jpg[,450]
+
 == Structure
 
-FarmLand is made from multiple components.
+L'application existante est basée sur une architecture micro-services :
 
 image::images/architecture.png[,650]
 
-The backend of the app supports a microservice-based architecture.
+* `frontend/`: interface frontend basée sur https://angular.dev[Angular]
+* `backend/`: micro-services backend
+** `user-service/`: micro-service de gestion des utilisateurs (et de l'authentification) basé sur https://expressjs.com/[Express] et https://sequelize.org/[Sequelize] (database ORM)
+** `farm-service/`: micro-service de gestion des fermes basé sur https://expressjs.com/[Express] et https://sequelize.org/[Sequelize] (ORM base de données)
+** `api_gateway/`: serveur proxy gérant les redirections entre l'interface frontend et les micro-services backend, basé sur https://expressjs.com/[Express] et https://www.npmjs.com/package/http-proxy-middleware[http-proxy-middleware] (experimental)
 
-* `frontend/`: the frontend app using https://angular.dev[Angular]
-* `backend/`: the microservices implementing the backend of the app
-** `user-service/`: the user microservice (users and authentication) using https://expressjs.com/[Express] and https://sequelize.org/[Sequelize] (database ORM)
-** `farm-service/`: the farm microservice (animal stocks) using https://expressjs.com/[Express] and https://sequelize.org/[Sequelize] (database ORM)
-** `api_gateway/`: a gateway managing redirections between the frontend and the backend microservices, using https://expressjs.com/[Express] and https://www.npmjs.com/package/http-proxy-middleware[http-proxy-middleware] (experimental)
+== Installation et prérequis
 
-== Installation and prerequisites
+FarmLand se base sur un environnement Node.js et PostgreSQL.
 
-FarmLand is based on a Node.js and PostgreSQL environment.
+=== Installation des dépendances
 
-=== Dependency installation
-
-. Install the latest version of https://nodejs.org/[Node.js]
-. Run the following command in a command prompt at the project root to install dependencies for each component:
+. Installer la dernière version de https://nodejs.org/[Node.js]
+. Exécuter la commande suivante dans un terminal à la racine du projet pour installer les dépendances de chaque composant de l'application:
 +
 [source,bash]
 ----
 npm i
 ----
-. Install the latest version of https://www.docker.com/[Docker] to easily run the app
+. Installer la dernière version de https://www.docker.com/[Docker] pour faciliter le lancement de l'application
 
-=== Environment files
+=== Fichier environnement
 
-`.env.dev` files must be added at the root of both the link:backend/user-service/[user microservice] and the link:backend/farm-service/[farm microservice] directories. Those files can be created from the already provided `.env` files (those must not be modified).
+Des fichiers `.env.dev` doivent être ajoutés à la racine du dossier des micro-services de gestion des link:backend/user-service/[utilisateurs] et des link:backend/farm-service/[fermes]. Ces fichiers peuvent être créés à partir des fichiers `.env` existant (à ne pas modifier) à ces mêmes emplacements.
 
-Provide values for each of the environment variables defined in the created `.env.dev` files. Use the values defined in the `docker-commpose.yml` files related to the microservices if the application is meant to be launched via <<docker,Docker containers>>.
+Renseigner des valeurs pour chaque variable d'environnement définie dans les fichiers `.env.dev`. Utiliser les valeurs définies dans les fichiers `docker-compose.yml` rattachés aux micro-services si l'application est lancée dans des <<docker,conteneurs Docker>>.
 
-== Running via Docker [[docker]]
+== Lancement via NPM
 
-Each component of the app provides a `Dockerfile` and a `docker-compose.yml` file to separately run them inside Docker containers.
+Les composants de l'application peuvent être lancés individuellement via des commandes NPM.
 
-=== Create the app network
+WARNING: Seules les application frontend et backend peuvent être lancées via des commandes NPM, il sera nécessaire de trouver un hébergeur local pour les bases de données ainsi qu'un SGBDR adapté.
 
-Although each component can be run separately inside Docker containers, they all communicate via a Docker network.
+=== Lancement de l'interface frontend
+Exécuter la commande suivante link:frontend/[à la racine du projet de l'interface frontend] pour lancer ce dernier :
 
-Create the `farmland_network` by running the following command inside a command prompt:
+[source, bash]
+----
+npm start
+----
+
+=== Lancement de l'API utilisateur
+Exécuter la commande suivante link:backend/user-service/[à la racine du projet du backend utilisateur] pour lancer ce dernier :
+
+[source, bash]
+----
+npm run dev
+----
+
+=== Lancement de l'API ferme
+Exécuter la commande suivante link:backend/farm-service/[à la racine du projet du backend ferme] pour lancer ce dernier :
+
+[source, bash]
+----
+npm run dev
+----
+
+=== Lancement du serveur proxy
+Exécuter la commande suivante link:backend/api-gateway/[à la racine du projet du serveur proxi] pour lancer ce dernier :
+
+[source, bash]
+----
+npm run dev
+----
+
+== Lancement via Docker [[docker]]
+
+Chaque composant de l'application est rattaché à des fichiers `Dockerfile` et `docker-compose.yml` permettant de les lancer dans des conteneurs Docker distincts.
+
+=== Créer le réseau Docker de l'application
+
+Bien que chaque composant puisse être lancé séparément dans un conteneur Docker, pour communiquer entre eux, un réseau Docker doit être créé.
+
+Créer le réseau `farmland_network` en lançant la commande suivante dans un terminal :
 
 [source, bash]
 ----
 docker network create farmland_network
 ----
 
-=== Launch Docker containers
+=== Lancer les conteneurs Docker
 
-==== Launch a single container
+==== Lancer un conteneur individuellement
 
-Run the following command in a command prompt at the root of any component to separately run it inside a Docker container:
+Exécuter la commande suivante dans un terminal à la racine d'un composant de l'application pour le lancer dans un conteneur Docker :
 
 [source,bash]
 ----
@@ -76,24 +126,24 @@ docker-compose up -d --build
 
 [WARNING]
 ====
-The following error may occur when running the Angular frontend app container:
+L'erreur suivante peut apparaitre en lancer l'interface frontend Angular dans un conteneur :
 
 image::images/angular_app_container_error.png[]
 
-If that's the case, try to run the following command https://docs.docker.com/reference/cli/docker/container/exec/[inside the corresponding container]:
+Si cela arrive, essayer de lancer la commande suivante https://docs.docker.com/reference/cli/docker/container/exec/[à l'intérieur du conteneur correspondant] :
 
 [source, bash]
 ----
 npm i
 ----
 
-Then rerun the container.
+Relancer après coup le conteneur.
 
 ====
 
-==== Launch all containers
+==== Lancer tous les conteneurs
 
-Run the following commands in a command prompt at the project root to run all components at once inside Docker containers:
+Exécuter la commande suivante dans un terminal à la racine du projet pour lancer tous les composants de l'application à l'intérieur de conteneurs Docker :
 
 [source,bash]
 ----
@@ -110,44 +160,42 @@ cd ../api-gateway
 docker-compose -p farmland_api_gateway up -d --build
 ----
 
-NOTE: https://docs.docker.com/desktop/[Docker Desktop] can be downloaded to more easily manage Docker containers.
+NOTE: https://docs.docker.com/desktop/[Docker Desktop] peut être téléchargé pour gérer plus facilement les conteneurs Docker créés.
 
-==== Access containers
+==== Accéder aux conteneurs
 
 Each component can be accessed at the following addresses:
 
-* Main app (gateway): http://localhost:3000
-* Frontend (Angular app): http://localhost:4200
+Chaque composant de l'application peut être accédées à partir des adresses suivantes :
+
+* Application principale : http://localhost:3000
+* Interface frontend : http://localhost:4200
 * Backend:
-** User backend:
-*** User API: http://localhost:3001
-*** User database: http://localhost:5432
-*** pgAdmin interface to manage user database: http://localhost:8888
-** Farm backend:
-*** Farm API: http://localhost:3002
-*** Farm database: http://localhost:5431
-*** pgAdmin interface to manage farm database: http://localhost:8887
+** Backend utilisateur :
+*** API utilisateur : http://localhost:3001
+*** Base de données utilisateur : http://localhost:5432
+*** Interface pgAdmin de gestion de la base de données utilisateur: http://localhost:8888
+** Backend ferme:
+*** API ferme : http://localhost:3002
+*** Base de données ferme : http://localhost:5431
+*** Interface pgAdmin de gestion de la base de données ferme : http://localhost:8887
 
-NOTE: When launched, a container may take a few moments to initialize before being accessible from its address.
+NOTE: Une fois lancé, un conteneur peut prendre quelques instants à s'initialiser avant d'être accessible à l'adresse correspondante.
 
-=== Run database seeders
+=== Populer les bases de données
 
-Scripts are provided to populate the user and the farm databases with fake data for quick testing.
+Des scripts sont mis à disposition pour populer les bases de données de gestion des utilisateurs et des fermes avec des données factices afin d'effectuer des tests rapides.
 
-Run the following command inside the `src/` folder inside the Docker container running the user backend microservice to populate the user database:
+Exécuter la commande suivante à l'intérieur du dossier `src/` à l'intérieur du conteneur Docker supportant le backend utilisateur afin de populer la base de données des utilisateurs :
 
 [source, bash]
 -----
 node -r ts-node/register --env-file=../.env.dev seedUsers.ts
 -----
 
-Do the same with the following command inside the Docker container running the farm backend microservice, to populate the farm database:
+Faire la même chose avec la commande suivante dans le conteneur supportant le backend des fermes pour populer base de données des fermes :
 
 [source, bash]
 -----
 node -r ts-node/register --env-file=../.env.dev seedAnimals.ts
 -----
-
-== Code linting
-
-The project has been set up with https://typicode.github.io/husky/[Husky] and https://eslint.org/[ESLint] so the TypeScript files are automatically linted before a commit is created. Linting is configured with basic rules, but more parameters could be defined to further ensure the quality of the pushed code.

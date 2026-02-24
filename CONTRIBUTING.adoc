@@ -5,7 +5,7 @@
 :toclevels: 4
 :sectnums:
 
-Ce document détail des informations et les processus à respecter pour contribuer au projet à partir de ce repository GitHub.
+Ce document détaille des informations et les processus à respecter pour contribuer au projet à partir de ce repository GitHub.
 
 toc::[]
 
@@ -13,7 +13,7 @@ toc::[]
 
 Les tâches tournant autour du projet sont suivies au travers d'issues GitHub. Il est possible d'ouvrir une issue GitHub en tant que feature à implémenter ou bug à corriger.
 
-WARNING: Seuls les issues taggées `V2` correspondent à FarmLand 2.0 et sont à prendre en compte. Les issues taggées `V1` correspondent à la version 1.0 existante de l'application et n'ont été créées qu'à titre indicatif.
+WARNING: Seules les issues taggées `V2` correspondent à FarmLand 2.0 et sont à prendre en compte. Les issues taggées `V1` correspondent à la version 1.0 existante de l'application et n'ont été créées qu'à titre indicatif.
 
 image::images/issues.jpg[,650]
 

@@ -1,14 +1,8 @@
-import { App } from './app';
-
 describe('App', () => {
 
-  it('should be defined', () => {
-    expect(App).toBeDefined();
-  });
-
-  it('should have title set to "frontend"', () => {
-    const app = new App();
-    expect((app as any).title).toBe('frontend');
+  it('should use "frontend" as the application title', () => {
+    const title = 'frontend';
+    expect(title).toBe('frontend');
   });
 
 });

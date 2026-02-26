@@ -30,13 +30,13 @@ describe('UserIdentityService', () => {
   describe('getUserAuthorizationHeader', () => {
 
     it('should return an HttpHeaders instance', () => {
-      spyOn(service, 'getUserIdentity').and.returnValue({ identity: 'Jean', token: 'abc123' });
+      vi.spyOn(service, 'getUserIdentity').mockReturnValue({ identity: 'Jean', token: 'abc123' });
       const headers = service.getUserAuthorizationHeader();
       expect(headers).toBeInstanceOf(HttpHeaders);
     });
 
     it('should set Authorization header as Bearer token', () => {
-      spyOn(service, 'getUserIdentity').and.returnValue({ identity: 'Jean', token: 'my-token' });
+      vi.spyOn(service, 'getUserIdentity').mockReturnValue({ identity: 'Jean', token: 'my-token' });
       const headers = service.getUserAuthorizationHeader();
       expect(headers.get('Authorization')).toBe('Bearer my-token');
     });

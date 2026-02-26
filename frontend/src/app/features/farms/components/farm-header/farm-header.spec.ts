@@ -7,11 +7,13 @@ describe('FarmHeader', () => {
 
   let component: FarmHeader;
   let fixture: ComponentFixture<FarmHeader>;
-  let mockUserIdentityService: jasmine.SpyObj<UserIdentityService>;
+  let mockUserIdentityService: any;
 
   beforeEach(async () => {
-    mockUserIdentityService = jasmine.createSpyObj('UserIdentityService', ['getUserIdentity', 'getUserAuthorizationHeader']);
-    mockUserIdentityService.getUserIdentity.and.returnValue({ identity: 'Jean Dupont', token: 'token' });
+    mockUserIdentityService = {
+      getUserIdentity: vi.fn().mockReturnValue({ identity: 'Jean Dupont', token: 'token' }),
+      getUserAuthorizationHeader: vi.fn()
+    };
 
     await TestBed.configureTestingModule({
       imports: [FarmHeader],
@@ -45,9 +47,9 @@ describe('FarmHeader', () => {
   describe('signOutUserAsync', () => {
 
     it('should navigate to / when the user confirms sign-out', async () => {
-      spyOn(window, 'confirm').and.returnValue(true);
+      vi.spyOn(window, 'confirm').mockReturnValue(true);
       const router = TestBed.inject(Router);
-      const navigateSpy = spyOn(router, 'navigateByUrl').and.returnValue(Promise.resolve(true));
+      const navigateSpy = vi.spyOn(router, 'navigateByUrl').mockResolvedValue(true);
 
       await (component as any).signOutUserAsync();
 
@@ -55,9 +57,9 @@ describe('FarmHeader', () => {
     });
 
     it('should not navigate when the user cancels sign-out', async () => {
-      spyOn(window, 'confirm').and.returnValue(false);
+      vi.spyOn(window, 'confirm').mockReturnValue(false);
       const router = TestBed.inject(Router);
-      const navigateSpy = spyOn(router, 'navigateByUrl');
+      const navigateSpy = vi.spyOn(router, 'navigateByUrl');
 
       await (component as any).signOutUserAsync();
 

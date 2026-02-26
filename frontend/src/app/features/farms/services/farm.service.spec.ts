@@ -10,13 +10,14 @@ describe('FarmService', () => {
 
   let service: FarmService;
   let httpMock: HttpTestingController;
-  let mockUserIdentityService: jasmine.SpyObj<UserIdentityService>;
+  let mockUserIdentityService: any;
 
   beforeEach(() => {
-    mockUserIdentityService = jasmine.createSpyObj('UserIdentityService', ['getUserAuthorizationHeader']);
-    mockUserIdentityService.getUserAuthorizationHeader.and.returnValue(
-      new HttpHeaders({ Authorization: 'Bearer test-token' })
-    );
+    mockUserIdentityService = {
+      getUserAuthorizationHeader: vi.fn().mockReturnValue(
+        new HttpHeaders({ Authorization: 'Bearer test-token' })
+      )
+    };
 
     TestBed.configureTestingModule({
       providers: [
@@ -81,7 +82,7 @@ describe('FarmService', () => {
     it('should not send an Authorization header', async () => {
       const promise = service.getAnimalTypesAsync();
       const req = httpMock.expectOne(`${environment.apiUrl}/farms/animal-types`);
-      expect(req.request.headers.has('Authorization')).toBeFalse();
+      expect(req.request.headers.has('Authorization')).toBe(false);
       req.flush([]);
       await promise;
     });

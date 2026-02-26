@@ -10,25 +10,21 @@ describe('AnimalStockList', () => {
 
   let component: AnimalStockList;
   let fixture: ComponentFixture<AnimalStockList>;
-  let mockFarmService: jasmine.SpyObj<FarmService>;
-  let mockUserIdentityService: jasmine.SpyObj<UserIdentityService>;
+  let mockFarmService: any;
+  let mockUserIdentityService: any;
 
   beforeEach(async () => {
-    mockFarmService = jasmine.createSpyObj('FarmService', [
-      'getMyAnimalsAsync',
-      'createAnimalStockAsync'
-    ]);
-    mockFarmService.getMyAnimalsAsync.and.returnValue(Promise.resolve([]));
-    mockFarmService.createAnimalStockAsync.and.returnValue(Promise.resolve(new AnimalStockModel()));
+    mockFarmService = {
+      getMyAnimalsAsync: vi.fn().mockResolvedValue([]),
+      createAnimalStockAsync: vi.fn().mockResolvedValue(new AnimalStockModel())
+    };
 
-    mockUserIdentityService = jasmine.createSpyObj('UserIdentityService', [
-      'getUserIdentity',
-      'getUserAuthorizationHeader'
-    ]);
-    mockUserIdentityService.getUserIdentity.and.returnValue({ identity: 'Fermier Test', token: 'token' });
-    mockUserIdentityService.getUserAuthorizationHeader.and.returnValue(
-      new HttpHeaders({ Authorization: 'Bearer token' })
-    );
+    mockUserIdentityService = {
+      getUserIdentity: vi.fn().mockReturnValue({ identity: 'Fermier Test', token: 'token' }),
+      getUserAuthorizationHeader: vi.fn().mockReturnValue(
+        new HttpHeaders({ Authorization: 'Bearer token' })
+      )
+    };
 
     await TestBed.configureTestingModule({
       imports: [AnimalStockList],
@@ -61,7 +57,7 @@ describe('AnimalStockList', () => {
         new AnimalStockModel({ id: 1, count: 5 }),
         new AnimalStockModel({ id: 2, count: 10 })
       ];
-      mockFarmService.getMyAnimalsAsync.and.returnValue(Promise.resolve(mockAnimals));
+      mockFarmService.getMyAnimalsAsync.mockResolvedValue(mockAnimals);
 
       fixture.detectChanges();
       await fixture.whenStable();
@@ -75,7 +71,7 @@ describe('AnimalStockList', () => {
         new AnimalStockModel({ id: 1, count: 2 }),
         new AnimalStockModel({ id: 2, count: 3 })
       ];
-      mockFarmService.getMyAnimalsAsync.and.returnValue(Promise.resolve(mockAnimals));
+      mockFarmService.getMyAnimalsAsync.mockResolvedValue(mockAnimals);
 
       fixture.detectChanges();
       await fixture.whenStable();
@@ -89,13 +85,13 @@ describe('AnimalStockList', () => {
     it('should set isLoading to false after successful load', async () => {
       fixture.detectChanges();
       await fixture.whenStable();
-      expect((component as any).isLoading).toBeFalse();
+      expect((component as any).isLoading).toBe(false);
     });
 
     it('should navigate to / on a 401 error', async () => {
-      mockFarmService.getMyAnimalsAsync.and.returnValue(Promise.reject({ status: 401 }));
+      mockFarmService.getMyAnimalsAsync.mockRejectedValue({ status: 401 });
       const router = TestBed.inject(Router);
-      const navigateSpy = spyOn(router, 'navigateByUrl').and.returnValue(Promise.resolve(true));
+      const navigateSpy = vi.spyOn(router, 'navigateByUrl').mockResolvedValue(true);
 
       fixture.detectChanges();
       await fixture.whenStable();
@@ -104,8 +100,8 @@ describe('AnimalStockList', () => {
     });
 
     it('should show an alert on a non-401 error', async () => {
-      mockFarmService.getMyAnimalsAsync.and.returnValue(Promise.reject({ status: 500 }));
-      const alertSpy = spyOn(window, 'alert');
+      mockFarmService.getMyAnimalsAsync.mockRejectedValue({ status: 500 });
+      const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {});
 
       fixture.detectChanges();
       await fixture.whenStable();

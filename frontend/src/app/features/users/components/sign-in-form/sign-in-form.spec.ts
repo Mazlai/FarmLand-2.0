@@ -7,11 +7,12 @@ describe('SignInForm', () => {
 
   let component: SignInForm;
   let fixture: ComponentFixture<SignInForm>;
-  let mockUserService: jasmine.SpyObj<UserService>;
+  let mockUserService: any;
 
   beforeEach(async () => {
-    mockUserService = jasmine.createSpyObj('UserService', ['signInAsync']);
-    mockUserService.signInAsync.and.returnValue(Promise.resolve({ identity: 'Jean', token: 'token' }));
+    mockUserService = {
+      signInAsync: vi.fn().mockResolvedValue({ identity: 'Jean', token: 'token' })
+    };
 
     await TestBed.configureTestingModule({
       imports: [SignInForm],
@@ -33,17 +34,17 @@ describe('SignInForm', () => {
   describe('isFormValid', () => {
 
     it('should return false when form is empty', () => {
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false with an invalid email format', () => {
       (component as any).connectionData = { email: 'pas-un-email', password: 'password123' };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false with a blank password', () => {
       (component as any).connectionData = { email: 'test@example.com', password: '   ' };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false when email exceeds 50 characters', () => {
@@ -51,7 +52,7 @@ describe('SignInForm', () => {
         email: 'a'.repeat(42) + '@example.com',
         password: 'password'
       };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false when password exceeds 75 characters', () => {
@@ -59,12 +60,12 @@ describe('SignInForm', () => {
         email: 'test@example.com',
         password: 'a'.repeat(76)
       };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return true with valid email and password', () => {
       (component as any).connectionData = { email: 'test@example.com', password: 'password123' };
-      expect((component as any).isFormValid()).toBeTrue();
+      expect((component as any).isFormValid()).toBe(true);
     });
 
   });
@@ -86,7 +87,7 @@ describe('SignInForm', () => {
     it('should set isLoading to false after completion', async () => {
       (component as any).connectionData = { email: 'test@example.com', password: 'password123' };
       await (component as any).signInUserAsync();
-      expect((component as any).isLoading).toBeFalse();
+      expect((component as any).isLoading).toBe(false);
     });
 
   });

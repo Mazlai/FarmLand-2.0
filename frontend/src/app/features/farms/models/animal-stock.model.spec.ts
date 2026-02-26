@@ -6,7 +6,7 @@ describe('AnimalStockModel', () => {
   describe('default values', () => {
 
     it('should initialise id as NaN', () => {
-      expect(isNaN(new AnimalStockModel().id)).toBeTrue();
+      expect(isNaN(new AnimalStockModel().id)).toBe(true);
     });
 
     it('should initialise description as empty string', () => {

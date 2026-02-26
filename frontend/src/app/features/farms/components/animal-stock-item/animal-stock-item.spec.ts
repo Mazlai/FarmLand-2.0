@@ -7,15 +7,13 @@ describe('AnimalStockItem', () => {
 
   let component: AnimalStockItem;
   let fixture: ComponentFixture<AnimalStockItem>;
-  let mockFarmService: jasmine.SpyObj<FarmService>;
+  let mockFarmService: any;
 
   beforeEach(async () => {
-    mockFarmService = jasmine.createSpyObj('FarmService', [
-      'updateAnimalStockAsync',
-      'deleteAnimalStockAsync'
-    ]);
-    mockFarmService.updateAnimalStockAsync.and.returnValue(Promise.resolve(new AnimalStockModel()));
-    mockFarmService.deleteAnimalStockAsync.and.returnValue(Promise.resolve({}));
+    mockFarmService = {
+      updateAnimalStockAsync: vi.fn().mockResolvedValue(new AnimalStockModel()),
+      deleteAnimalStockAsync: vi.fn().mockResolvedValue({})
+    };
 
     await TestBed.configureTestingModule({
       imports: [AnimalStockItem],
@@ -54,14 +52,14 @@ describe('AnimalStockItem', () => {
     });
 
     it('should emit onCountUpdate after a successful update', async () => {
-      const emitSpy = spyOn(component.onCountUpdate, 'emit');
+      const emitSpy = vi.spyOn(component.onCountUpdate, 'emit');
       await (component as any).updateStockCountAsync(1);
       expect(emitSpy).toHaveBeenCalled();
     });
 
     it('should show an alert when the update fails', async () => {
-      mockFarmService.updateAnimalStockAsync.and.returnValue(Promise.reject(new Error('err')));
-      const alertSpy = spyOn(window, 'alert');
+      mockFarmService.updateAnimalStockAsync.mockRejectedValue(new Error('err'));
+      const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {});
       await (component as any).updateStockCountAsync(1);
       expect(alertSpy).toHaveBeenCalled();
     });
@@ -71,28 +69,28 @@ describe('AnimalStockItem', () => {
   describe('deleteStockAsync', () => {
 
     it('should call farmService.deleteAnimalStockAsync when confirmed', async () => {
-      spyOn(window, 'confirm').and.returnValue(true);
+      vi.spyOn(window, 'confirm').mockReturnValue(true);
       await (component as any).deleteStockAsync();
       expect(mockFarmService.deleteAnimalStockAsync).toHaveBeenCalledWith(1);
     });
 
     it('should emit onStockDeleted when confirmed and deletion succeeds', async () => {
-      spyOn(window, 'confirm').and.returnValue(true);
-      const emitSpy = spyOn(component.onStockDeleted, 'emit');
+      vi.spyOn(window, 'confirm').mockReturnValue(true);
+      const emitSpy = vi.spyOn(component.onStockDeleted, 'emit');
       await (component as any).deleteStockAsync();
       expect(emitSpy).toHaveBeenCalled();
     });
 
     it('should not call farmService.deleteAnimalStockAsync when user cancels', async () => {
-      spyOn(window, 'confirm').and.returnValue(false);
+      vi.spyOn(window, 'confirm').mockReturnValue(false);
       await (component as any).deleteStockAsync();
       expect(mockFarmService.deleteAnimalStockAsync).not.toHaveBeenCalled();
     });
 
     it('should show an alert when the deletion fails', async () => {
-      spyOn(window, 'confirm').and.returnValue(true);
-      mockFarmService.deleteAnimalStockAsync.and.returnValue(Promise.reject(new Error('err')));
-      const alertSpy = spyOn(window, 'alert');
+      vi.spyOn(window, 'confirm').mockReturnValue(true);
+      mockFarmService.deleteAnimalStockAsync.mockRejectedValue(new Error('err'));
+      const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {});
       await (component as any).deleteStockAsync();
       expect(alertSpy).toHaveBeenCalled();
     });

@@ -18,11 +18,12 @@ describe('SignUpForm', () => {
 
   let component: SignUpForm;
   let fixture: ComponentFixture<SignUpForm>;
-  let mockUserService: jasmine.SpyObj<UserService>;
+  let mockUserService: any;
 
   beforeEach(async () => {
-    mockUserService = jasmine.createSpyObj('UserService', ['signUpAsync']);
-    mockUserService.signUpAsync.and.returnValue(Promise.resolve({}));
+    mockUserService = {
+      signUpAsync: vi.fn().mockResolvedValue({})
+    };
 
     await TestBed.configureTestingModule({
       imports: [SignUpForm],
@@ -44,72 +45,72 @@ describe('SignUpForm', () => {
   describe('isFormValid', () => {
 
     it('should return false with default empty form', () => {
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return true with all valid fields', () => {
       (component as any).newUser = { ...VALID_USER };
-      expect((component as any).isFormValid()).toBeTrue();
+      expect((component as any).isFormValid()).toBe(true);
     });
 
     it('should return false when firstName is blank', () => {
       (component as any).newUser = { ...VALID_USER, firstName: '   ' };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false when firstName exceeds 50 characters', () => {
       (component as any).newUser = { ...VALID_USER, firstName: 'a'.repeat(51) };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false when lastName exceeds 50 characters', () => {
       (component as any).newUser = { ...VALID_USER, lastName: 'a'.repeat(51) };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false when birthDate is missing', () => {
       (component as any).newUser = { ...VALID_USER, birthDate: null };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false when gender is not set', () => {
       (component as any).newUser = { ...VALID_USER, gender: undefined };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false with an invalid email format', () => {
       (component as any).newUser = { ...VALID_USER, email: 'pas-un-email' };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false when email exceeds 50 characters', () => {
       (component as any).newUser = { ...VALID_USER, email: 'a'.repeat(42) + '@example.com' };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false when phone exceeds 25 characters', () => {
       (component as any).newUser = { ...VALID_USER, phone: '0'.repeat(26) };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false when password is blank', () => {
       (component as any).newUser = { ...VALID_USER, password: '   ' };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return false when password exceeds 75 characters', () => {
       (component as any).newUser = { ...VALID_USER, password: 'a'.repeat(76) };
-      expect((component as any).isFormValid()).toBeFalse();
+      expect((component as any).isFormValid()).toBe(false);
     });
 
     it('should return true without a phone number (optional field)', () => {
       (component as any).newUser = { ...VALID_USER, phone: '' };
-      expect((component as any).isFormValid()).toBeTrue();
+      expect((component as any).isFormValid()).toBe(true);
     });
 
     it('should return true without a lastName (optional field)', () => {
       (component as any).newUser = { ...VALID_USER, lastName: '' };
-      expect((component as any).isFormValid()).toBeTrue();
+      expect((component as any).isFormValid()).toBe(true);
     });
 
   });
@@ -129,9 +130,9 @@ describe('SignUpForm', () => {
 
     it('should set isLoading to false after completion', async () => {
       (component as any).newUser = { ...VALID_USER };
-      spyOn(window, 'alert');
+      vi.spyOn(window, 'alert').mockImplementation(() => {});
       await (component as any).signUpUserAsync();
-      expect((component as any).isLoading).toBeFalse();
+      expect((component as any).isLoading).toBe(false);
     });
 
   });

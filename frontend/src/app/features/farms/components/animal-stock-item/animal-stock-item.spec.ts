@@ -1,5 +1,6 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { AnimalStockItem } from './animal-stock-item';
+import { FarmInputType } from '../../../../shared/enums/farm-input-type';
 import { FarmService } from '../../services/farm.service';
 import { AnimalStockModel } from '../../models/animal-stock.model';
 

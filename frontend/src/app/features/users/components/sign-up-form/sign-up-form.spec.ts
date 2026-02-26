@@ -3,6 +3,7 @@ import { provideRouter } from '@angular/router';
 import { SignUpForm } from './sign-up-form';
 import { UserService } from '../../services/user.service';
 import { Genders } from '../../../../shared/enums/genders';
+import { FarmInputType } from '../../../../shared/enums/farm-input-type';
 
 const VALID_USER = {
   firstName: 'Jean',

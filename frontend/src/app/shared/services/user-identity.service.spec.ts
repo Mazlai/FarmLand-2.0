@@ -20,6 +20,8 @@ describe('UserIdentityService', () => {
   describe('getUserIdentity', () => {
 
     it('should return an object with identity and token properties', () => {
+      document.cookie = 'farmland-identity=test-identity';
+      document.cookie = 'farmland-token=test-token';
       const result = service.getUserIdentity();
       expect(result.identity).toBeDefined();
       expect(result.token).toBeDefined();

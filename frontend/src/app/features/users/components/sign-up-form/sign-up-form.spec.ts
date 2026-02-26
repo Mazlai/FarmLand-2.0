@@ -36,7 +36,6 @@ describe('SignUpForm', () => {
 
     fixture = TestBed.createComponent(SignUpForm);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

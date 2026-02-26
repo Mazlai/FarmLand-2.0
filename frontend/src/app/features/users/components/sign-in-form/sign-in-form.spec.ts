@@ -25,7 +25,6 @@ describe('SignInForm', () => {
 
     fixture = TestBed.createComponent(SignInForm);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

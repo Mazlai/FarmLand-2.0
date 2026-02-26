@@ -21,8 +21,8 @@ describe('UserIdentityService', () => {
 
     it('should return an object with identity and token properties', () => {
       const result = service.getUserIdentity();
-      expect(result).toHaveProperty('identity');
-      expect(result).toHaveProperty('token');
+      expect(result.identity).toBeDefined();
+      expect(result.token).toBeDefined();
     });
 
   });

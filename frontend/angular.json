@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "stylePreprocessorOptions": {
+              "quietDeps": true
+            },
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -91,6 +94,9 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
+            "stylePreprocessorOptions": {
+              "quietDeps": true
+            },
             "karmaConfig": "karma.conf.js",
             "polyfills": [
               "zone.js",

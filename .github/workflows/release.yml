@@ -1,0 +1,118 @@
+name: Release
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Job 1 : Création du tag Git et de la GitHub Release
+  # ─────────────────────────────────────────────────────────────────────────────
+  create-tag-and-release:
+    name: Create Tag & GitHub Release
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Read version from package.json
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version detected: $VERSION"
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create and push tag
+        run: |
+          git tag -a "v${{ steps.version.outputs.version }}" \
+            -m "Release v${{ steps.version.outputs.version }}"
+          git push origin "v${{ steps.version.outputs.version }}"
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v${{ steps.version.outputs.version }}" \
+            --title "Release v${{ steps.version.outputs.version }}" \
+            --generate-notes \
+            --latest
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Job 2 : Génération de la documentation et déploiement sur GitHub Pages
+  # ─────────────────────────────────────────────────────────────────────────────
+  deploy-docs:
+    name: Generate & Deploy Documentation
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/')
+    needs: create-tag-and-release
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Install Asciidoctor
+        run: sudo gem install asciidoctor
+
+      - name: Generate HTML documentation
+        run: |
+          mkdir -p _site
+          asciidoctor README.adoc     -o _site/index.html
+          asciidoctor CONTRIBUTING.adoc -o _site/contributing.html
+          asciidoctor GOVERNANCE.adoc   -o _site/governance.html
+
+          # Page de navigation entre les documents
+          cat <<'EOF' > _site/nav.html
+          <!DOCTYPE html>
+          <html lang="fr">
+          <head>
+            <meta charset="UTF-8">
+            <title>FarmLand Documentation</title>
+            <style>
+              body { font-family: sans-serif; max-width: 600px; margin: 4rem auto; }
+              ul { line-height: 2; }
+            </style>
+          </head>
+          <body>
+            <h1>FarmLand v${{ needs.create-tag-and-release.outputs.version }} — Documentation</h1>
+            <ul>
+              <li><a href="index.html">README</a></li>
+              <li><a href="contributing.html">Contributing</a></li>
+              <li><a href="governance.html">Governance</a></li>
+            </ul>
+          </body>
+          </html>
+          EOF
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

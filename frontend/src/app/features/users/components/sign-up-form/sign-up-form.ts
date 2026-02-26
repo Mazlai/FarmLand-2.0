@@ -37,7 +37,7 @@ export class SignUpForm {
   /** If the component is loading. */
   protected isLoading = false;
 
-  protected readonly FarmInputType = FarmInputType;
+  public readonly FarmInputType = FarmInputType;
 
   //endregion
 

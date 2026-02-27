@@ -1,0 +1,57 @@
+services:
+
+  farm_service:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: farm_service
+    restart: unless-stopped
+    networks:
+      - farmland_network
+    ports:
+      - "3002:3002"
+    depends_on:
+      - farm_db
+    volumes:
+      - ./:/home
+    working_dir: /home
+
+  farm_db:
+    image: postgres
+    container_name: farm_pgdb
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: farm
+      POSTGRES_PASSWORD: cock
+      POSTGRES_DB: farmdb
+      PGPORT: 5431
+    ports:
+      - "5431:5432"
+    networks:
+      - farmland_network
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+
+  farm_pgadmin:
+    image: dpage/pgadmin4
+    container_name: farm_pgadmin4
+    restart: unless-stopped
+    ports:
+      - "8887:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: farm@ariege.com
+      PGADMIN_DEFAULT_PASSWORD: cockadoodledoo
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - farmland_network
+    depends_on:
+      - farm_db
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
+
+networks:
+  farmland_network:
+    external: true

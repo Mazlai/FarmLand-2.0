@@ -1,6 +1,6 @@
 {
   "name": "farmland",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scripts": {
     "install": "cd frontend && npm i && cd ../backend/api-gateway && npm i && cd ../user-service && npm i && cd ../farm-service && npm i",
     "prepare": "husky"

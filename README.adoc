@@ -199,3 +199,30 @@ Faire la même chose avec la commande suivante dans le conteneur supportant le b
 -----
 node -r ts-node/register --env-file=../.env.dev seedAnimals.ts
 -----
+
+== Documentation et tests
+
+=== Interface storybook
+
+https://storybook.js.org/[Storybook] a été ajouté au projet frontend de l'application afin de documenter et de faciliter le test les différents composants Angular implémentés.
+
+Exécuter la commande suivante à la racine du projet frontend pour lancer l'interface Storybook :
+
+[source, bash]
+----
+npm run storybook
+----
+
+image::images/storybook.jpg[,650]
+
+=== Documentation backend avec Swagger
+
+https://swagger.io/[Swagger] a été ajouté aux projets backend de gestion des utilisateurs et des fermes afin de documenter et de faciliter le test des différentes routes implémentées.
+
+La page Swagger de l'API des utilisateurs peut être accédée à l'adresse http://localhost:3001/docs et celle de l'API des fermes à l'adresse http://localhost:3002/docs.
+
+image::images/swagger.jpg[,650]
+
+=== Codes d'erreurs HTTP
+
+Tous les codes d'erreur HTTP sont référencés et expliqués https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status[ici].

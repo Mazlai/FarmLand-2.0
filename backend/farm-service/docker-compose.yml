@@ -26,7 +26,7 @@ services:
       POSTGRES_DB: farmdb
       PGPORT: 5431
     ports:
-      - "5431:5432"
+      - "5431:5431"
     networks:
       - farmland_network
     volumes:

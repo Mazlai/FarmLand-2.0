@@ -1,0 +1,3341 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "User",
+            "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
+            "file": "src/stories/user.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface User {\n  name: string;\n}\n",
+            "properties": [
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "FarmService",
+            "id": "injectable-FarmService-b39c14509375a78460fd01b69a7ff382e10d4bddfeca934a62146f779a8c5000b1f6e61bbe5f53cb42a5d9b0d098da8667c7ef2692846541b73aa294718be9dc",
+            "file": "src/app/features/farms/services/farm.service.ts",
+            "properties": [
+                {
+                    "name": "apiUrl",
+                    "defaultValue": "`${environment.apiUrl}/farms`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Farm API URL.</p>\n",
+                    "line": 17,
+                    "rawdescription": "\nFarm API URL.",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "http",
+                    "defaultValue": "inject(HttpClient)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "userIdentityService",
+                    "defaultValue": "inject(UserIdentityService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "createAnimalStockAsync",
+                    "args": [
+                        {
+                            "name": "animalStock",
+                            "type": "AnimalStockModel",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<AnimalStockModel>",
+                    "typeParameters": [],
+                    "line": 55,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCreate a new animal stock.\n",
+                    "description": "<p>Create a new animal stock.</p>\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1423,
+                                "end": 1434,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "animalStock"
+                            },
+                            "type": "AnimalStockModel",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1417,
+                                "end": 1422,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>Animal stock to add.</p>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 1463,
+                                "end": 1470,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>The created animal stock.</p>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "deleteAnimalStockAsync",
+                    "args": [
+                        {
+                            "name": "animalStockId",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<any>",
+                    "typeParameters": [],
+                    "line": 80,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nDelete an animal stock.\n",
+                    "description": "<p>Delete an animal stock.</p>\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 2304,
+                                "end": 2317,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "animalStockId"
+                            },
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 2298,
+                                "end": 2303,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>ID of the animal stock to delete.</p>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "getAnimalTypesAsync",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<AnimalTypeModel[]>",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nGet all available animal types.\n",
+                    "description": "<p>Get all available animal types.</p>\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "tagName": {
+                                "pos": 1174,
+                                "end": 1181,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>Animal type array.</p>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "getMyAnimalsAsync",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<AnimalStockModel[]>",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nGet current user's animals from API.\n",
+                    "description": "<p>Get current user&#39;s animals from API.</p>\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "tagName": {
+                                "pos": 843,
+                                "end": 850,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>Animal stock array.</p>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "updateAnimalStockAsync",
+                    "args": [
+                        {
+                            "name": "animalStock",
+                            "type": "AnimalStockModel",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<AnimalStockModel>",
+                    "typeParameters": [],
+                    "line": 68,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nUpdate an animal stock (typically just the count).\n",
+                    "description": "<p>Update an animal stock (typically just the count).</p>\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1876,
+                                "end": 1887,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "animalStock"
+                            },
+                            "type": "AnimalStockModel",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1870,
+                                "end": 1875,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>Animal stock to update.</p>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 1919,
+                                "end": 1926,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>The updated animal stock.</p>\n"
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { inject, Injectable } from '@angular/core';\r\nimport { HttpClient } from '@angular/common/http';\r\nimport { firstValueFrom } from 'rxjs';\r\nimport { AnimalStockModel } from '../models/animal-stock.model';\r\nimport { environment } from '../../../../environments/environment';\r\nimport { UserIdentityService } from '../../../shared/services/user-identity.service';\r\nimport { AnimalTypeModel } from '../models/animal-type.model';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class FarmService {\r\n\r\n  //region fields\r\n\r\n  /** Farm API URL. */\r\n  private apiUrl = `${environment.apiUrl}/farms`;\r\n\r\n  //endregion\r\n\r\n  //region injections\r\n\r\n  private http = inject(HttpClient);\r\n\r\n  private userIdentityService = inject(UserIdentityService);\r\n\r\n  //endregion\r\n\r\n  //region methods\r\n\r\n  /**\r\n   * Get current user's animals from API.\r\n   * @returns Animal stock array.\r\n   */\r\n  public getMyAnimalsAsync(): Promise<AnimalStockModel[]> {\r\n    return firstValueFrom(this.http.get<AnimalStockModel[]>(\r\n      `${this.apiUrl}/my-farm`,\r\n      {headers: this.userIdentityService.getUserAuthorizationHeader()}\r\n    ));\r\n  }\r\n\r\n  /**\r\n   * Get all available animal types.\r\n   * @returns Animal type array.\r\n   */\r\n  public getAnimalTypesAsync(): Promise<AnimalTypeModel[]> {\r\n    return firstValueFrom(this.http.get<AnimalTypeModel[]>(`${this.apiUrl}/animal-types`));\r\n  }\r\n\r\n  /**\r\n   * Create a new animal stock.\r\n   * @param animalStock Animal stock to add.\r\n   * @returns The created animal stock.\r\n   */\r\n  public createAnimalStockAsync(animalStock: AnimalStockModel): Promise<AnimalStockModel> {\r\n    return firstValueFrom(this.http.post<AnimalStockModel>(\r\n      `${this.apiUrl}/my-farm`,\r\n      animalStock,\r\n      {headers: this.userIdentityService.getUserAuthorizationHeader()}\r\n    ));\r\n  }\r\n\r\n  /**\r\n   * Update an animal stock (typically just the count).\r\n   * @param animalStock Animal stock to update.\r\n   * @returns The updated animal stock.\r\n   */\r\n  public updateAnimalStockAsync(animalStock: AnimalStockModel): Promise<AnimalStockModel> {\r\n    return firstValueFrom(this.http.put<AnimalStockModel>(\r\n      `${this.apiUrl}/my-farm`,\r\n      animalStock,\r\n      {headers: this.userIdentityService.getUserAuthorizationHeader()}\r\n    ));\r\n  }\r\n\r\n  /**\r\n   * Delete an animal stock.\r\n   * @param animalStockId ID of the animal stock to delete.\r\n   */\r\n  public deleteAnimalStockAsync(animalStockId: number): Promise<any> {\r\n    return firstValueFrom(this.http.delete<AnimalStockModel>(\r\n      `${this.apiUrl}/my-farm/${animalStockId}`,\r\n      {headers: this.userIdentityService.getUserAuthorizationHeader()}\r\n    ));\r\n  }\r\n\r\n  //endregion\r\n\r\n}\r\n",
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "UserIdentityService",
+            "id": "injectable-UserIdentityService-cddc8fd6041b01a62c919d800f290cfaec371ced6b51d945945f5e435ba5e0020f3ebe67d3a2f6d34329a1a7202fe5294823aa1021b8da10c4d1df9807cdc10e",
+            "file": "src/app/shared/services/user-identity.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getUserAuthorizationHeader",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "HttpHeaders",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nGet a `Authorization` HTTP header with the current user token.\n",
+                    "description": "<p>Get a <code>Authorization</code> HTTP header with the current user token.</p>\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "tagName": {
+                                "pos": 766,
+                                "end": 773,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>An HTTP header made from the current user token.</p>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "getUserIdentity",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "literal type",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nGet the current user identity.\n",
+                    "description": "<p>Get the current user identity.</p>\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "tagName": {
+                                "pos": 358,
+                                "end": 365,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>The current user identity and token.</p>\n"
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport Cookies from 'universal-cookie';\r\nimport { environment } from '../../../environments/environment';\r\nimport { HttpHeaders } from '@angular/common/http';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class UserIdentityService {\r\n\r\n  //region methods\r\n\r\n  /**\r\n   * Get the current user identity.\r\n   * @returns The current user identity and token.\r\n   */\r\n  public getUserIdentity(): { identity: string, token: string } {\r\n    const cookie = new Cookies(null, {path: '/'});\r\n    return {\r\n      identity: cookie.get(environment.cookieKeys.userIdentity),\r\n      token: cookie.get(environment.cookieKeys.userToken)\r\n    };\r\n  }\r\n\r\n  /**\r\n   * Get a `Authorization` HTTP header with the current user token.\r\n   * @returns An HTTP header made from the current user token.\r\n   */\r\n  public getUserAuthorizationHeader(): HttpHeaders {\r\n    return new HttpHeaders({'Authorization': `Bearer ${this.getUserIdentity().token}`});\r\n  }\r\n\r\n  //endregion\r\n\r\n}\r\n",
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "UserService",
+            "id": "injectable-UserService-53aca3ec4cd0f1004a10ae65e7ea7e0c2e6a7279e35e90f35bf3a60080744ae90a9a145370202a2cfbbcde7c99b5bbac95cd09f21da888fb290fc37eec14e2f7",
+            "file": "src/app/features/users/services/user.service.ts",
+            "properties": [
+                {
+                    "name": "apiUrl",
+                    "defaultValue": "`${environment.apiUrl}/users`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>User API URL.</p>\n",
+                    "line": 15,
+                    "rawdescription": "\nUser API URL.",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "http",
+                    "defaultValue": "inject(HttpClient)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "signInAsync",
+                    "args": [
+                        {
+                            "name": "email",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<literal type>",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nAuthenticate using the provided connection data.\n",
+                    "description": "<p>Authenticate using the provided connection data.</p>\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 857,
+                                "end": 862,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "email"
+                            },
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 851,
+                                "end": 856,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>User email.</p>\n"
+                        },
+                        {
+                            "name": {
+                                "pos": 888,
+                                "end": 896,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "password"
+                            },
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 882,
+                                "end": 887,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>User password.</p>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 919,
+                                "end": 926,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>The identity and the token corresponding to the authenticated user.</p>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "signUpAsync",
+                    "args": [
+                        {
+                            "name": "user",
+                            "type": "UserModel",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<any>",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCreating a new user account.\n",
+                    "description": "<p>Creating a new user account.</p>\n",
+                    "modifierKind": [
+                        125
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 611,
+                                "end": 615,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "user"
+                            },
+                            "type": "UserModel",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 605,
+                                "end": 610,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>The user to sign up.</p>\n"
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { inject, Injectable } from '@angular/core';\r\nimport { environment } from '../../../../environments/environment';\r\nimport { HttpClient } from '@angular/common/http';\r\nimport { UserModel } from '../models/user.model';\r\nimport { firstValueFrom } from 'rxjs';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class UserService {\r\n\r\n  //region fields\r\n\r\n  /** User API URL. */\r\n  private apiUrl = `${environment.apiUrl}/users`;\r\n\r\n  //endregion\r\n\r\n  //region injections\r\n\r\n  private http = inject(HttpClient);\r\n\r\n  //endregion\r\n\r\n  //region methods\r\n\r\n  /**\r\n   * Creating a new user account.\r\n   * @param user The user to sign up.\r\n   */\r\n  public signUpAsync(user: UserModel): Promise<any> {\r\n    return firstValueFrom(this.http.post(`${this.apiUrl}/sign-up`, user));\r\n  }\r\n\r\n  /**\r\n   * Authenticate using the provided connection data.\r\n   * @param email User email.\r\n   * @param password User password.\r\n   * @returns The identity and the token corresponding to the authenticated user.\r\n   */\r\n  public signInAsync(email: string, password: string): Promise<{ identity: string, token: string }> {\r\n    return firstValueFrom(this.http.post<{ identity: string, token: string }>(\r\n      `${this.apiUrl}/sign-in`,\r\n      {email: email, password: password}\r\n    ));\r\n  }\r\n\r\n  //endregion\r\n\r\n}\r\n",
+            "extends": [],
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [
+        {
+            "name": "AnimalStockModel",
+            "id": "class-AnimalStockModel-5ed910ab2339f9cecc7918005303046c0de56ddcf94cb3ca135bb9c76c6c6bc4fb24826473843b6289532637e8a383c9c79245d10254f1f18f54f086b08fe427",
+            "file": "src/app/features/farms/models/animal-stock.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { AnimalTypeModel } from './animal-type.model';\r\n\r\nexport class AnimalStockModel {\r\n\r\n  public id = NaN;\r\n\r\n  public description = '';\r\n\r\n  public animalTypeId = NaN;\r\n\r\n  public count = 0;\r\n\r\n  public userId = NaN;\r\n\r\n  public animalType = new AnimalTypeModel();\r\n\r\n  constructor(data?: Partial<AnimalStockModel>) {\r\n    if (data) {\r\n      Object.assign(this, data);\r\n    }\r\n  }\r\n\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "data",
+                        "type": "Partial<AnimalStockModel>",
+                        "optional": true,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "data",
+                        "type": "Partial<AnimalStockModel>",
+                        "optional": true,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [
+                {
+                    "name": "animalType",
+                    "defaultValue": "new AnimalTypeModel()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "animalTypeId",
+                    "defaultValue": "NaN",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "count",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "description",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "NaN",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "userId",
+                    "defaultValue": "NaN",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "extends": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "AnimalTypeModel",
+            "id": "class-AnimalTypeModel-acb2ade57e08dfd49cf8404a5b8f7e184eb6e4384a5c8ce96d1163bc2b3d939ad45bc39ddb5fc2a5c6d90957314ba11e016c91b4d2f65bc0e5c727f9ca4d36bb",
+            "file": "src/app/features/farms/models/animal-type.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "export class AnimalTypeModel {\r\n\r\n  public id = NaN;\r\n\r\n  public label = '';\r\n\r\n  public textIcon = '';\r\n\r\n}\r\n",
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [
+                {
+                    "name": "id",
+                    "defaultValue": "NaN",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "textIcon",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7,
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "extends": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "UserModel",
+            "id": "class-UserModel-3e24ebb0505d4281486365e25e6b46c9ef3f20bf068beb4c67a0e93703e09ef6db98803ace791978f88dd276d6f3620abd39eacba381e1bc4fb83252a45f7d06",
+            "file": "src/app/features/users/models/user.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { Genders } from '../../../shared/enums/genders';\r\n\r\nexport class UserModel {\r\n\r\n  public id = NaN;\r\n\r\n  public firstName = '';\r\n\r\n  public lastName = '';\r\n\r\n  public birthDate = new Date();\r\n\r\n  public gender?: Genders.MALE;\r\n\r\n  public email = '';\r\n\r\n  public password = '';\r\n\r\n  public phone = '';\r\n\r\n}\r\n",
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [
+                {
+                    "name": "birthDate",
+                    "defaultValue": "new Date()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "email",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "firstName",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "gender",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Genders.MALE",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "NaN",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "lastName",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "password",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "phone",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "extends": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "Util",
+            "id": "class-Util-8f751a43a1d5d07a485559b44d8a56ca57975ec8569f4a9413115b5bc04393981ef00e3495b1e6eee2dbbb862b5ecf8ff009d282027ab99126d5861e7abe3e07",
+            "file": "src/app/shared/classes/util.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "export class Util {\r\n\r\n  /**\r\n   * Generate a random string identifier.\r\n   * @returns A randomly generated string.\r\n   */\r\n  public static generateRandomStringId() {\r\n    return Math.random().toString(36).substring(2);\r\n  }\r\n\r\n}\r\n",
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [],
+            "methods": [
+                {
+                    "name": "generateRandomStringId",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 7,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nGenerate a random string identifier.\n",
+                    "description": "<p>Generate a random string identifier.</p>\n",
+                    "modifierKind": [
+                        126
+                    ],
+                    "jsdoctags": [
+                        {
+                            "tagName": {
+                                "pos": 79,
+                                "end": 86,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>A randomly generated string.</p>\n"
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "extends": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [],
+    "components": [
+        {
+            "name": "AddAnimalStockModal",
+            "id": "component-AddAnimalStockModal-8f3dad41744d2d05304922df13932f048ee1188fb563e94e6f70c84c1d24569f90cb067b2841537711f8411c2479528bb5bb6ddc4f7416ce36a46aa1ac46b5ec",
+            "file": "src/app/features/farms/components/add-animal-stock-modal/add-animal-stock-modal.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "add-animal-stock-modal",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./add-animal-stock-modal.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "onAnimalAdded",
+                    "defaultValue": "new EventEmitter<AnimalStockModel>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nNotify the added animal stock.",
+                    "description": "<p>Notify the added animal stock.</p>\n",
+                    "line": 25,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "FarmButtonKind",
+                    "defaultValue": "FarmButtonKind",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 43,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "farmService",
+                    "defaultValue": "inject(FarmService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 50,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "isLoading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Loading state</p>\n",
+                    "line": 41,
+                    "rawdescription": "\nLoading state",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "isNaN",
+                    "defaultValue": "isNaN",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 44,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "isVisible",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>If the modal is visible.</p>\n",
+                    "line": 32,
+                    "rawdescription": "\nIf the modal is visible.",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "newAnimalStock",
+                    "defaultValue": "new AnimalStockModel()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Form data</p>\n",
+                    "line": 38,
+                    "rawdescription": "\nForm data",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "selectableAnimalTypes",
+                    "defaultValue": "new Array<AnimalTypeModel>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Available animal types for selection</p>\n",
+                    "line": 35,
+                    "rawdescription": "\nAvailable animal types for selection",
+                    "modifierKind": [
+                        124
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onSubmitAsync",
+                    "args": [
+                        {
+                            "name": "animalForm",
+                            "type": "NgForm",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 69,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHandle form submission.",
+                    "description": "<p>Handle form submission.</p>\n",
+                    "modifierKind": [
+                        124,
+                        134
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "animalForm",
+                            "type": "NgForm",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "openModalAsync",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 57,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nOpen the modal to add a new animal stock.",
+                    "description": "<p>Open the modal to add a new animal stock.</p>\n",
+                    "modifierKind": [
+                        125,
+                        134
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FarmButton"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, inject, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule, NgForm } from '@angular/forms';\r\nimport { FarmButton } from '../../../../shared/components/buttons/farm-button/farm-button';\r\nimport { FarmButtonKind } from '../../../../shared/enums/farm-button-kind';\r\nimport { AnimalStockModel } from '../../models/animal-stock.model';\r\nimport { FarmService } from '../../services/farm.service';\r\nimport { AnimalTypeModel } from '../../models/animal-type.model';\r\n\r\n@Component({\r\n  selector: 'add-animal-stock-modal',\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    FarmButton\r\n  ],\r\n  templateUrl: './add-animal-stock-modal.html',\r\n  styleUrl: './add-animal-stock-modal.scss'\r\n})\r\nexport class AddAnimalStockModal {\r\n\r\n  //region parameters\r\n\r\n  /** Notify the added animal stock. */\r\n  @Output() public onAnimalAdded = new EventEmitter<AnimalStockModel>();\r\n\r\n  //endregion\r\n\r\n  //region fields\r\n\r\n  /** If the modal is visible. */\r\n  protected isVisible = false;\r\n\r\n  /** Available animal types for selection */\r\n  protected selectableAnimalTypes = new Array<AnimalTypeModel>();\r\n\r\n  /** Form data */\r\n  protected newAnimalStock = new AnimalStockModel();\r\n\r\n  /** Loading state */\r\n  protected isLoading = false;\r\n\r\n  protected readonly FarmButtonKind = FarmButtonKind;\r\n  protected readonly isNaN = isNaN;\r\n\r\n  //endregion\r\n\r\n  //region injections\r\n\r\n  private farmService = inject(FarmService);\r\n\r\n  //endregion\r\n\r\n  //region methods\r\n\r\n  /** Open the modal to add a new animal stock. */\r\n  public async openModalAsync() {\r\n    try {\r\n      this.newAnimalStock = new AnimalStockModel();\r\n      this.selectableAnimalTypes = await this.farmService.getAnimalTypesAsync();\r\n      this.isVisible = true;\r\n    } catch (error) {\r\n      alert(`Une erreur est survenue lors du chargement des types d'animaux`);\r\n      this.isVisible = false;\r\n    }\r\n  }\r\n\r\n  /** Handle form submission. */\r\n  protected async onSubmitAsync(animalForm: NgForm): Promise<void> {\r\n    this.isLoading = true;\r\n    if (animalForm.valid) {\r\n      try {\r\n        const newAnimal = await this.farmService.createAnimalStockAsync(this.newAnimalStock);\r\n        this.onAnimalAdded.emit(newAnimal);\r\n        this.isVisible = false;\r\n      } catch (error) {\r\n        alert(`Une erreur est survenue lors de la création du stock d'animaux.`);\r\n      }\r\n    }\r\n    this.isLoading = false;\r\n  }\r\n\r\n  //endregion\r\n\r\n}\r\n",
+            "styleUrl": "./add-animal-stock-modal.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<!-- Overlay avec blur -->\r\n@if (isVisible) {\r\n  <div class=\"modal-overlay\" (click)=\"isVisible = false\">\r\n    <div class=\"modal-container\" (click)=\"$event.stopPropagation()\">\r\n      <!-- Header -->\r\n      <div class=\"modal-header d-flex justify-content-between align-items-center\">\r\n        <h4 class=\"modal-title mb-0\">Ajouter un stock</h4>\r\n        <button type=\"button\" class=\"btn-close\" (click)=\"isVisible = false\" aria-label=\"Fermer\">\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </div>\r\n\r\n      <!-- Body -->\r\n      <div class=\"modal-body\">\r\n        <form #animalForm=\"ngForm\" (ngSubmit)=\"onSubmitAsync(animalForm)\">\r\n          <!-- Type d'animal -->\r\n          <div class=\"form-group mb-3\">\r\n            <select\r\n              class=\"form-control\"\r\n              [(ngModel)]=\"newAnimalStock.animalTypeId\"\r\n              name=\"animalType\"\r\n              required\r\n              #animalTypeField=\"ngModel\">\r\n              <option value=\"NaN\" disabled>Type d'animal</option>\r\n              @for (type of selectableAnimalTypes; track type.id) {\r\n                <option [value]=\"type.id\">\r\n                  {{ type.label }}\r\n                </option>\r\n              }\r\n            </select>\r\n            @if (animalTypeField.invalid && animalTypeField.touched) {\r\n              <div class=\"invalid-feedback\">\r\n                Veuillez sélectionner un type d'animal\r\n              </div>\r\n            }\r\n          </div>\r\n\r\n          <!-- Description -->\r\n          <div class=\"form-group mb-3\">\r\n            <input\r\n              type=\"text\"\r\n              class=\"form-control\"\r\n              placeholder=\"Description\"\r\n              maxlength=\"25\"\r\n              [(ngModel)]=\"newAnimalStock.description\"\r\n              name=\"description\"/>\r\n          </div>\r\n\r\n          <!-- Compte -->\r\n          <div class=\"form-group mb-4\">\r\n            <input\r\n              type=\"number\"\r\n              class=\"form-control\"\r\n              placeholder=\"Compte\"\r\n              [(ngModel)]=\"newAnimalStock.count\"\r\n              name=\"countAnimals\"\r\n              min=\"0\"\r\n              required\r\n              #countField=\"ngModel\"/>\r\n            @if (countField.invalid && countField.touched) {\r\n              <div class=\"invalid-feedback\">\r\n                Le nombre d'animaux est requis\r\n              </div>\r\n            }\r\n          </div>\r\n\r\n          <!-- Buttons -->\r\n          <div class=\"modal-footer gap-3 justify-content-center w-100\">\r\n            <farm-button\r\n              [kind]=\"FarmButtonKind.SECONDARY\"\r\n              label=\"Annuler\"\r\n              style=\"flex-grow: 1\"\r\n              cssClasses=\"w-100\"\r\n              (onClick)=\"isVisible = false\"/>\r\n            <farm-button\r\n              [kind]=\"FarmButtonKind.PRIMARY\"\r\n              label=\"Ajouter\"\r\n              style=\"flex-grow: 1\"\r\n              cssClasses=\"w-100\"\r\n              [disabled]=\"!animalForm.valid || isNaN(newAnimalStock.animalTypeId)\"\r\n              [isLoading]=\"isLoading\"\r\n              (onClick)=\"onSubmitAsync(animalForm)\"/>\r\n          </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n  </div>\r\n}\r\n"
+        },
+        {
+            "name": "AnimalStockItem",
+            "id": "component-AnimalStockItem-25edc307300172f77d5b68e59618d5b00901aa0aa6073a421933df1a445617787db955d2dcd0146c3ceb265731224b1be4ceeaccba6aa6a3bdca3ad260d28679",
+            "file": "src/app/features/farms/components/animal-stock-item/animal-stock-item.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "animal-stock-item",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./animal-stock-item.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "animal",
+                    "defaultValue": "new AnimalStockModel()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAnimal data to display.",
+                    "description": "<p>Animal data to display.</p>\n",
+                    "line": 16,
+                    "type": "any",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCountUpdate",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nNotify when the count of the animal stock has been updated.",
+                    "description": "<p>Notify when the count of the animal stock has been updated.</p>\n",
+                    "line": 22,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onItemClick",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nNotify when the item is clicked.",
+                    "description": "<p>Notify when the item is clicked.</p>\n",
+                    "line": 19,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onStockDeleted",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nNotify when the animal stock has been deleted.",
+                    "description": "<p>Notify when the animal stock has been deleted.</p>\n",
+                    "line": 25,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "FarmButtonKind",
+                    "defaultValue": "FarmButtonKind",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "farmService",
+                    "defaultValue": "inject(FarmService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "deleteStockAsync",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDelete the animal stock.",
+                    "description": "<p>Delete the animal stock.</p>\n",
+                    "modifierKind": [
+                        124,
+                        134
+                    ]
+                },
+                {
+                    "name": "updateStockCountAsync",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nUpdate the count of the animal stock.\n",
+                    "description": "<p>Update the count of the animal stock.</p>\n",
+                    "modifierKind": [
+                        124,
+                        134
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1208,
+                                "end": 1213,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "value"
+                            },
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1202,
+                                "end": 1207,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>The value to add to the stock count.</p>\n"
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, inject, Input, Output } from '@angular/core';\r\nimport { AnimalStockModel } from '../../models/animal-stock.model';\r\nimport { FarmButtonKind } from '../../../../shared/enums/farm-button-kind';\r\nimport { FarmService } from '../../services/farm.service';\r\n\r\n@Component({\r\n  selector: 'animal-stock-item',\r\n  templateUrl: './animal-stock-item.html',\r\n  styleUrl: './animal-stock-item.scss'\r\n})\r\nexport class AnimalStockItem {\r\n\r\n  //region parameters\r\n\r\n  /** Animal data to display. */\r\n  @Input() public animal = new AnimalStockModel();\r\n\r\n  /** Notify when the item is clicked. */\r\n  @Output() public onItemClick = new EventEmitter<void>();\r\n\r\n  /** Notify when the count of the animal stock has been updated. */\r\n  @Output() public onCountUpdate = new EventEmitter();\r\n\r\n  /** Notify when the animal stock has been deleted. */\r\n  @Output() public onStockDeleted = new EventEmitter();\r\n\r\n  //endregion\r\n\r\n  //region fields\r\n\r\n  protected readonly FarmButtonKind = FarmButtonKind;\r\n\r\n  //endregion\r\n\r\n  //region injections\r\n\r\n  private farmService = inject(FarmService);\r\n\r\n  //endregion\r\n\r\n  //region methods\r\n\r\n  /**\r\n   * Update the count of the animal stock.\r\n   * @param value The value to add to the stock count.\r\n   */\r\n  protected async updateStockCountAsync(value: number) {\r\n    try {\r\n      this.animal.count += value;\r\n      await this.farmService.updateAnimalStockAsync(this.animal);\r\n      this.onCountUpdate.emit();\r\n    } catch (e) {\r\n      alert('Une erreur est survenue lors de la modification.');\r\n    }\r\n  }\r\n\r\n  /** Delete the animal stock. */\r\n  protected async deleteStockAsync() {\r\n    if (confirm(`Supprimer ce stock d'animaux ?`)) {\r\n      try {\r\n        await this.farmService.deleteAnimalStockAsync(this.animal.id);\r\n        this.onStockDeleted.emit();\r\n      } catch (e) {\r\n        alert('Une erreur est survenue lors de la suppression.');\r\n      }\r\n    }\r\n  }\r\n\r\n  //endregion\r\n\r\n}\r\n",
+            "styleUrl": "./animal-stock-item.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"animal-stock-item rounded-card position-relative\" (click)=\"onItemClick.emit()\">\r\n  <div class=\"animal-content d-flex flex-column align-items-center justify-content-between h-100 p-3 gap-2\">\r\n    <div class=\"animal-name text-center\">\r\n      @if (animal.description != '') {\r\n        <b>{{ animal.description }}</b>\r\n      } @else {\r\n        {{ animal.animalType.label }}\r\n      }\r\n    </div>\r\n    @if (animal.animalType.textIcon != '') {\r\n      <span class=\"fs-1 lh-sm\">{{ animal.animalType.textIcon }}</span>\r\n    }\r\n    <div class=\"btns-wrapper d-flex align-items-center justify-content-center\">\r\n      <button class=\"btn btn-sm btn-secondary remove-btn fw-bold\"\r\n              style=\"width: 28px; height: 28px; border-radius: 50%; padding: 0; font-size: 16px;\"\r\n              (click)=\"updateStockCountAsync(-1)\"\r\n              [disabled]=\"animal.count == 0\">-\r\n      </button>\r\n      <h5 class=\"count-number mx-2 my-0\">\r\n        {{ animal.count || 0 }}\r\n      </h5>\r\n      <button class=\"btn btn-sm btn-primary add-btn fw-bold\"\r\n              style=\"width: 28px; height: 28px; border-radius: 50%; padding: 0; font-size: 16px;\"\r\n              (click)=\"updateStockCountAsync(1)\">+\r\n      </button>\r\n    </div>\r\n  </div>\r\n  <i (click)=\"deleteStockAsync()\"\r\n     class=\"delete-icon bi bi-x-circle-fill z-1 fs-4 text-danger position-absolute top-0\"></i>\r\n</div>\r\n"
+        },
+        {
+            "name": "AnimalStockList",
+            "id": "component-AnimalStockList-dab2ced2257f9c7c237b8f43bb152b0664ef6aa00bf56cf47384640752473465137a1844b8704c677e68ed99173b19b6109cfe73067783c9c7c1bcd745cbe2b5",
+            "file": "src/app/features/farms/components/animal-stock-list/animal-stock-list.ts",
+            "changeDetection": "ChangeDetectionStrategy.Default",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-animal-stock-list",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./animal-stock-list.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "animalStocks",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AnimalStockModel[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>List of animal stocks from API.</p>\n",
+                    "line": 30,
+                    "rawdescription": "\nList of animal stocks from API.",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "FarmButtonKind",
+                    "defaultValue": "FarmButtonKind",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "farmService",
+                    "defaultValue": "inject(FarmService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "isLoading",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Loading state.</p>\n",
+                    "line": 33,
+                    "rawdescription": "\nLoading state.",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "router",
+                    "defaultValue": "inject(Router)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 43,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "loadAnimalStocksAsync",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nLoad animal stocks from API.",
+                    "description": "<p>Load animal stocks from API.</p>\n",
+                    "modifierKind": [
+                        124,
+                        134
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FarmHeader"
+                },
+                {
+                    "name": "AddAnimalStockModal"
+                },
+                {
+                    "name": "AnimalStockItem"
+                },
+                {
+                    "name": "FarmHeader"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { AddAnimalStockModal } from '../add-animal-stock-modal/add-animal-stock-modal';\r\nimport { AnimalStockItem } from '../animal-stock-item/animal-stock-item';\r\nimport { AnimalStockModel } from '../../models/animal-stock.model';\r\nimport { FarmService } from '../../services/farm.service';\r\nimport { FarmButtonKind } from '../../../../shared/enums/farm-button-kind';\r\nimport { FarmHeader } from '../farm-header/farm-header';\r\nimport { HttpErrorResponse } from '@angular/common/http';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-animal-stock-list',\r\n  imports: [\r\n    CommonModule,\r\n    FarmHeader,\r\n    AddAnimalStockModal,\r\n    AnimalStockItem,\r\n    FarmHeader\r\n  ],\r\n  templateUrl: './animal-stock-list.html',\r\n  styleUrl: './animal-stock-list.scss',\r\n  changeDetection: ChangeDetectionStrategy.Default\r\n})\r\nexport class AnimalStockList implements OnInit {\r\n\r\n  //region fields\r\n\r\n  /** List of animal stocks from API. */\r\n  protected animalStocks: AnimalStockModel[] = [];\r\n\r\n  /** Loading state. */\r\n  protected isLoading = true;\r\n\r\n  protected readonly FarmButtonKind = FarmButtonKind;\r\n\r\n  //endregion\r\n\r\n  //region injections\r\n\r\n  private farmService = inject(FarmService);\r\n\r\n  private router = inject(Router);\r\n\r\n  //endregion\r\n\r\n  //region methods\r\n\r\n  async ngOnInit() {\r\n    await this.loadAnimalStocksAsync();\r\n  }\r\n\r\n  /** Load animal stocks from API. */\r\n  protected async loadAnimalStocksAsync() {\r\n    this.isLoading = true;\r\n    try {\r\n      this.animalStocks = (await this.farmService.getMyAnimalsAsync()).sort((a, b) => a.id - b.id);\r\n      this.isLoading = false;\r\n    } catch (e) {\r\n      switch ((e as HttpErrorResponse).status) {\r\n        case 401:\r\n          await this.router.navigateByUrl('/');\r\n          break;\r\n        default:\r\n          alert(`Une erreur est survenue lors du chargement des stocks d'animaux.`);\r\n      }\r\n    }\r\n  }\r\n\r\n  //endregion\r\n\r\n}\r\n",
+            "styleUrl": "./animal-stock-list.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"d-flex flex-column w-100 h-100\">\r\n\r\n  <div class=\"p-3\">\r\n    <farm-header/>\r\n  </div>\r\n\r\n  <div class=\"d-flex justify-content-center align-items-center w-100 h-100 p-3 p-sm-5\">\r\n    @if (isLoading) {\r\n      <span class=\"spinner-border\"></span>\r\n    } @else {\r\n      <div class=\"d-flex align-items-center flex-wrap gap-2 gap-sm-4 w-100\" style=\"max-width: 1000px\">\r\n        @for (animal of animalStocks; track animal.id) {\r\n          <animal-stock-item [animal]=\"animal\"\r\n                             (onCountUpdate)=\"loadAnimalStocksAsync()\"\r\n                             (onStockDeleted)=\"loadAnimalStocksAsync()\"/>\r\n        }\r\n        <button (click)=\"addAnimalStockModal.openModalAsync()\"\r\n                class=\"add-stock-btn border border-primary border-2 rounded fs-1 bg-transparent\">\r\n          +\r\n        </button>\r\n      </div>\r\n    }\r\n  </div>\r\n\r\n</div>\r\n\r\n<add-animal-stock-modal #addAnimalStockModal (onAnimalAdded)=\"loadAnimalStocksAsync()\"/>\r\n"
+        },
+        {
+            "name": "App",
+            "id": "component-App-7264e6187b97d38b831b582e86238614a44d46f20405cd2cb57b61f29fc1ca3675a3c1e7d06df8bac13cc29d425fa1d1dd1a8c27fa5d0d17a1bc3fccb8d43a52",
+            "file": "src/app/app.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'frontend'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        124
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "RouterOutlet"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  imports: [RouterOutlet],\r\n  templateUrl: './app.html',\r\n  styleUrl: './app.scss'\r\n})\r\nexport class App {\r\n  protected title = 'frontend';\r\n}\r\n",
+            "styleUrl": "./app.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"vw-100 vh-100 overflow-auto\">\r\n  <router-outlet />\r\n</div>\r\n"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-d7bf0323e6da130e2609e2af0117b4a8d7cd874132206af50bf43dfc37044485fe50f2867ea76525730dd195b9b95a43802a12dadc6ad5cd7bf2faa07f19f0da",
+            "file": "src/stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-button",
+            "styleUrls": [
+                "./button.css"
+            ],
+            "styles": [],
+            "template": " <button  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n  [ngClass]=\"classes\"\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\n>\n  {{ label }}\n</button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nWhat background color to use",
+                    "description": "<p>What background color to use</p>\n",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 760,
+                            "end": 773,
+                            "kind": 328,
+                            "id": 0,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "tagName": {
+                                "pos": 761,
+                                "end": 769,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "required"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "rawdescription": "\n\nButton contents\n\n",
+                    "description": "<p>Button contents</p>\n",
+                    "line": 37,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "primary",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nIs this the principal call to action on the page?",
+                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "line": 21,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHow large should the button be?",
+                    "description": "<p>How large should the button be?</p>\n",
+                    "line": 29,
+                    "type": "\"small\" | \"medium\" | \"large\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nOptional click handler",
+                    "description": "<p>Optional click handler</p>\n",
+                    "line": 41,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: ` <button\n  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n  [ngClass]=\"classes\"\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\n>\n  {{ label }}\n</button>`,\n  styleUrls: ['./button.css'],\n})\nexport class ButtonComponent {\n  /** Is this the principal call to action on the page? */\n  @Input()\n  primary = false;\n\n  /** What background color to use */\n  @Input()\n  backgroundColor?: string;\n\n  /** How large should the button be? */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /** Optional click handler */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-button {\n  display: inline-block;\n  cursor: pointer;\n  border: 0;\n  border-radius: 3em;\n  font-weight: 700;\n  line-height: 1;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n.storybook-button--primary {\n  background-color: #555ab9;\n  color: white;\n}\n.storybook-button--secondary {\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n  background-color: transparent;\n  color: #333;\n}\n.storybook-button--small {\n  padding: 10px 16px;\n  font-size: 12px;\n}\n.storybook-button--medium {\n  padding: 11px 20px;\n  font-size: 14px;\n}\n.storybook-button--large {\n  padding: 12px 24px;\n  font-size: 16px;\n}\n",
+                    "styleUrl": "./button.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 43
+                    }
+                }
+            }
+        },
+        {
+            "name": "FarmButton",
+            "id": "component-FarmButton-f6f5cab43f589703ab3d0ea5b422cb6bf2d35125eede2431905acf84d578beecd5401820b724e24d486f31db2fa5e60dcaa6de7200ace6435c921012826cbdf8",
+            "file": "src/app/shared/components/buttons/farm-button/farm-button.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "farm-button",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./farm-button.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "cssClasses",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAdditional CSS classes for the button.",
+                    "description": "<p>Additional CSS classes for the button.</p>\n",
+                    "line": 24,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nIf the input is disabled.",
+                    "description": "<p>If the input is disabled.</p>\n",
+                    "line": 30,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "isLoading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDisplay a loading spinner if set to true.",
+                    "description": "<p>Display a loading spinner if set to true.</p>\n",
+                    "line": 33,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "isSubmit",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nIf the button is used to submit a form.",
+                    "description": "<p>If the button is used to submit a form.</p>\n",
+                    "line": 15,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "kind",
+                    "defaultValue": "FarmButtonKind.PRIMARY",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nButton kind (primary, secondary, etc.).",
+                    "description": "<p>Button kind (primary, secondary, etc.).</p>\n",
+                    "line": 21,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nButton label.",
+                    "description": "<p>Button label.</p>\n",
+                    "line": 18,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "style",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAdditional style for the button.",
+                    "description": "<p>Additional style for the button.</p>\n",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nNotify when the button is clicked.",
+                    "description": "<p>Notify when the button is clicked.</p>\n",
+                    "line": 36,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { FarmButtonKind } from '../../../enums/farm-button-kind';\r\n\r\n@Component({\r\n  selector: 'farm-button',\r\n  imports: [],\r\n  templateUrl: './farm-button.html',\r\n  styleUrl: './farm-button.scss'\r\n})\r\nexport class FarmButton {\r\n\r\n  //region parameters\r\n\r\n  /** If the button is used to submit a form. */\r\n  @Input() public isSubmit = false;\r\n\r\n  /** Button label. */\r\n  @Input() public label = '';\r\n\r\n  /** Button kind (primary, secondary, etc.). */\r\n  @Input() public kind = FarmButtonKind.PRIMARY;\r\n\r\n  /** Additional CSS classes for the button. */\r\n  @Input() public cssClasses = '';\r\n\r\n  /** Additional style for the button. */\r\n  @Input() public style = '';\r\n\r\n  /** If the input is disabled. */\r\n  @Input() public disabled = false;\r\n\r\n  /** Display a loading spinner if set to true. */\r\n  @Input() public isLoading = false;\r\n\r\n  /** Notify when the button is clicked. */\r\n  @Output() public onClick = new EventEmitter();\r\n\r\n  //endregion\r\n\r\n}\r\n",
+            "styleUrl": "./farm-button.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<button (click)=\"onClick.emit()\"\r\n        [type]=\"isSubmit ? 'submit' : 'button'\"\r\n        [class]=\"'btn btn-' + kind + ' ' + cssClasses\"\r\n        [disabled]=\"disabled || isLoading\"\r\n        [style]=\"style\">\r\n  @if (isLoading) {\r\n    <span class=\"spinner-border spinner-border-sm\"></span>\r\n  }\r\n  {{ label }}\r\n</button>\r\n"
+        },
+        {
+            "name": "FarmHeader",
+            "id": "component-FarmHeader-7e395818ee54e69adc345e470ae1f47cc89145a8894740e5e2983be02c6d552e66153fd03a3d0420fc6085d679673e93e64e1204ac0e92938e9a62f66f1070e6",
+            "file": "src/app/features/farms/components/farm-header/farm-header.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "farm-header",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./farm-header.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "router",
+                    "defaultValue": "inject(Router)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "userIdentityService",
+                    "defaultValue": "inject(UserIdentityService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "userName",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Username to display.</p>\n",
+                    "line": 18,
+                    "rawdescription": "\nUsername to display.",
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "signOutUserAsync",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 37,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSign out the current user.",
+                    "description": "<p>Sign out the current user.</p>\n",
+                    "modifierKind": [
+                        124,
+                        134
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, inject, OnInit } from '@angular/core';\r\nimport { UserIdentityService } from '../../../../shared/services/user-identity.service';\r\nimport Cookies from 'universal-cookie';\r\nimport { environment } from '../../../../../environments/environment';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'farm-header',\r\n  imports: [],\r\n  templateUrl: './farm-header.html',\r\n  styleUrl: './farm-header.scss'\r\n})\r\nexport class FarmHeader implements OnInit {\r\n\r\n  //region fields\r\n\r\n  /** Username to display. */\r\n  public userName = '';\r\n\r\n  //endregion\r\n\r\n  //region injections\r\n\r\n  private userIdentityService = inject(UserIdentityService);\r\n\r\n  private router = inject(Router);\r\n\r\n  //endregion\r\n\r\n  //region methods\r\n\r\n  ngOnInit() {\r\n    this.userName = this.userIdentityService.getUserIdentity().identity;\r\n  }\r\n\r\n  /** Sign out the current user. */\r\n  protected async signOutUserAsync() {\r\n    if (confirm(`Êtes-vous sûr(e) de vouloir vous déconnecter ?`)) {\r\n      const cookies = new Cookies(null, {path: '/'});\r\n      cookies.remove(environment.cookieKeys.userToken);\r\n      cookies.remove(environment.cookieKeys.userIdentity);\r\n      await this.router.navigateByUrl('/');\r\n    }\r\n  }\r\n\r\n  //endregion\r\n\r\n}\r\n",
+            "styleUrl": "./farm-header.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"d-flex align-items-center justify-content-between mb-4 px-3\">\r\n  <!-- Logo + Titre -->\r\n  <div class=\"d-flex align-items-center gap-2\">\r\n    <img src=\"/farmland_logo.png\" alt=\"logo\" class=\"farm-logo\" style=\"width: 32px; height: 32px;\">\r\n    <h3 class=\"text-primary mb-0\">FarmLand</h3>\r\n  </div>\r\n\r\n  <!-- Utilisateur + Logout -->\r\n  <div class=\"d-flex align-items-center gap-3\">\r\n    <div class=\"d-flex align-items-center p-2 px-3 bg-success rounded-pill text-white\">\r\n      <i class=\"fas fa-user-circle fa-lg me-2\"></i>\r\n      <span class=\"fw-bold\">{{ userName }}</span>\r\n    </div>\r\n    <button (click)=\"signOutUserAsync()\" class=\"btn border-0 p-0 bg-transparent\">\r\n      <i class=\"fas fa-power-off fa-2x text-success\"></i>\r\n    </button>\r\n  </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "FarmInput",
+            "id": "component-FarmInput-3637b8c114e5a3f376b907ac1e6abc1dc0271907a16947f7f5443bbb8550250951ab1b1a7b16c39a2691787474d921bc70c26813272dca4b882ffafed17b2f2a",
+            "file": "src/app/shared/components/form/farm-input/farm-input.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "farm-input",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./farm-input.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "cssClasses",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAdditional CSS classes for the input.",
+                    "description": "<p>Additional CSS classes for the input.</p>\n",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nIf the input is disabled.",
+                    "description": "<p>If the input is disabled.</p>\n",
+                    "line": 34,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nInput label.",
+                    "description": "<p>Input label.</p>\n",
+                    "line": 22,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "style",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAdditional style for the input.",
+                    "description": "<p>Additional style for the input.</p>\n",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "FarmInputType.TEXT",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nInput type.",
+                    "description": "<p>Input type.</p>\n",
+                    "line": 19,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nInput value.",
+                    "description": "<p>Input value.</p>\n",
+                    "line": 31,
+                    "type": "any",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "valueChange",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nNotify when the input value changes.",
+                    "description": "<p>Notify when the input value changes.</p>\n",
+                    "line": 37,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "componentId",
+                    "defaultValue": "`farm-input-${Util.generateRandomStringId()}`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Unique ID for each instance of the component.</p>\n",
+                    "line": 44,
+                    "rawdescription": "\nUnique ID for each instance of the component.",
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { FarmInputType } from '../../../enums/farm-input-type';\r\nimport { Util } from '../../../classes/util';\r\nimport { FormsModule } from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'farm-input',\r\n  imports: [\r\n    FormsModule\r\n  ],\r\n  templateUrl: './farm-input.html',\r\n  styleUrl: './farm-input.scss'\r\n})\r\nexport class FarmInput {\r\n\r\n  //region parameters\r\n\r\n  /** Input type. */\r\n  @Input() public type = FarmInputType.TEXT;\r\n\r\n  /** Input label. */\r\n  @Input() public label = '';\r\n\r\n  /** Additional CSS classes for the input. */\r\n  @Input() public cssClasses = '';\r\n\r\n  /** Additional style for the input. */\r\n  @Input() public style = '';\r\n\r\n  /** Input value. */\r\n  @Input() public value: any;\r\n\r\n  /** If the input is disabled. */\r\n  @Input() public disabled = false;\r\n\r\n  /** Notify when the input value changes. */\r\n  @Output() public valueChange = new EventEmitter();\r\n\r\n  //endregion\r\n\r\n  //region fields\r\n\r\n  /** Unique ID for each instance of the component. */\r\n  protected readonly componentId = `farm-input-${Util.generateRandomStringId()}`;\r\n\r\n  //endregion\r\n\r\n}\r\n",
+            "styleUrl": "./farm-input.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div [class]=\"'form-floating ' + cssClasses\" [style]=\"style\">\r\n  <input [(ngModel)]=\"value\"\r\n         (change)=\"valueChange.emit(value)\"\r\n         [type]=\"type\"\r\n         [id]=\"componentId\"\r\n         [placeholder]=\"label\"\r\n         [disabled]=\"disabled\"\r\n         class=\"form-control\">\r\n  <label [for]=\"componentId\">{{ label }}</label>\r\n</div>\r\n"
+        },
+        {
+            "name": "FarmSelect",
+            "id": "component-FarmSelect-787dbf7cb057fd5d49ae3e69554583fb0fce38ac201ce701aeae34fa0bb8e7ec893057d9b93d328598d234fb1c7fde543296b0642e3e10100c48127f66081253",
+            "file": "src/app/shared/components/form/farm-select/farm-select.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "farm-select",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./farm-select.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "cssClasses",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAdditional CSS classes for the select.",
+                    "description": "<p>Additional CSS classes for the select.</p>\n",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nIf the input is disabled.",
+                    "description": "<p>If the input is disabled.</p>\n",
+                    "line": 29,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSelect label.",
+                    "description": "<p>Select label.</p>\n",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "selectableValues",
+                    "defaultValue": "new Array<{label: string, value: any}>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSelectable values.",
+                    "description": "<p>Selectable values.</p>\n",
+                    "line": 32,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "style",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAdditional style for the select.",
+                    "description": "<p>Additional style for the select.</p>\n",
+                    "line": 23,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSelected value.",
+                    "description": "<p>Selected value.</p>\n",
+                    "line": 26,
+                    "type": "any",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "valueChange",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nNotify when the select value changes.",
+                    "description": "<p>Notify when the select value changes.</p>\n",
+                    "line": 35,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { FormsModule } from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'farm-select',\r\n  imports: [\r\n    FormsModule\r\n  ],\r\n  templateUrl: './farm-select.html',\r\n  styleUrl: './farm-select.scss'\r\n})\r\nexport class FarmSelect {\r\n\r\n  //region parameters\r\n\r\n  /** Select label. */\r\n  @Input() public label = '';\r\n\r\n  /** Additional CSS classes for the select. */\r\n  @Input() public cssClasses = '';\r\n\r\n  /** Additional style for the select. */\r\n  @Input() public style = '';\r\n\r\n  /** Selected value. */\r\n  @Input() public value: any;\r\n\r\n  /** If the input is disabled. */\r\n  @Input() public disabled = false;\r\n\r\n  /** Selectable values. */\r\n  @Input() public selectableValues = new Array<{label: string, value: any}>();\r\n\r\n  /** Notify when the select value changes. */\r\n  @Output() public valueChange = new EventEmitter();\r\n\r\n  //endregion\r\n\r\n}\r\n",
+            "styleUrl": "./farm-select.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<select [(ngModel)]=\"value\"\r\n        (change)=\"valueChange.emit(value)\"\r\n        [class]=\"'form-select ' + cssClasses\"\r\n        [disabled]=\"disabled\"\r\n        [style]=\"style\">\r\n  <option selected disabled [value]=\"undefined\">{{ label }}</option>\r\n  @for (option of selectableValues; track $index) {\r\n    <option [value]=\"option.value\">{{ option.label }}</option>\r\n  }\r\n</select>\r\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-48b9abe37706bc42f20cfa97ed9f943678344ea7d254c0c82183c657750c2191b43486fe730c778627b2ea6aa0e2f33a7abcf3ce08b68ad18b062ad99ea97acb",
+            "file": "src/stories/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-header",
+            "styleUrls": [
+                "./header.css"
+            ],
+            "styles": [],
+            "template": "<header>  <div class=\"storybook-header\">\n    <div>\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n            fill=\"#FFF\"\n          />\n          <path\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n            fill=\"#555AB9\"\n          />\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\n        </g>\n      </svg>\n      <h1>Acme</h1>\n    </div>\n    <div>\n      <div *ngIf=\"user\">\n        <span class=\"welcome\">\n          Welcome, <b>{{ user.name }}</b\n          >!\n        </span>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n      </div>\n      <div *ngIf=\"!user\">\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          class=\"margin-left\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          [primary]=\"true\"\n          class=\"margin-left\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </div>\n</header>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 66,
+                    "type": "User | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 75,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 69,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 72,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { ButtonComponent } from './button.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-header',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  template: `<header>\n  <div class=\"storybook-header\">\n    <div>\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n            fill=\"#FFF\"\n          />\n          <path\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n            fill=\"#555AB9\"\n          />\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\n        </g>\n      </svg>\n      <h1>Acme</h1>\n    </div>\n    <div>\n      <div *ngIf=\"user\">\n        <span class=\"welcome\">\n          Welcome, <b>{{ user.name }}</b\n          >!\n        </span>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n      </div>\n      <div *ngIf=\"!user\">\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          class=\"margin-left\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          [primary]=\"true\"\n          class=\"margin-left\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </div>\n</header>`,\n  styleUrls: ['./header.css'],\n})\nexport class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-header svg {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header h1 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 6px 0 6px 10px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 1;\n}\n\n.storybook-header button + button {\n  margin-left: 10px;\n}\n\n.storybook-header .welcome {\n  margin-right: 10px;\n  color: #333;\n  font-size: 14px;\n}\n",
+                    "styleUrl": "./header.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-21dd6eb370b4983b5c21c84d40e6f54d266a9d9af9889e6e76b35c43058bd53b3e451bad089d5adf4bea46647ba10265a2fa8cb15630398e75636307d4817fc6",
+            "file": "src/stories/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-page",
+            "styleUrls": [
+                "./page.css"
+            ],
+            "styles": [],
+            "template": "<article>  <storybook-header\n    [user]=\"user\"\n    (onLogout)=\"doLogout()\"\n    (onLogin)=\"doLogin()\"\n    (onCreateAccount)=\"doCreateAccount()\"\n  ></storybook-header>\n  <section class=\"storybook-page\">\n    <h2>Pages in Storybook</h2>\n    <p>\n      We recommend building UIs with a\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n        <strong>component-driven</strong>\n      </a>\n      process starting with atomic components and ending with pages.\n    </p>\n    <p>\n      Render pages with mock data. This makes it easy to build and review page states without\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\n      in Storybook:\n    </p>\n    <ul>\n      <li>\n        Use a higher-level connected component. Storybook helps you compose such data from the\n        \"args\" of child component stories\n      </li>\n      <li>\n        Assemble data in the page component from your services. You can mock these services out\n        using Storybook.\n      </li>\n    </ul>\n    <p>\n      Get a guided tutorial on component-driven development at\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Storybook tutorials\n      </a>\n      . Read more in the\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n      .\n    </p>\n    <div class=\"tip-wrapper\">\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n            id=\"a\"\n            fill=\"#999\"\n          />\n        </g>\n      </svg>\n      Viewports addon in the toolbar\n    </div>\n  </section>\n</article>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 69
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "doCreateAccount",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "doLogin",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "doLogout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "HeaderComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { HeaderComponent } from './header.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-page',\n  standalone: true,\n  imports: [CommonModule, HeaderComponent],\n  template: `<article>\n  <storybook-header\n    [user]=\"user\"\n    (onLogout)=\"doLogout()\"\n    (onLogin)=\"doLogin()\"\n    (onCreateAccount)=\"doCreateAccount()\"\n  ></storybook-header>\n  <section class=\"storybook-page\">\n    <h2>Pages in Storybook</h2>\n    <p>\n      We recommend building UIs with a\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n        <strong>component-driven</strong>\n      </a>\n      process starting with atomic components and ending with pages.\n    </p>\n    <p>\n      Render pages with mock data. This makes it easy to build and review page states without\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\n      in Storybook:\n    </p>\n    <ul>\n      <li>\n        Use a higher-level connected component. Storybook helps you compose such data from the\n        \"args\" of child component stories\n      </li>\n      <li>\n        Assemble data in the page component from your services. You can mock these services out\n        using Storybook.\n      </li>\n    </ul>\n    <p>\n      Get a guided tutorial on component-driven development at\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Storybook tutorials\n      </a>\n      . Read more in the\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n      .\n    </p>\n    <div class=\"tip-wrapper\">\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n            id=\"a\"\n            fill=\"#999\"\n          />\n        </g>\n      </svg>\n      Viewports addon in the toolbar\n    </div>\n  </section>\n</article>`,\n  styleUrls: ['./page.css'],\n})\nexport class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-page {\n  margin: 0 auto;\n  padding: 48px 20px;\n  max-width: 600px;\n  color: #333;\n  font-size: 14px;\n  line-height: 24px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-page h2 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 0 0 4px;\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 1;\n}\n\n.storybook-page p {\n  margin: 1em 0;\n}\n\n.storybook-page a {\n  color: inherit;\n}\n\n.storybook-page ul {\n  margin: 1em 0;\n  padding-left: 30px;\n}\n\n.storybook-page li {\n  margin-bottom: 8px;\n}\n\n.storybook-page .tip {\n  display: inline-block;\n  vertical-align: top;\n  margin-right: 10px;\n  border-radius: 1em;\n  background: #e7fdd8;\n  padding: 4px 12px;\n  color: #357a14;\n  font-weight: 700;\n  font-size: 11px;\n  line-height: 12px;\n}\n\n.storybook-page .tip-wrapper {\n  margin-top: 40px;\n  margin-bottom: 40px;\n  font-size: 13px;\n  line-height: 20px;\n}\n\n.storybook-page .tip-wrapper svg {\n  display: inline-block;\n  vertical-align: top;\n  margin-top: 3px;\n  margin-right: 4px;\n  width: 12px;\n  height: 12px;\n}\n\n.storybook-page .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "styleUrl": "./page.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "SignInForm",
+            "id": "component-SignInForm-38f2a2c72d4119d334059cd8cd6e76256cab268c9ec3a64fccf509f8da3be9557833e470cb5b8545172101941cfb41db7f995349b2a0e77f0a5348529006544a",
+            "file": "src/app/features/users/components/sign-in-form/sign-in-form.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-sign-in-form",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./sign-in-form.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "connectionData",
+                    "defaultValue": "{email: '', password: ''}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Email and password for authentication.</p>\n",
+                    "line": 26,
+                    "rawdescription": "\nEmail and password for authentication.",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "FarmInputType",
+                    "defaultValue": "FarmInputType",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "isLoading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>If the component is loading.</p>\n",
+                    "line": 29,
+                    "rawdescription": "\nIf the component is loading.",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "router",
+                    "defaultValue": "inject(Router)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "userService",
+                    "defaultValue": "inject(UserService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "isFormValid",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nVerify if the connection data is valid.\n",
+                    "description": "<p>Verify if the connection data is valid.</p>\n",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "tagName": {
+                                "pos": 1302,
+                                "end": 1309,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>True if the form is valid, else false.</p>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "signInUserAsync",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSign in using the provided connection data.",
+                    "description": "<p>Sign in using the provided connection data.</p>\n",
+                    "modifierKind": [
+                        124,
+                        134
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "FarmButton"
+                },
+                {
+                    "name": "FarmInput"
+                },
+                {
+                    "name": "RouterLink"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, inject } from '@angular/core';\r\nimport { FarmButton } from '../../../../shared/components/buttons/farm-button/farm-button';\r\nimport { FarmInput } from '../../../../shared/components/form/farm-input/farm-input';\r\nimport { FarmInputType } from '../../../../shared/enums/farm-input-type';\r\nimport { UserService } from '../../services/user.service';\r\nimport { environment } from '../../../../../environments/environment';\r\nimport { Router, RouterLink } from '@angular/router';\r\nimport { HttpErrorResponse } from '@angular/common/http';\r\nimport Cookies from 'universal-cookie';\r\n\r\n@Component({\r\n  selector: 'app-sign-in-form',\r\n  imports: [\r\n    FarmButton,\r\n    FarmInput,\r\n    RouterLink\r\n  ],\r\n  templateUrl: './sign-in-form.html',\r\n  styleUrl: './sign-in-form.scss'\r\n})\r\nexport class SignInForm {\r\n\r\n  //region fields\r\n\r\n  /** Email and password for authentication. */\r\n  protected connectionData = {email: '', password: ''};\r\n\r\n  /** If the component is loading. */\r\n  protected isLoading = false;\r\n\r\n  protected readonly FarmInputType = FarmInputType;\r\n\r\n  //endregion\r\n\r\n  //region injections\r\n\r\n  private userService = inject(UserService);\r\n\r\n  private router = inject(Router);\r\n\r\n  //endregion\r\n\r\n  //region methods\r\n\r\n  /**\r\n   * Verify if the connection data is valid.\r\n   * @returns True if the form is valid, else false.\r\n   */\r\n  protected isFormValid(): boolean {\r\n    if (\r\n      !environment.emailRegex.test(this.connectionData.email) ||\r\n      this.connectionData.email.length > 50\r\n    ) return false;\r\n    return !(!/\\S/.test(this.connectionData.password) || this.connectionData.password.length > 75);\r\n  }\r\n\r\n  /** Sign in using the provided connection data. */\r\n  protected async signInUserAsync() {\r\n    this.isLoading = true;\r\n    if (this.isFormValid()) {\r\n      try {\r\n\r\n        // Sign in using the provided connection data\r\n        const identity = await this.userService.signInAsync(this.connectionData.email, this.connectionData.password);\r\n\r\n        // Save the returned user identity and token inside cookies\r\n        const cookie = new Cookies(null, {path: '/'});\r\n        cookie.set(environment.cookieKeys.userIdentity, identity.identity);\r\n        cookie.set(environment.cookieKeys.userToken, identity.token);\r\n\r\n        // Redirect to the animal stock management page\r\n        await this.router.navigateByUrl('/my-farm');\r\n\r\n      } catch (e) {\r\n        switch ((e as HttpErrorResponse).status) {\r\n          case 404:\r\n            alert('Aucun utilisateur ne correspond aux données saisies.');\r\n            break;\r\n          case 401:\r\n            alert('Adresse mail ou mot de passe invalide.');\r\n            break;\r\n          default:\r\n            alert('Une erreur est survenue.');\r\n        }\r\n      }\r\n    }\r\n    this.isLoading = false;\r\n  }\r\n\r\n  //endregion\r\n\r\n}\r\n",
+            "styleUrl": "./sign-in-form.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div (keyup.enter)=\"signInUserAsync()\"\r\n     class=\"d-flex justify-content-center align-items-center w-100 h-100 p-4\">\r\n  <div class=\"d-flex flex-column align-items-center gap-3 w-100\" style=\"max-width: 500px\">\r\n    <h3 class=\"text-primary\">Se connecter</h3>\r\n    <farm-input [(value)]=\"connectionData.email\" label=\"Adresse mail\"/>\r\n    <farm-input [(value)]=\"connectionData.password\" [type]=\"FarmInputType.PASSWORD\" label=\"Mot de passe\"/>\r\n    <farm-button [disabled]=\"!isFormValid()\"\r\n                 [isLoading]=\"isLoading\"\r\n                 (onClick)=\"signInUserAsync()\"\r\n                 label=\"Se connecter\"\r\n                 cssClasses=\"w-100 mt-3\"\r\n                 class=\"w-100\"\r\n                 [style]=\"'height: 50px'\"/>\r\n    <a routerLink=\"/sign-up\" class=\"link-primary\">Pas de compte ? Créez-en un</a>\r\n  </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "SignUpForm",
+            "id": "component-SignUpForm-768da3d377f944d099c5d20694103fc3fe68e8e38f24916f8251f62dd63dd77a53149e79d05ad4d3a0c6f3538a07af3ac600ea02b335d961226fb9faac7099b8",
+            "file": "src/app/features/users/components/sign-up-form/sign-up-form.ts",
+            "changeDetection": "ChangeDetectionStrategy.Default",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-sign-up",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./sign-up-form.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "FarmInputType",
+                    "defaultValue": "FarmInputType",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "isLoading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>If the component is loading.</p>\n",
+                    "line": 38,
+                    "rawdescription": "\nIf the component is loading.",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "newUser",
+                    "defaultValue": "new UserModel()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>User to create via the form.</p>\n",
+                    "line": 32,
+                    "rawdescription": "\nUser to create via the form.",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "router",
+                    "defaultValue": "inject(Router)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 48,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "selectableGenders",
+                    "defaultValue": "[{label: 'Fermier', value: Genders.MALE}, {label: 'Fermière', value: Genders.FEMALE}]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Genders selectable for the user.</p>\n",
+                    "line": 35,
+                    "rawdescription": "\nGenders selectable for the user.",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "userService",
+                    "defaultValue": "inject(UserService)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "isFormValid",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nVerify if the user crated via the form is valid.\n",
+                    "description": "<p>Verify if the user crated via the form is valid.</p>\n",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "tagName": {
+                                "pos": 1768,
+                                "end": 1775,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "returns"
+                            },
+                            "comment": "<p>True if the form is valid, else false.</p>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "signUpUserAsync",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 72,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSign up the new user.",
+                    "description": "<p>Sign up the new user.</p>\n",
+                    "modifierKind": [
+                        124,
+                        134
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "FarmInput"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FarmSelect"
+                },
+                {
+                    "name": "FarmButton"
+                },
+                {
+                    "name": "RouterLink"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, inject } from '@angular/core';\r\nimport { FarmInput } from '../../../../shared/components/form/farm-input/farm-input';\r\nimport { FarmInputType } from '../../../../shared/enums/farm-input-type';\r\nimport { UserModel } from '../../models/user.model';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { FarmSelect } from '../../../../shared/components/form/farm-select/farm-select';\r\nimport { Genders } from '../../../../shared/enums/genders';\r\nimport { FarmButton } from '../../../../shared/components/buttons/farm-button/farm-button';\r\nimport { UserService } from '../../services/user.service';\r\nimport { Router, RouterLink } from '@angular/router';\r\nimport { HttpErrorResponse } from '@angular/common/http';\r\nimport { environment } from '../../../../../environments/environment';\r\n\r\n@Component({\r\n  selector: 'app-sign-up',\r\n  imports: [\r\n    FarmInput,\r\n    FormsModule,\r\n    FarmSelect,\r\n    FarmButton,\r\n    RouterLink\r\n  ],\r\n  templateUrl: './sign-up-form.html',\r\n  styleUrl: './sign-up-form.scss',\r\n  changeDetection: ChangeDetectionStrategy.Default\r\n})\r\nexport class SignUpForm {\r\n\r\n  //region fields\r\n\r\n  /** User to create via the form. */\r\n  protected newUser = new UserModel();\r\n\r\n  /** Genders selectable for the user. */\r\n  protected selectableGenders = [{label: 'Fermier', value: Genders.MALE}, {label: 'Fermière', value: Genders.FEMALE}];\r\n\r\n  /** If the component is loading. */\r\n  protected isLoading = false;\r\n\r\n  protected readonly FarmInputType = FarmInputType;\r\n\r\n  //endregion\r\n\r\n  //region injections\r\n\r\n  private userService = inject(UserService);\r\n\r\n  private router = inject(Router);\r\n\r\n  //endregion\r\n\r\n  //region methods\r\n\r\n  /**\r\n   * Verify if the user crated via the form is valid.\r\n   * @returns True if the form is valid, else false.\r\n   */\r\n  protected isFormValid(): boolean {\r\n    if (!/\\S/.test(this.newUser.firstName) || this.newUser.firstName.length > 50) return false;\r\n    if (this.newUser.lastName.length > 50) return false;\r\n    if (!this.newUser.birthDate) return false;\r\n    if (!this.newUser.gender) return false;\r\n    if (\r\n      !environment.emailRegex.test(this.newUser.email) ||\r\n      this.newUser.email.length > 50\r\n    ) return false;\r\n    if (this.newUser.phone.length > 25) return false;\r\n    return !(!/\\S/.test(this.newUser.password) || this.newUser.password.length > 75);\r\n  }\r\n\r\n  /** Sign up the new user. */\r\n  protected async signUpUserAsync() {\r\n    this.isLoading = true;\r\n    if (this.isFormValid()) {\r\n      try {\r\n        await this.userService.signUpAsync(this.newUser);\r\n        alert('Compte créé, utilisez le formulaire pour vous connecter.');\r\n        await this.router.navigateByUrl('/sign-in');\r\n      } catch (e) {\r\n        switch ((e as HttpErrorResponse).status) {\r\n          case 403:\r\n            alert('Un utilisateur avec la même adresse mail existe déjà.');\r\n            break;\r\n          default:\r\n            alert('Une erreur est survenue.');\r\n        }\r\n      }\r\n    }\r\n    this.isLoading = false;\r\n  }\r\n\r\n  //endregion\r\n\r\n}\r\n",
+            "styleUrl": "./sign-up-form.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div (keyup.enter)=\"signUpUserAsync()\"\r\n     class=\"d-flex justify-content-center align-items-center w-100 h-100\">\r\n  <div class=\"px-4 px-md-5 py-5 overflow-auto w-100 mh-100\">\r\n    <div class=\"d-flex justify-content-center w-100\">\r\n      <div class=\"d-flex flex-column align-items-center gap-3 w-100\" style=\"max-width: 500px\">\r\n        <h3 class=\"text-primary\">Créer un compte fermier</h3>\r\n        <farm-input [(value)]=\"newUser.firstName\" label=\"Prénom\"/>\r\n        <farm-input [(value)]=\"newUser.lastName\" label=\"Nom\"/>\r\n        <farm-input [(value)]=\"newUser.birthDate\" [type]=\"FarmInputType.DATE\" label=\"Date de naissance\"/>\r\n        <farm-select [(value)]=\"newUser.gender\"\r\n                     [selectableValues]=\"selectableGenders\"\r\n                     label=\"Gender\"\r\n                     [style]=\"'height: 58px'\"/>\r\n        <farm-input [(value)]=\"newUser.email\" [type]=\"FarmInputType.EMAIL\" label=\"Adresse mail\"/>\r\n        <farm-input [(value)]=\"newUser.phone\" label=\"N° de téléphone\"/>\r\n        <farm-input [(value)]=\"newUser.password\" [type]=\"FarmInputType.PASSWORD\" label=\"Mot de passe\"/>\r\n        <farm-button [disabled]=\"!isFormValid()\"\r\n                     [isLoading]=\"isLoading\"\r\n                     (onClick)=\"signUpUserAsync()\"\r\n                     label=\"Créer le compte\"\r\n                     cssClasses=\"w-100 mt-3\"\r\n                     class=\"w-100\"\r\n                     [style]=\"'height: 50px'\"/>\r\n        <a routerLink=\"/sign-in\" class=\"link-primary\">Déjà un compte ? Se connecter</a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "appConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\r\n  providers: [\r\n    provideBrowserGlobalErrorListeners(),\r\n    provideHttpClient(),\r\n    provideZoneChangeDetection({ eventCoalescing: true }),\r\n    provideRouter(routes)\r\n  ]\r\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.development.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n\r\n  apiUrl: 'http://localhost:3000/api',\r\n\r\n  emailRegex: /(?:[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)])/,\r\n\r\n  cookieKeys: {\r\n    userIdentity: 'farmland-identity',\r\n    userToken: 'farmland-token'\r\n  }\r\n\r\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n\r\n  apiUrl: 'http://localhost:3000/api',\r\n\r\n  emailRegex: /(?:[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)])/,\r\n\r\n  cookieKeys: {\r\n    userIdentity: 'farmland-identity',\r\n    userToken: 'farmland-token'\r\n  }\r\n\r\n}"
+            },
+            {
+                "name": "routes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.routes.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Routes",
+                "defaultValue": "[\r\n  {path: 'sign-up', component: SignUpForm},\r\n  {path: 'sign-in', component: SignInForm},\r\n  {path: 'my-farm', component: AnimalStockList},\r\n  {path: '', redirectTo: 'sign-in', pathMatch: 'full'}\r\n]"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [
+            {
+                "name": "FarmButtonKind",
+                "childs": [
+                    {
+                        "name": "PRIMARY",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "primary"
+                    },
+                    {
+                        "name": "SECONDARY",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "secondary"
+                    },
+                    {
+                        "name": "TERTIARY",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "tertiary"
+                    },
+                    {
+                        "name": "INFO",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "info"
+                    },
+                    {
+                        "name": "WARNING",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "warning"
+                    },
+                    {
+                        "name": "DANGER",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "danger"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/enums/farm-button-kind.ts"
+            },
+            {
+                "name": "FarmInputType",
+                "childs": [
+                    {
+                        "name": "TEXT",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "text"
+                    },
+                    {
+                        "name": "EMAIL",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "email"
+                    },
+                    {
+                        "name": "DATE",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "date"
+                    },
+                    {
+                        "name": "PASSWORD",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "password"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/enums/farm-input-type.ts"
+            },
+            {
+                "name": "Genders",
+                "childs": [
+                    {
+                        "name": "MALE",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "male"
+                    },
+                    {
+                        "name": "FEMALE",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "female"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/shared/enums/genders.ts"
+            }
+        ],
+        "groupedVariables": {
+            "src/app/app.config.ts": [
+                {
+                    "name": "appConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\r\n  providers: [\r\n    provideBrowserGlobalErrorListeners(),\r\n    provideHttpClient(),\r\n    provideZoneChangeDetection({ eventCoalescing: true }),\r\n    provideRouter(routes)\r\n  ]\r\n}"
+                }
+            ],
+            "src/environments/environment.development.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.development.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n\r\n  apiUrl: 'http://localhost:3000/api',\r\n\r\n  emailRegex: /(?:[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)])/,\r\n\r\n  cookieKeys: {\r\n    userIdentity: 'farmland-identity',\r\n    userToken: 'farmland-token'\r\n  }\r\n\r\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n\r\n  apiUrl: 'http://localhost:3000/api',\r\n\r\n  emailRegex: /(?:[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)])/,\r\n\r\n  cookieKeys: {\r\n    userIdentity: 'farmland-identity',\r\n    userToken: 'farmland-token'\r\n  }\r\n\r\n}"
+                }
+            ],
+            "src/app/app.routes.ts": [
+                {
+                    "name": "routes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.routes.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Routes",
+                    "defaultValue": "[\r\n  {path: 'sign-up', component: SignUpForm},\r\n  {path: 'sign-in', component: SignInForm},\r\n  {path: 'my-farm', component: AnimalStockList},\r\n  {path: '', redirectTo: 'sign-in', pathMatch: 'full'}\r\n]"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {
+            "src/app/shared/enums/farm-button-kind.ts": [
+                {
+                    "name": "FarmButtonKind",
+                    "childs": [
+                        {
+                            "name": "PRIMARY",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "primary"
+                        },
+                        {
+                            "name": "SECONDARY",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "secondary"
+                        },
+                        {
+                            "name": "TERTIARY",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "tertiary"
+                        },
+                        {
+                            "name": "INFO",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "info"
+                        },
+                        {
+                            "name": "WARNING",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "warning"
+                        },
+                        {
+                            "name": "DANGER",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "danger"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/enums/farm-button-kind.ts"
+                }
+            ],
+            "src/app/shared/enums/farm-input-type.ts": [
+                {
+                    "name": "FarmInputType",
+                    "childs": [
+                        {
+                            "name": "TEXT",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "text"
+                        },
+                        {
+                            "name": "EMAIL",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "email"
+                        },
+                        {
+                            "name": "DATE",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "date"
+                        },
+                        {
+                            "name": "PASSWORD",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "password"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/enums/farm-input-type.ts"
+                }
+            ],
+            "src/app/shared/enums/genders.ts": [
+                {
+                    "name": "Genders",
+                    "childs": [
+                        {
+                            "name": "MALE",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "male"
+                        },
+                        {
+                            "name": "FEMALE",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "female"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/shared/enums/genders.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {}
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "children": [
+            {
+                "name": "SignUpForm",
+                "kind": "component",
+                "path": "sign-up",
+                "filename": "src/app/app.routes.ts"
+            },
+            {
+                "name": "SignInForm",
+                "kind": "component",
+                "path": "sign-in",
+                "filename": "src/app/app.routes.ts"
+            },
+            {
+                "name": "AnimalStockList",
+                "kind": "component",
+                "path": "my-farm",
+                "filename": "src/app/app.routes.ts"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 35,
+        "status": "medium",
+        "files": [
+            {
+                "filePath": "src/app/app.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.routes.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "routes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "App",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/farms/components/add-animal-stock-modal/add-animal-stock-modal.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AddAnimalStockModal",
+                "coveragePercent": 63,
+                "coverageCount": "7/11",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/features/farms/components/animal-stock-item/animal-stock-item.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AnimalStockItem",
+                "coveragePercent": 66,
+                "coverageCount": "6/9",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/features/farms/components/animal-stock-list/animal-stock-list.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AnimalStockList",
+                "coveragePercent": 37,
+                "coverageCount": "3/8",
+                "status": "medium"
+            },
+            {
+                "filePath": "src/app/features/farms/components/farm-header/farm-header.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FarmHeader",
+                "coveragePercent": 33,
+                "coverageCount": "2/6",
+                "status": "medium"
+            },
+            {
+                "filePath": "src/app/features/farms/models/animal-stock.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AnimalStockModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/farms/models/animal-type.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AnimalTypeModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/farms/services/farm.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "FarmService",
+                "coveragePercent": 66,
+                "coverageCount": "6/9",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/features/users/components/sign-in-form/sign-in-form.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SignInForm",
+                "coveragePercent": 50,
+                "coverageCount": "4/8",
+                "status": "medium"
+            },
+            {
+                "filePath": "src/app/features/users/components/sign-up-form/sign-up-form.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SignUpForm",
+                "coveragePercent": 55,
+                "coverageCount": "5/9",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/features/users/models/user.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "UserModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/features/users/services/user.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "UserService",
+                "coveragePercent": 60,
+                "coverageCount": "3/5",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/shared/classes/util.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "Util",
+                "coveragePercent": 50,
+                "coverageCount": "1/2",
+                "status": "medium"
+            },
+            {
+                "filePath": "src/app/shared/components/buttons/farm-button/farm-button.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FarmButton",
+                "coveragePercent": 88,
+                "coverageCount": "8/9",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/app/shared/components/form/farm-input/farm-input.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FarmInput",
+                "coveragePercent": 88,
+                "coverageCount": "8/9",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/app/shared/components/form/farm-select/farm-select.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FarmSelect",
+                "coveragePercent": 87,
+                "coverageCount": "7/8",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/app/shared/services/user-identity.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "UserIdentityService",
+                "coveragePercent": 66,
+                "coverageCount": "2/3",
+                "status": "good"
+            },
+            {
+                "filePath": "src/environments/environment.development.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/user.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "User",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            }
+        ]
+    }
+}

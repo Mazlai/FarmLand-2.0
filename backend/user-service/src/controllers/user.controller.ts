@@ -50,7 +50,7 @@ export const signInAsync = async (req: Request, res: Response): Promise<void> =>
 /** Verify JWT token and return user ID. */
 export const verifyTokenAsync = async (req: Request, res: Response): Promise<void> => {
     const tokenValidation = await verifyUserTokenAsync(req.body.token);
-    if (tokenValidation.status != 201) {
+    if (tokenValidation.status != 200) {
         res.status(tokenValidation.status).json({
             success: false,
             message: tokenValidation.error
@@ -175,7 +175,7 @@ async function verifyUserTokenAsync(token: string): Promise<{ status: number, us
         if (!user) return {status: 404, error: "User not found"};
 
         // Return the corresponding user if found
-        return {status: 201, user};
+        return {status: 200, user};
 
     } catch (error) {
 

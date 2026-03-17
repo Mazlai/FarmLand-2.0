@@ -21,7 +21,7 @@ export const getAllAnimalTypesAsync = async (_req: Request, res: Response): Prom
 /** Get the animal stock corresponding to the given ID. */
 export const getAnimalStockByIdAsync = async (req: Request, res: Response): Promise<void> => {
     try {
-        const idParam = req.params.id;
+        const idParam = req.params.id as string;
         if (!idParam) {
             res.status(400).json({message: 'An ID is required'});
             return;
@@ -198,7 +198,7 @@ export const updateAnimalStockAsync = async (req: Request, res: Response): Promi
 /** Deleting an animal stock linked to the current user. */
 export const deleteAnimalStockAsync = async (req: Request, res: Response): Promise<void> => {
     try {
-        const idParam = req.params.id;
+        const idParam = req.params.id as string;
         if (!idParam) {
             res.status(400).json({message: 'An ID is required'});
             return;

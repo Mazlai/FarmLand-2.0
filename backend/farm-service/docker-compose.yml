@@ -11,13 +11,28 @@ services:
     ports:
       - "3002:3002"
     depends_on:
-      - farm_db
+      farm_db:
+        condition: service_healthy
     volumes:
       - ./:/home
     working_dir: /home
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+        reservations:
+          cpus: "0.25"
+          memory: 128M
 
   farm_db:
-    image: postgres
+    image: postgres:16-alpine
     container_name: farm_pgdb
     restart: unless-stopped
     environment:
@@ -26,11 +41,25 @@ services:
       POSTGRES_DB: farmdb
       PGPORT: 5431
     ports:
-      - "5431:5432"
+      - "5431:5431"
     networks:
       - farmland_network
     volumes:
       - local_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U farm -d farmdb -p 5431"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.25"
+          memory: 256M
 
   farm_pgadmin:
     image: dpage/pgadmin4
@@ -46,7 +75,16 @@ services:
     networks:
       - farmland_network
     depends_on:
-      - farm_db
+      farm_db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 256M
+        reservations:
+          cpus: "0.1"
+          memory: 128M
 
 volumes:
   local_pgdata:

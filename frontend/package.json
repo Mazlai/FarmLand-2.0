@@ -17,6 +17,7 @@
     "@angular/router": "^20.0.0",
     "bootstrap": "^5.3.7",
     "bootstrap-icons": "^1.13.1",
+    "canvas-confetti": "^1.9.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "universal-cookie": "^8.0.1",
@@ -26,13 +27,16 @@
     "@angular/build": "^20.0.2",
     "@angular/cli": "^20.0.2",
     "@angular/compiler-cli": "^20.0.0",
+    "@types/canvas-confetti": "^1.9.0",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.7.0",
+    "jsdom": "^28.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.8.2"
+    "typescript": "~5.8.2",
+    "vitest": "^3.2.4"
   }
 }

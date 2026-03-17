@@ -210,6 +210,32 @@ Faire la même chose avec la commande suivante dans le conteneur supportant le b
 node -r ts-node/register --env-file=../.env.dev seedAnimals.ts
 -----
 
+=== Gestion des erreurs
+
+Une gestion des erreurs a été mis en place dans le frontend et le backend de l'application afin d'assurer la continuité des services en cas de pépin.
+
+==== Côté interface
+
+Du côté de l'interface Angular, les erreurs envoyées du backend sont attrapées et des messages sont affichés en conséquence afin d'informer plus convenablement l'utilisateur.
+
+image::images/frontend_error.jpg[,450]
+
+==== Côté API
+
+Du côté de l'API backend, plusieurs logiques d'erreurs sont prises en compte :
+
+* *Connexion à la base de données :* Lors du démarrage des services de gestion des utilisateurs ou des fermes, si la connexion à la base de données correspondante a échoué, une erreur (ainsi que la trace complète de l'erreur) sera affichée dans la console.
++
+image::images/backend_db_error.jpg[,650]
+* *Logique métier :* Les routes de l'API implémentant les logiques métiers pour la gestion des utilisateurs et des fermes peuvent renvoyer des erreurs HTTP si certaines logiques ne sont pas respectées lors de l'utilisation des routes (utilisateur non connecté, ressource non autorisée, donnée non trouvée, etc)
++
+NOTE: Les codes d'erreur correspondant à chaque route de chaque service de l'API sont détaillés dans les <<swagger, documentations Swagger>> correspondantes.
+* *Erreur route :* Si l'API rencontre une erreur quelconque durant le traitement d'une requête, un code d'erreur HTTP 500 sera retournée avec le message de l'erreur correspondant.
+
+==== Codes d'erreurs HTTP
+
+Tous les codes d'erreur HTTP sont référencés et expliqués https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status[ici].
+
 == Documentation et tests
 
 === Interface storybook
@@ -225,14 +251,10 @@ npm run storybook
 
 image::images/storybook.jpg[,650]
 
-=== Documentation backend avec Swagger
+=== Documentation backend avec Swagger [[swagger]]
 
 https://swagger.io/[Swagger] a été ajouté aux projets backend de gestion des utilisateurs et des fermes afin de documenter et de faciliter le test des différentes routes implémentées.
 
 La page Swagger de l'API des utilisateurs peut être accédée à l'adresse http://localhost:3001/docs et celle de l'API des fermes à l'adresse http://localhost:3002/docs.
 
 image::images/swagger.jpg[,650]
-
-=== Codes d'erreurs HTTP
-
-Tous les codes d'erreur HTTP sont référencés et expliqués https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status[ici].

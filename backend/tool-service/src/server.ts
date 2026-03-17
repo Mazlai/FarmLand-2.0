@@ -2,8 +2,8 @@ import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import morgan from "morgan";
 import sequelize from "./config/database";
-import animalRoutes from "./routes/animal.routes"; 
 import './models/constraints';
+import toolsRoutes from '~/routes/tools.routes';
 
 const app = express();
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3002;
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 // Routes
-app.use("/", animalRoutes);
+app.use("/", toolsRoutes);
 
 // Health check
 app.get("/health", (_req: Request, res: Response) => {

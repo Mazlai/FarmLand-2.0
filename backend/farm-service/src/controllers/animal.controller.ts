@@ -27,7 +27,7 @@ export const getAnimalStockByIdAsync = async (req: Request, res: Response): Prom
             return;
         }
 
-        const id = parseInt(idParam);
+        const id = parseInt(idParam as string);
         if (isNaN(id)) {
             res.status(400).json({message: 'Invalid ID format'});
             return;
@@ -204,7 +204,7 @@ export const deleteAnimalStockAsync = async (req: Request, res: Response): Promi
             return;
         }
 
-        const id = parseInt(idParam);
+        const id = parseInt(idParam as string);
         if (isNaN(id)) {
             res.status(400).json({message: 'Invalid ID format'});
             return;

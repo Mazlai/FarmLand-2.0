@@ -7,7 +7,7 @@ services:
     container_name: api_gateway
     restart: unless-stopped
     ports:
-      - "3000:3000"  # Port principal pour l'API Gateway
+      - "3000:3000"
     environment:
       - USER_SERVICE_URL=http://user_service:3001
       - FARM_SERVICE_URL=http://farm_service:3002
@@ -18,6 +18,20 @@ services:
     volumes:
       - ./:/app
     working_dir: /app
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+        reservations:
+          cpus: "0.25"
+          memory: 128M
 
 networks:
   farmland_network:

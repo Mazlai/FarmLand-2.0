@@ -10,6 +10,8 @@ import { UserService } from '../../services/user.service';
 import { Router, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
+import { HostListener } from '@angular/core';
+import confetti from 'canvas-confetti';
 
 @Component({
   selector: 'app-sign-up',
@@ -26,6 +28,26 @@ import { environment } from '../../../../../environments/environment';
 })
 export class SignUpForm {
 
+  private konamiSequence = ['t','e','s','t','!'];
+  private konamiIndex = 0;
+
+@HostListener('window:keydown', ['$event'])
+onKeyDown(event: KeyboardEvent): void {
+  if (event.key === this.konamiSequence[this.konamiIndex]) {
+    this.konamiIndex++;
+    if (this.konamiIndex === this.konamiSequence.length) {
+      this.triggerKonamiAnimation();
+      alert("Bravo! Vous avez trouvé l'easter egg TEST!")
+      this.konamiIndex = 0;
+    }
+  } else {
+    this.konamiIndex = 0;
+  }
+}
+
+private triggerKonamiAnimation(): void {
+  confetti({ particleCount: 200, spread: 90, origin: { y: 0.6 } });
+}
   //region fields
 
   /** User to create via the form. */

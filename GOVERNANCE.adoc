@@ -2,12 +2,38 @@
 :icons: font
 :toc: macro
 :toc-title: Table des matières
-:toclevels: 2
+:toclevels: 3
 :sectnums:
 
 Le repo est géré par https://github.com/Mazlai[Mickael "Mazlai" FERNANDEZ]. À contacter pour toute demande particulière ou complainte.
 
 toc::[]
+
+== Storymap
+
+Une storymap a été réalisée afin de bénéficier d'une vue d'ensemble de tous les scénarios utilisateur à implémenter pour chaque feature selon les différents personas remontés.
+
+=== Personas
+
+Les personas suivants ressortent dans la storymap et doivent être pris en compte dans l'implémentation des scénarios utilisateurs.
+
+==== Fermier
+
+Utilisateur de base de l’application, doit pouvoir se familiariser et se retrouver facilement avec l’interface afin de bénéficier au maximum des fonctionnalités proposées spécifiquement pour faciliter le travail des fermiers.
+
+==== Écran cathodique
+
+Utilisateur ayant accès à un appareil de qualité basse. L’interface de l’application devra prendre en compte des couleurs ressortantes et mettre l’accent sur la responsivité afin de convenir à un maximum de supports.
+
+==== Stats / gamification
+
+Petit joueur ayant besoin de s’amuser au travers de l’application. Certaines fonctionnalités comme celles concernant l’utilisation d’appareils connectés pour le comptage automatisé d’animaux pourront être pensées pour être davantage ludiques.
+
+=== Répartition des scénarios utilisateur
+
+Les scénarios utilisateur sont répartis dans la storymap en sprites pour chaque feature spécifiée. Les formes apparaissant sur certains des scénarios utilisateurs font référence aux personas correspondants.
+
+image::images/storymap.png[]
 
 == Organisation des boards
 Plusieurs boards ont été mis en place dans le projet GitHub de FarmLand afin de proposer des vues adaptées aux différents niveaux de granularité du projet et ainsi faciliter la gestion des tâches et leur avancée. Chaque board repose sur des filtres spécifiques permettant d'organiser l'information de manière pertinente.

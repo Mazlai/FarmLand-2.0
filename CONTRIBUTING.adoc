@@ -51,18 +51,18 @@ WARNING: Avant de merge une Pull Request sur une branche `feature/xxx` ou sur la
 
 Les commits effectués sur des branches feature doivent respecter le format `Feature: <message>` et ceux effectués sur la branche d'un scénario utilisateur, le format `SU: <message>`.
 
-WARNING: La branche `develop` doit tout le temps contenir une version stable du code. Un ruleset GitHub a été mis en place afin qu'il ne soit pas possible de directement pousser du code sur cette branche.
+WARNING: La branche `develop` doit tout le temps contenir une version stable du code. Un ruleset et des actions GitHub ont été mis en place afin que le seul moyen de pousser du code sur cette branche soit en passant par des Pull Requests à partir de branches feature.
 
 ==== Branche de release
 
 . Lorsque toutes les features prévues sur le sprint sont terminées et merge dans `develop` -> Une branche `release/xxx` peut être créée depuis `develop`
-. Une fois la branche prête -> Merge sur la branche `main` *via une Pull request* et créer un tag correspondant <<version_no, au numéro de la version>>
+. Une fois la branche prête -> Merge sur la branche `main` *via une Pull Request* et créer un tag correspondant <<version_no, au numéro de la version>>
 . Une fois la Pull Request fusionnée, la branche de la release sera supprimée
 . Merge en retour `main` dans `develop` afin de conserver l’historique et les correctifs
 
 Les commits effectués sur des branches release doivent respecter le format `Release: x.x.x`.
 
-WARNING: La branche `main` doit tout le temps contenir une version complète, taggée et stable de l'application. Un ruleset GitHub a été mis en place afin qu'il ne soit pas possible de directement pousser du code cette branche.
+WARNING: La branche `main` doit tout le temps contenir une version complète, taggée et stable de l'application. Un ruleset et des actions GitHub ont été mis en place afin que le seul moyen de pousser du code sur cette branche soit en passer par des Pull Requests à partir de branches release ou hotfix.
 
 ===== Numéro de version [[version_no]]
 Pour la release d'une nouvelle version de l'application, suivre l'exemple et les explications ci-dessous.
@@ -93,3 +93,11 @@ Utiliser des commandes Git classiques (add, commit, push, etc)
 Privilégier les Pull Requests pour merge les branches entre elles.
 
 Éviter les rebases, reset hard ou toute autre manipulation qui pourrait nuire à la cohérence et à la continuité de l'historique des commits.
+
+== Tests unitaires
+
+Des tests unitaires ont été ajoutés pour le projet frontend dans des fichiers `<composant>.spec.ts` afin de vérifier le bon fonctionnement des logiques implémentées dans l'interface utilisateur.
+
+Ces tests sont automatiquement exécutés lors de la création d'une Pull Request vers les branches 'develop' et 'main' afin d'attester que seul du code stable est poussé sur ces dernières.
+
+image::images/tests.jpg[,650]

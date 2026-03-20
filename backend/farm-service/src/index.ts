@@ -26,8 +26,6 @@ const startServer = async () => {
         await sequelize.authenticate();
         console.log("🟢 Database connected successfully");
 
-        await sequelize.sync();
-
         app.listen(PORT, () => {
             console.log(`🚀 Farm Service running on port ${PORT}`);
         });

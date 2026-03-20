@@ -94,6 +94,28 @@ Privilégier les Pull Requests pour merge les branches entre elles.
 
 Éviter les rebases, reset hard ou toute autre manipulation qui pourrait nuire à la cohérence et à la continuité de l'historique des commits.
 
+== Migrations et seeders Sequelize
+
+L'ORM https://sequelize.org/[Sequelize] permet de simplifier la mise en place et le versioning des bases de données ainsi que de consolider leur cohérence avec les modèles de données manipulés par les micro-services backend.
+
+Pour appliquer les dernières migrations à une base de données, exécuter la commande suivante à la racine du projet du service correspondant :
+
+[source, bash]
+----
+npx sequelize-cli db:migrate
+----
+
+Sequelize permet également l'automatisation du remplissage des bases de données via des fichiers "seeders".
+
+Pour exécuter les derniers seeders et remplir une base de données, exécuter la commande suivante à la racine du projet du service correspondant :
+
+[source, bash]
+----
+npx sequelize-cli db:seed:all
+----
+
+NOTE: Voir la https://sequelize.org/docs/v7/cli/#running-seeds[documentation de Sequelize] pour les autres commandes permettant la gestion et le versioning des migrations et des seeders.
+
 == Tests unitaires
 
 Des tests unitaires ont été ajoutés pour le projet frontend dans des fichiers `<composant>.spec.ts` afin de vérifier le bon fonctionnement des logiques implémentées dans l'interface utilisateur.
@@ -101,3 +123,12 @@ Des tests unitaires ont été ajoutés pour le projet frontend dans des fichiers
 Ces tests sont automatiquement exécutés lors de la création d'une Pull Request vers les branches 'develop' et 'main' afin d'attester que seul du code stable est poussé sur ces dernières.
 
 image::images/tests.jpg[,650]
+
+// TODO :
+// * Workflow release :
+//   * Lint code :
+//     * Linter le code avant de push une branche pour éviter problèmes de CI/CD (+ mise en forme auto formatage code)
+//     * Lint code dans pipeline (bloque si erreurs)
+//   * Tests e2e exécutés en même temps que les tests unitaires existants
+//   * Déploiement prod / front sur GitHub page (artifact créé)
+// * Mise en place logs (back)

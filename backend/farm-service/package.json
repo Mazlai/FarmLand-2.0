@@ -1,6 +1,7 @@
 {
   "name": "src",
   "main": "index.js",
+  "environment": "development",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
@@ -31,7 +32,6 @@
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.3",
     "@types/morgan": "^1.9.10",
-    "@types/node": "^24.0.3",
     "@types/sequelize": "^4.28.20",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",

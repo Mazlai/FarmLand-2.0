@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
 
 // Index environment variables from .env file
-dotenv.config({path: '.env.dev'});
+dotenv.config({path: '.env'});
 
 const sequelize = new Sequelize(
     process.env.DB_NAME ?? '',

@@ -53,10 +53,10 @@ image::images/architecture.png[,650]
 
 FarmLand se base sur un environnement Node.js et PostgreSQL.
 
-=== Installation des dépendances
+=== Installer les dépendances
 
 . Installer la dernière version de https://nodejs.org/[Node.js]
-. Exécuter la commande suivante dans un terminal à la racine du projet pour installer les dépendances de chaque composant de l'application:
+. Exécuter la commande suivante dans un terminal à la racine du projet pour installer les dépendances de chaque composant de l'application :
 +
 [source,bash]
 ----
@@ -64,11 +64,11 @@ npm i
 ----
 . Installer la dernière version de https://www.docker.com/[Docker] pour faciliter le lancement de l'application
 
-=== Fichier environnement
+=== Créer les fichiers d'environnement [[env_files]]
 
-Des fichiers `.env.dev` doivent être ajoutés à la racine du dossier des micro-services de gestion des link:backend/user-service/[utilisateurs] et des link:backend/farm-service/[fermes]. Ces fichiers peuvent être créés à partir des fichiers `.env` existant (à ne pas modifier) à ces mêmes emplacements.
+Des fichiers `.env` doivent être ajoutés à la racine du dossier des micro-services de gestion des link:backend/user-service/[utilisateurs], des link:backend/farm-service/[fermes] et du link:backend/api-gateway/[service de proxy]. Ces fichiers peuvent être créés à partir des fichiers `.env.template` existant (à ne pas modifier) à ces mêmes emplacements.
 
-Renseigner des valeurs pour chaque variable d'environnement définie dans les fichiers `.env.dev`. Utiliser les valeurs définies dans les fichiers `docker-compose.yml` rattachés aux micro-services si l'application est lancée dans des <<docker,conteneurs Docker>>.
+Renseigner des valeurs pour chaque variable d'environnement définie dans les fichiers `.env`. Utiliser les valeurs définies dans les fichiers `docker-compose.yml` rattachés aux micro-services si l'application est lancée dans des <<docker,conteneurs Docker>>.
 
 == Lancement via NPM
 
@@ -76,7 +76,44 @@ Les composants de l'application peuvent être lancés individuellement via des c
 
 WARNING: Seules les application frontend et backend peuvent être lancées via des commandes NPM, il sera nécessaire de trouver un hébergeur local pour les bases de données ainsi qu'un SGBDR adapté.
 
-=== Lancement de l'interface frontend
+=== Compléter les fichiers d'environnement
+
+Une fois les <<env_files, fichiers environnement créés>>, ils peuvent être complétés en suivant les exemples ci-dessous.
+
+Exemple de fichier `.env` pour le micro-service des utilisateurs :
+
+[source, bash]
+----
+JWT_SECRET=3fe11527-2b75-4c09-abbf-9b9fd3530023
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=farmland
+DB_PASSWORD=strongherve
+DB_NAME=userdb
+----
+
+Exemple de fichier `.env` pour le micro-service des fermes :
+
+[source, bash]
+----
+DB_HOST=localhost
+DB_PORT=5431
+DB_USER=farm
+DB_PASSWORD=cock
+DB_NAME=farmdb
+USER_SERVICE_URL=http://localhost:3001
+----
+
+Exemple de fichier `.env` pour le service du proxy :
+
+[source, bash]
+----
+USER_SERVICE_URL=http://localhost:3001
+FARM_SERVICE_URL=http://localhost:3002
+FRONTEND_URL=http://localhost:4200
+----
+
+=== Lancer l'interface frontend
 Exécuter la commande suivante link:frontend/[à la racine du projet de l'interface frontend] pour lancer ce dernier :
 
 [source, bash]
@@ -84,7 +121,7 @@ Exécuter la commande suivante link:frontend/[à la racine du projet de l'interf
 npm start
 ----
 
-=== Lancement de l'API utilisateur
+=== Lancer l'API utilisateur
 Exécuter la commande suivante link:backend/user-service/[à la racine du projet du backend utilisateur] pour lancer ce dernier :
 
 [source, bash]
@@ -92,7 +129,7 @@ Exécuter la commande suivante link:backend/user-service/[à la racine du projet
 npm run dev
 ----
 
-=== Lancement de l'API ferme
+=== Lancer l'API ferme
 Exécuter la commande suivante link:backend/farm-service/[à la racine du projet du backend ferme] pour lancer ce dernier :
 
 [source, bash]
@@ -100,7 +137,7 @@ Exécuter la commande suivante link:backend/farm-service/[à la racine du projet
 npm run dev
 ----
 
-=== Lancement du serveur proxy
+=== Lancer le serveur proxy
 Exécuter la commande suivante link:backend/api-gateway/[à la racine du projet du serveur proxi] pour lancer ce dernier :
 
 [source, bash]
@@ -111,6 +148,43 @@ npm run dev
 == Lancement via Docker [[docker]]
 
 Chaque composant de l'application est rattaché à des fichiers `Dockerfile` et `docker-compose.yml` permettant de les lancer dans des conteneurs Docker distincts.
+
+=== Compléter les fichiers d'environnement
+
+Une fois les <<env_files,fichiers environnement créés>>, ils peuvent être complétés en suivant les exemples ci-dessous.
+
+Exemple de fichier `.env` pour le micro-service des utilisateurs :
+
+[source, bash]
+----
+JWT_SECRET=3fe11527-2b75-4c09-abbf-9b9fd3530023
+DB_HOST=user_db
+DB_PORT=5432
+DB_USER=farmland
+DB_PASSWORD=strongherve
+DB_NAME=userdb
+----
+
+Exemple de fichier `.env` pour le micro-service des fermes :
+
+[source, bash]
+----
+DB_HOST=farm_db
+DB_PORT=5431
+DB_USER=farm
+DB_PASSWORD=cock
+DB_NAME=farmdb
+USER_SERVICE_URL=http://user_service:3001
+----
+
+Exemple de fichier `.env` pour le service du proxy :
+
+[source, bash]
+----
+USER_SERVICE_URL=http://user_service:3001
+FARM_SERVICE_URL=http://farm_service:3002
+FRONTEND_URL=http://angular_app:4200
+----
 
 === Créer le réseau Docker de l'application
 
@@ -125,35 +199,7 @@ docker network create farmland_network
 
 === Lancer les conteneurs Docker
 
-==== Lancer un conteneur individuellement
-
-Exécuter la commande suivante dans un terminal à la racine d'un composant de l'application pour le lancer dans un conteneur Docker :
-
-[source,bash]
-----
-docker-compose up -d --build
-----
-
-[WARNING]
-====
-L'erreur suivante peut apparaitre en lancer l'interface frontend Angular dans un conteneur :
-
-image::images/angular_app_container_error.png[]
-
-Si cela arrive, essayer de lancer la commande suivante https://docs.docker.com/reference/cli/docker/container/exec/[à l'intérieur du conteneur correspondant] :
-
-[source, bash]
-----
-npm i
-----
-
-Relancer après coup le conteneur.
-
-====
-
-==== Lancer tous les conteneurs
-
-Exécuter la commande suivante dans un terminal à la racine du projet pour lancer tous les composants de l'application à l'intérieur de conteneurs Docker :
+*Une fois les dépendances de tous les projets installées*, exécuter la commande suivante dans un terminal à la racine du projet pour lancer tous les composants de l'application à l'intérieur de conteneurs Docker :
 
 [source,bash]
 ----
@@ -172,9 +218,24 @@ docker-compose -p farmland_api_gateway up -d --build
 
 NOTE: https://docs.docker.com/desktop/[Docker Desktop] peut être téléchargé pour gérer plus facilement les conteneurs Docker créés.
 
-==== Accéder aux conteneurs
+[WARNING]
+====
+L'erreur suivante peut apparaitre en lancer l'interface frontend Angular dans un conteneur :
 
-Each component can be accessed at the following addresses:
+image::images/angular_app_container_error.png[]
+
+Si cela arrive, essayer de lancer la commande suivante https://docs.docker.com/reference/cli/docker/container/exec/[à l'intérieur du conteneur correspondant] :
+
+[source, bash]
+----
+npm i
+----
+
+Relancer après coup le conteneur.
+
+====
+
+=== Accéder aux conteneurs
 
 Chaque composant de l'application peut être accédées à partir des adresses suivantes :
 
@@ -185,42 +246,48 @@ Chaque composant de l'application peut être accédées à partir des adresses s
 *** API utilisateur : http://localhost:3001
 *** Base de données utilisateur : http://localhost:5432
 *** Interface pgAdmin de gestion de la base de données utilisateur: http://localhost:8888
-** Backend ferme:
+** Backend ferme :
 *** API ferme : http://localhost:3002
 *** Base de données ferme : http://localhost:5431
 *** Interface pgAdmin de gestion de la base de données ferme : http://localhost:8887
 
+Si l'application est lancée dans l'environnement Docker configuré, *reprendre les données de connexion définies dans les fichiers `docker-compose.yml`* pour accéder aux bases de données et aux interfaces pgAdmin.
+
 NOTE: Une fois lancé, un conteneur peut prendre quelques instants à s'initialiser avant d'être accessible à l'adresse correspondante.
 
-=== Populer les bases de données
+== Application des migrations
+
+Une fois les bases de données des services de gestion des utilisateurs et des fermes créées, leurs structures respectives peuvent être montées en appliquant les dernières migrations disponibles.
+
+Pour cela, exécuter la commande suivante à la racine des deux projets :
+
+[source, bash]
+----
+npx sequelize-cli db:migrate
+----
+
+== Remplissage des bases de données
 
 Des scripts sont mis à disposition pour populer les bases de données de gestion des utilisateurs et des fermes avec des données factices afin d'effectuer des tests rapides.
 
-Exécuter la commande suivante à l'intérieur du dossier `src/` à l'intérieur du conteneur Docker supportant le backend utilisateur afin de populer la base de données des utilisateurs :
+Pour cela, exécuter la commande suivante à la racine des projets des services de gestion des utilisateurs et de fermes :
 
 [source, bash]
------
-node -r ts-node/register --env-file=../.env.dev seedUsers.ts
------
+----
+npx sequelize-cli db:seed:all
+----
 
-Faire la même chose avec la commande suivante dans le conteneur supportant le backend des fermes pour populer base de données des fermes :
-
-[source, bash]
------
-node -r ts-node/register --env-file=../.env.dev seedAnimals.ts
------
-
-=== Gestion des erreurs
+== Gestion des erreurs
 
 Une gestion des erreurs a été mis en place dans le frontend et le backend de l'application afin d'assurer la continuité des services en cas de pépin.
 
-==== Côté interface
+=== Côté interface
 
 Du côté de l'interface Angular, les erreurs envoyées du backend sont attrapées et des messages sont affichés en conséquence afin d'informer plus convenablement l'utilisateur.
 
 image::images/frontend_error.jpg[,450]
 
-==== Côté API
+=== Côté API
 
 Du côté de l'API backend, plusieurs logiques d'erreurs sont prises en compte :
 
@@ -232,13 +299,13 @@ image::images/backend_db_error.jpg[,650]
 NOTE: Les codes d'erreur correspondant à chaque route de chaque service de l'API sont détaillés dans les <<swagger, documentations Swagger>> correspondantes.
 * *Erreur route :* Si l'API rencontre une erreur quelconque durant le traitement d'une requête, un code d'erreur HTTP 500 sera retournée avec le message de l'erreur correspondant.
 
-==== Codes d'erreurs HTTP
+=== Codes d'erreurs HTTP
 
 Tous les codes d'erreur HTTP sont référencés et expliqués https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status[ici].
 
 == Documentation et tests
 
-=== Interface storybook
+=== Interface Storybook
 
 https://storybook.js.org/[Storybook] a été ajouté au projet frontend de l'application afin de documenter et de faciliter le test les différents composants Angular implémentés.
 
@@ -251,7 +318,7 @@ npm run storybook
 
 image::images/storybook.jpg[,650]
 
-=== Documentation backend avec Swagger [[swagger]]
+=== Interface Swagger [[swagger]]
 
 https://swagger.io/[Swagger] a été ajouté aux projets backend de gestion des utilisateurs et des fermes afin de documenter et de faciliter le test des différentes routes implémentées.
 

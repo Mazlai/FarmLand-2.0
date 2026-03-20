@@ -26,6 +26,8 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
   public phone?: string;
   public gender!: string;
   public passwordHash!: string;
+  public createdAt!: Date;
+  public updatedAt!: Date;
 }
 
 User.init(

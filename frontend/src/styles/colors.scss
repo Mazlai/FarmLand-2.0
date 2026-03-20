@@ -8,6 +8,7 @@ $theme-colors: map-merge(
   (
     "primary": $primary,
     "secondary": $secondary,
-    "tertiary": $tertiary, // "body-bg-dark": $body-bg-dark
+    "tertiary": $tertiary,
+    // "body-bg-dark": $body-bg-dark
   )
 );

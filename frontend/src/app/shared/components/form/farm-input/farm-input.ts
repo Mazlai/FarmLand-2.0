@@ -5,14 +5,11 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'farm-input',
-  imports: [
-    FormsModule
-  ],
+  imports: [FormsModule],
   templateUrl: './farm-input.html',
-  styleUrl: './farm-input.scss'
+  styleUrl: './farm-input.scss',
 })
 export class FarmInput {
-
   //region parameters
 
   /** Input type. */
@@ -44,5 +41,4 @@ export class FarmInput {
   protected readonly componentId = `farm-input-${Util.generateRandomStringId()}`;
 
   //endregion
-
 }

@@ -5,10 +5,9 @@ import { FarmButtonKind } from '../../../enums/farm-button-kind';
   selector: 'farm-button',
   imports: [],
   templateUrl: './farm-button.html',
-  styleUrl: './farm-button.scss'
+  styleUrl: './farm-button.scss',
 })
 export class FarmButton {
-
   //region parameters
 
   /** If the button is used to submit a form. */
@@ -36,5 +35,4 @@ export class FarmButton {
   @Output() public onClick = new EventEmitter();
 
   //endregion
-
 }

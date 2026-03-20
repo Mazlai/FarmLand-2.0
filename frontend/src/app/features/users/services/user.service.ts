@@ -5,10 +5,9 @@ import { UserModel } from '../models/user.model';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
   //region fields
 
   /** User API URL. */
@@ -38,13 +37,17 @@ export class UserService {
    * @param password User password.
    * @returns The identity and the token corresponding to the authenticated user.
    */
-  public signInAsync(email: string, password: string): Promise<{ identity: string, token: string }> {
-    return firstValueFrom(this.http.post<{ identity: string, token: string }>(
-      `${this.apiUrl}/sign-in`,
-      {email: email, password: password}
-    ));
+  public signInAsync(
+    email: string,
+    password: string,
+  ): Promise<{ identity: string; token: string }> {
+    return firstValueFrom(
+      this.http.post<{ identity: string; token: string }>(
+        `${this.apiUrl}/sign-in`,
+        { email: email, password: password },
+      ),
+    );
   }
 
   //endregion
-
 }

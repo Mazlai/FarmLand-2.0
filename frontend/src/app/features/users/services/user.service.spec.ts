@@ -1,22 +1,20 @@
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
+import {
+  provideHttpClientTesting,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { UserService } from './user.service';
 import { UserModel } from '../models/user.model';
 import { environment } from '../../../../environments/environment';
 
 describe('UserService', () => {
-
   let service: UserService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        UserService,
-        provideHttpClient(),
-        provideHttpClientTesting()
-      ]
+      providers: [UserService, provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(UserService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -31,7 +29,6 @@ describe('UserService', () => {
   });
 
   describe('signUpAsync', () => {
-
     it('should send a POST request to /users/sign-up', async () => {
       const user = new UserModel();
       user.email = 'test@example.com';
@@ -57,11 +54,9 @@ describe('UserService', () => {
 
       await promise;
     });
-
   });
 
   describe('signInAsync', () => {
-
     it('should send a POST request to /users/sign-in', async () => {
       const promise = service.signInAsync('test@example.com', 'pass123');
 
@@ -76,7 +71,10 @@ describe('UserService', () => {
       const promise = service.signInAsync('test@example.com', 'pass123');
 
       const req = httpMock.expectOne(`${environment.apiUrl}/users/sign-in`);
-      expect(req.request.body).toEqual({ email: 'test@example.com', password: 'pass123' });
+      expect(req.request.body).toEqual({
+        email: 'test@example.com',
+        password: 'pass123',
+      });
       req.flush({ identity: 'Test User', token: 'jwt' });
 
       await promise;
@@ -92,7 +90,5 @@ describe('UserService', () => {
       const result = await promise;
       expect(result).toEqual(expected);
     });
-
   });
-
 });

@@ -8,10 +8,9 @@ import { Router } from '@angular/router';
   selector: 'farm-header',
   imports: [],
   templateUrl: './farm-header.html',
-  styleUrl: './farm-header.scss'
+  styleUrl: './farm-header.scss',
 })
 export class FarmHeader implements OnInit {
-
   //region fields
 
   /** Username to display. */
@@ -36,7 +35,7 @@ export class FarmHeader implements OnInit {
   /** Sign out the current user. */
   protected async signOutUserAsync() {
     if (confirm(`Êtes-vous sûr(e) de vouloir vous déconnecter ?`)) {
-      const cookies = new Cookies(null, {path: '/'});
+      const cookies = new Cookies(null, { path: '/' });
       cookies.remove(environment.cookieKeys.userToken);
       cookies.remove(environment.cookieKeys.userIdentity);
       await this.router.navigateByUrl('/');
@@ -44,5 +43,4 @@ export class FarmHeader implements OnInit {
   }
 
   //endregion
-
 }

@@ -9,16 +9,11 @@ import { AnimalTypeModel } from '../../models/animal-type.model';
 
 @Component({
   selector: 'add-animal-stock-modal',
-  imports: [
-    CommonModule,
-    FormsModule,
-    FarmButton
-  ],
+  imports: [CommonModule, FormsModule, FarmButton],
   templateUrl: './add-animal-stock-modal.html',
-  styleUrl: './add-animal-stock-modal.scss'
+  styleUrl: './add-animal-stock-modal.scss',
 })
 export class AddAnimalStockModal {
-
   //region parameters
 
   /** Notify the added animal stock. */
@@ -70,16 +65,19 @@ export class AddAnimalStockModal {
     this.isLoading = true;
     if (animalForm.valid) {
       try {
-        const newAnimal = await this.farmService.createAnimalStockAsync(this.newAnimalStock);
+        const newAnimal = await this.farmService.createAnimalStockAsync(
+          this.newAnimalStock,
+        );
         this.onAnimalAdded.emit(newAnimal);
         this.isVisible = false;
       } catch (error) {
-        alert(`Une erreur est survenue lors de la création du stock d'animaux.`);
+        alert(
+          `Une erreur est survenue lors de la création du stock d'animaux.`,
+        );
       }
     }
     this.isLoading = false;
   }
 
   //endregion
-
 }

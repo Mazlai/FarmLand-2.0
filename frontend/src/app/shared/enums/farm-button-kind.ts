@@ -4,5 +4,5 @@ export enum FarmButtonKind {
   TERTIARY = 'tertiary',
   INFO = 'info',
   WARNING = 'warning',
-  DANGER = 'danger'
+  DANGER = 'danger',
 }

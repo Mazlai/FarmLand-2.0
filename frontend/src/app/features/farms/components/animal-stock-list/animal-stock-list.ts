@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddAnimalStockModal } from '../add-animal-stock-modal/add-animal-stock-modal';
 import { AnimalStockItem } from '../animal-stock-item/animal-stock-item';
@@ -16,14 +21,13 @@ import { Router } from '@angular/router';
     FarmHeader,
     AddAnimalStockModal,
     AnimalStockItem,
-    FarmHeader
+    FarmHeader,
   ],
   templateUrl: './animal-stock-list.html',
   styleUrl: './animal-stock-list.scss',
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class AnimalStockList implements OnInit {
-
   //region fields
 
   /** List of animal stocks from API. */
@@ -54,7 +58,9 @@ export class AnimalStockList implements OnInit {
   protected async loadAnimalStocksAsync() {
     this.isLoading = true;
     try {
-      this.animalStocks = (await this.farmService.getMyAnimalsAsync()).sort((a, b) => a.id - b.id);
+      this.animalStocks = (await this.farmService.getMyAnimalsAsync()).sort(
+        (a, b) => a.id - b.id,
+      );
       this.isLoading = false;
     } catch (e) {
       switch ((e as HttpErrorResponse).status) {
@@ -62,11 +68,12 @@ export class AnimalStockList implements OnInit {
           await this.router.navigateByUrl('/');
           break;
         default:
-          alert(`Une erreur est survenue lors du chargement des stocks d'animaux.`);
+          alert(
+            `Une erreur est survenue lors du chargement des stocks d'animaux.`,
+          );
       }
     }
   }
 
   //endregion
-
 }

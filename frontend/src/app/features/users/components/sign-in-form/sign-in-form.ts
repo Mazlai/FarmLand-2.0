@@ -10,20 +10,15 @@ import Cookies from 'universal-cookie';
 
 @Component({
   selector: 'app-sign-in-form',
-  imports: [
-    FarmButton,
-    FarmInput,
-    RouterLink
-  ],
+  imports: [FarmButton, FarmInput, RouterLink],
   templateUrl: './sign-in-form.html',
-  styleUrl: './sign-in-form.scss'
+  styleUrl: './sign-in-form.scss',
 })
 export class SignInForm {
-
   //region fields
 
   /** Email and password for authentication. */
-  protected connectionData = {email: '', password: ''};
+  protected connectionData = { email: '', password: '' };
 
   /** If the component is loading. */
   protected isLoading = false;
@@ -50,8 +45,12 @@ export class SignInForm {
     if (
       !environment.emailRegex.test(this.connectionData.email) ||
       this.connectionData.email.length > 50
-    ) return false;
-    return !(!/\S/.test(this.connectionData.password) || this.connectionData.password.length > 75);
+    )
+      return false;
+    return !(
+      !/\S/.test(this.connectionData.password) ||
+      this.connectionData.password.length > 75
+    );
   }
 
   /** Sign in using the provided connection data. */
@@ -59,18 +58,19 @@ export class SignInForm {
     this.isLoading = true;
     if (this.isFormValid()) {
       try {
-
         // Sign in using the provided connection data
-        const identity = await this.userService.signInAsync(this.connectionData.email, this.connectionData.password);
+        const identity = await this.userService.signInAsync(
+          this.connectionData.email,
+          this.connectionData.password,
+        );
 
         // Save the returned user identity and token inside cookies
-        const cookie = new Cookies(null, {path: '/'});
+        const cookie = new Cookies(null, { path: '/' });
         cookie.set(environment.cookieKeys.userIdentity, identity.identity);
         cookie.set(environment.cookieKeys.userToken, identity.token);
 
         // Redirect to the animal stock management page
         await this.router.navigateByUrl('/my-farm');
-
       } catch (e) {
         switch ((e as HttpErrorResponse).status) {
           case 404:
@@ -88,5 +88,4 @@ export class SignInForm {
   }
 
   //endregion
-
 }

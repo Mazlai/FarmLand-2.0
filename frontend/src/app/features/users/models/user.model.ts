@@ -1,7 +1,6 @@
 import { Genders } from '../../../shared/enums/genders';
 
 export class UserModel {
-
   public id = NaN;
 
   public firstName = '';
@@ -17,5 +16,4 @@ export class UserModel {
   public password = '';
 
   public phone = '';
-
 }

@@ -1,6 +1,7 @@
 import { app, PORT, sequelize } from "./server";
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
+import logger from "./utils/logger";
 
 const swaggerOptions = {
   swaggerDefinition: {
@@ -32,7 +33,7 @@ const startServer = async () => {
       console.log(`🚀 User Service running on port ${PORT}`);
     });
   } catch (error) {
-    console.error("🔴 Unable to connect to the database:", error);
+    logger.error("🔴 Unable to connect to the database:", error);
   }
 };
 

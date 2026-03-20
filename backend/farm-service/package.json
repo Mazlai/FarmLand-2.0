@@ -1,6 +1,7 @@
 {
   "name": "src",
   "main": "index.js",
+  "environment": "development",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
@@ -20,6 +21,8 @@
     "express": "^5.1.0",
     "morgan": "^1.10.0",
     "pg": "^8.16.2",
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^4.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.7",
     "swagger-jsdoc": "^6.2.8",

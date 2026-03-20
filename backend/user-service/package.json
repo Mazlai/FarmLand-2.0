@@ -1,6 +1,7 @@
 {
     "name": "src",
     "main": "index.js",
+    "environment": "development",
     "scripts": {
         "start": "node index.js",
         "dev": "nodemon",
@@ -19,6 +20,8 @@
         "jsonwebtoken": "^9.0.2",
         "morgan": "^1.10.0",
         "pg": "^8.16.0",
+        "winston": "^3.11.0",
+        "winston-daily-rotate-file": "^4.7.1",
         "pg-hstore": "^2.3.4",
         "sequelize": "^6.37.7",
         "swagger-jsdoc": "^6.2.8",

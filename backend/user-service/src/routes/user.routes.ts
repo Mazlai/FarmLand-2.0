@@ -1,11 +1,11 @@
 import { Router } from "express";
 import {
-    deleteCurrentUserAsync,
-    getCurrentUserAsync,
-    signInAsync,
-    signUpAsync,
-    updateCurrentUserAsync,
-    verifyTokenAsync
+  deleteCurrentUserAsync,
+  getCurrentUserAsync,
+  signInAsync,
+  signUpAsync,
+  updateCurrentUserAsync,
+  verifyTokenAsync,
 } from "~/controllers/user.controller";
 
 const router = Router();
@@ -118,8 +118,7 @@ router.post("/verify-token", verifyTokenAsync);
  *       "500":
  *         description: Other server error.
  */
-router.get('/current', getCurrentUserAsync);
-
+router.get("/current", getCurrentUserAsync);
 
 /**
  * @swagger
@@ -155,7 +154,7 @@ router.get('/current', getCurrentUserAsync);
  *       "500":
  *         description: Other server error.
  */
-router.put('/current', updateCurrentUserAsync);
+router.put("/current", updateCurrentUserAsync);
 
 /**
  * @swagger
@@ -174,7 +173,7 @@ router.put('/current', updateCurrentUserAsync);
  *       "500":
  *         description: Other server error.
  */
-router.delete('/current', deleteCurrentUserAsync);
+router.delete("/current", deleteCurrentUserAsync);
 
 //endregion
 

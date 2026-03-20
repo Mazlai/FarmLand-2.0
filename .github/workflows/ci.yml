@@ -1,16 +1,68 @@
-name: CI - Tests
+name: CI - Tests & Linting
 
 on:
   pull_request:
     types: [opened, reopened, synchronize]
     branches:
       - develop
+      - main
       - 'release/**'
 
 permissions:
   contents: read
 
 jobs:
+  # ==================== LINTING JOBS ====================
+
+  frontend-lint:
+    name: Frontend Linting (Angular)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Run Prettier
+        working-directory: frontend
+        run: npx prettier --check "src/**/*.{ts,scss,html,json}"
+
+  backend-lint:
+    name: Backend Linting - ${{ matrix.service }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [user-service, farm-service, api-gateway]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: backend/${{ matrix.service }}/package-lock.json
+
+      - name: Install dependencies
+        working-directory: backend/${{ matrix.service }}
+        run: npm ci
+
+      - name: Run ESLint
+        working-directory: backend/${{ matrix.service }}
+        run: npm run lint -- --format stylish
+
+  # ==================== TESTS JOBS ====================
+
   frontend-tests:
     name: Frontend Tests (Angular)
     runs-on: ubuntu-latest
@@ -32,3 +84,43 @@ jobs:
       - name: Run tests
         working-directory: frontend
         run: npm test
+
+  frontend-cypress-tests:
+    name: Frontend Cypress Tests (E2E)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Start dev server
+        working-directory: frontend
+        run: npm start > /tmp/server.log 2>&1 &
+
+      - name: Wait for server to be ready
+        run: |
+          for i in {1..30}; do
+            if curl -f http://localhost:4200 > /dev/null 2>&1; then
+              echo "Server is ready"
+              exit 0
+            fi
+            echo "Waiting for server... ($i/30)"
+            sleep 2
+          done
+          echo "Server failed to start"
+          cat /tmp/server.log
+          exit 1
+
+      - name: Run Cypress tests
+        working-directory: frontend
+        run: npm run e2e

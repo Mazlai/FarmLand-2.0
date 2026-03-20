@@ -12,10 +12,14 @@ interface AnimalStockAttributes {
 }
 
 // Champs nécessaires lors de la création (id est auto-incrémenté)
-interface AnimalStockCreationAttributes extends Optional<AnimalStockAttributes, "id"> {}
+interface AnimalStockCreationAttributes
+  extends Optional<AnimalStockAttributes, "id"> {}
 
 // Définition du modèle avec sequelize + TS
-class AnimalStock extends Model<AnimalStockAttributes, AnimalStockCreationAttributes> implements AnimalStockAttributes {
+class AnimalStock
+  extends Model<AnimalStockAttributes, AnimalStockCreationAttributes>
+  implements AnimalStockAttributes
+{
   public id!: number;
   public description!: string;
   public animalTypeId!: number;
@@ -40,7 +44,7 @@ AnimalStock.init(
       allowNull: false,
       references: {
         model: AnimalType,
-        key: 'id',
+        key: "id",
       },
     },
     count: {
@@ -53,14 +57,14 @@ AnimalStock.init(
     },
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   },
   {
     sequelize,
     tableName: "animal_stocks",
     timestamps: true,
-  }
+  },
 );
 
 export default AnimalStock;

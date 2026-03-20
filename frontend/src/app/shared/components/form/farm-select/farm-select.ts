@@ -3,14 +3,11 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'farm-select',
-  imports: [
-    FormsModule
-  ],
+  imports: [FormsModule],
   templateUrl: './farm-select.html',
-  styleUrl: './farm-select.scss'
+  styleUrl: './farm-select.scss',
 })
 export class FarmSelect {
-
   //region parameters
 
   /** Select label. */
@@ -29,11 +26,10 @@ export class FarmSelect {
   @Input() public disabled = false;
 
   /** Selectable values. */
-  @Input() public selectableValues = new Array<{label: string, value: any}>();
+  @Input() public selectableValues = new Array<{ label: string; value: any }>();
 
   /** Notify when the select value changes. */
   @Output() public valueChange = new EventEmitter();
 
   //endregion
-
 }

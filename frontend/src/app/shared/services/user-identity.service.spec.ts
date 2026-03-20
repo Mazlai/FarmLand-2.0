@@ -3,12 +3,11 @@ import { UserIdentityService } from './user-identity.service';
 import { HttpHeaders } from '@angular/common/http';
 
 describe('UserIdentityService', () => {
-
   let service: UserIdentityService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UserIdentityService]
+      providers: [UserIdentityService],
     });
     service = TestBed.inject(UserIdentityService);
   });
@@ -18,7 +17,6 @@ describe('UserIdentityService', () => {
   });
 
   describe('getUserIdentity', () => {
-
     it('should return an object with identity and token properties', () => {
       document.cookie = 'farmland-identity=test-identity';
       document.cookie = 'farmland-token=test-token';
@@ -26,23 +24,25 @@ describe('UserIdentityService', () => {
       expect(result.identity).toBeDefined();
       expect(result.token).toBeDefined();
     });
-
   });
 
   describe('getUserAuthorizationHeader', () => {
-
     it('should return an HttpHeaders instance', () => {
-      vi.spyOn(service, 'getUserIdentity').mockReturnValue({ identity: 'Jean', token: 'abc123' });
+      vi.spyOn(service, 'getUserIdentity').mockReturnValue({
+        identity: 'Jean',
+        token: 'abc123',
+      });
       const headers = service.getUserAuthorizationHeader();
       expect(headers).toBeInstanceOf(HttpHeaders);
     });
 
     it('should set Authorization header as Bearer token', () => {
-      vi.spyOn(service, 'getUserIdentity').mockReturnValue({ identity: 'Jean', token: 'my-token' });
+      vi.spyOn(service, 'getUserIdentity').mockReturnValue({
+        identity: 'Jean',
+        token: 'my-token',
+      });
       const headers = service.getUserAuthorizationHeader();
       expect(headers.get('Authorization')).toBe('Bearer my-token');
     });
-
   });
-
 });

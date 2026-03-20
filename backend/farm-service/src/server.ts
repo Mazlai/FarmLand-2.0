@@ -2,8 +2,8 @@ import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import morgan from "morgan";
 import sequelize from "./config/database";
-import animalRoutes from "./routes/animal.routes"; 
-import './models/constraints';
+import animalRoutes from "./routes/animal.routes";
+import "./models/constraints";
 
 const app = express();
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3002;

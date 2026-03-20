@@ -12,26 +12,25 @@ const VALID_USER = {
   gender: Genders.MALE,
   email: 'jean.dupont@example.com',
   phone: '0612345678',
-  password: 'MonMotDePasse123'
+  password: 'MonMotDePasse123',
 };
 
 describe('SignUpForm', () => {
-
   let component: SignUpForm;
   let fixture: ComponentFixture<SignUpForm>;
   let mockUserService: any;
 
   beforeEach(async () => {
     mockUserService = {
-      signUpAsync: vi.fn().mockResolvedValue({})
+      signUpAsync: vi.fn().mockResolvedValue({}),
     };
 
     await TestBed.configureTestingModule({
       imports: [SignUpForm],
       providers: [
         { provide: UserService, useValue: mockUserService },
-        provideRouter([])
-      ]
+        provideRouter([]),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SignUpForm);
@@ -43,7 +42,6 @@ describe('SignUpForm', () => {
   });
 
   describe('isFormValid', () => {
-
     it('should return false with default empty form', () => {
       expect((component as any).isFormValid()).toBe(false);
     });
@@ -84,7 +82,10 @@ describe('SignUpForm', () => {
     });
 
     it('should return false when email exceeds 50 characters', () => {
-      (component as any).newUser = { ...VALID_USER, email: 'a'.repeat(42) + '@example.com' };
+      (component as any).newUser = {
+        ...VALID_USER,
+        email: 'a'.repeat(42) + '@example.com',
+      };
       expect((component as any).isFormValid()).toBe(false);
     });
 
@@ -112,11 +113,9 @@ describe('SignUpForm', () => {
       (component as any).newUser = { ...VALID_USER, lastName: '' };
       expect((component as any).isFormValid()).toBe(true);
     });
-
   });
 
   describe('signUpUserAsync', () => {
-
     it('should call userService.signUpAsync when form is valid', async () => {
       (component as any).newUser = { ...VALID_USER };
       await (component as any).signUpUserAsync();
@@ -134,7 +133,5 @@ describe('SignUpForm', () => {
       await (component as any).signUpUserAsync();
       expect((component as any).isLoading).toBe(false);
     });
-
   });
-
 });

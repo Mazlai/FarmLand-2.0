@@ -7,10 +7,9 @@ import { UserIdentityService } from '../../../shared/services/user-identity.serv
 import { AnimalTypeModel } from '../models/animal-type.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FarmService {
-
   //region fields
 
   /** Farm API URL. */
@@ -33,10 +32,11 @@ export class FarmService {
    * @returns Animal stock array.
    */
   public getMyAnimalsAsync(): Promise<AnimalStockModel[]> {
-    return firstValueFrom(this.http.get<AnimalStockModel[]>(
-      `${this.apiUrl}/my-farm`,
-      {headers: this.userIdentityService.getUserAuthorizationHeader()}
-    ));
+    return firstValueFrom(
+      this.http.get<AnimalStockModel[]>(`${this.apiUrl}/my-farm`, {
+        headers: this.userIdentityService.getUserAuthorizationHeader(),
+      }),
+    );
   }
 
   /**
@@ -44,7 +44,9 @@ export class FarmService {
    * @returns Animal type array.
    */
   public getAnimalTypesAsync(): Promise<AnimalTypeModel[]> {
-    return firstValueFrom(this.http.get<AnimalTypeModel[]>(`${this.apiUrl}/animal-types`));
+    return firstValueFrom(
+      this.http.get<AnimalTypeModel[]>(`${this.apiUrl}/animal-types`),
+    );
   }
 
   /**
@@ -52,12 +54,14 @@ export class FarmService {
    * @param animalStock Animal stock to add.
    * @returns The created animal stock.
    */
-  public createAnimalStockAsync(animalStock: AnimalStockModel): Promise<AnimalStockModel> {
-    return firstValueFrom(this.http.post<AnimalStockModel>(
-      `${this.apiUrl}/my-farm`,
-      animalStock,
-      {headers: this.userIdentityService.getUserAuthorizationHeader()}
-    ));
+  public createAnimalStockAsync(
+    animalStock: AnimalStockModel,
+  ): Promise<AnimalStockModel> {
+    return firstValueFrom(
+      this.http.post<AnimalStockModel>(`${this.apiUrl}/my-farm`, animalStock, {
+        headers: this.userIdentityService.getUserAuthorizationHeader(),
+      }),
+    );
   }
 
   /**
@@ -65,12 +69,14 @@ export class FarmService {
    * @param animalStock Animal stock to update.
    * @returns The updated animal stock.
    */
-  public updateAnimalStockAsync(animalStock: AnimalStockModel): Promise<AnimalStockModel> {
-    return firstValueFrom(this.http.put<AnimalStockModel>(
-      `${this.apiUrl}/my-farm`,
-      animalStock,
-      {headers: this.userIdentityService.getUserAuthorizationHeader()}
-    ));
+  public updateAnimalStockAsync(
+    animalStock: AnimalStockModel,
+  ): Promise<AnimalStockModel> {
+    return firstValueFrom(
+      this.http.put<AnimalStockModel>(`${this.apiUrl}/my-farm`, animalStock, {
+        headers: this.userIdentityService.getUserAuthorizationHeader(),
+      }),
+    );
   }
 
   /**
@@ -78,12 +84,13 @@ export class FarmService {
    * @param animalStockId ID of the animal stock to delete.
    */
   public deleteAnimalStockAsync(animalStockId: number): Promise<any> {
-    return firstValueFrom(this.http.delete<AnimalStockModel>(
-      `${this.apiUrl}/my-farm/${animalStockId}`,
-      {headers: this.userIdentityService.getUserAuthorizationHeader()}
-    ));
+    return firstValueFrom(
+      this.http.delete<AnimalStockModel>(
+        `${this.apiUrl}/my-farm/${animalStockId}`,
+        { headers: this.userIdentityService.getUserAuthorizationHeader() },
+      ),
+    );
   }
 
   //endregion
-
 }

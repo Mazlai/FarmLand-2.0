@@ -7,7 +7,6 @@ import { UserIdentityService } from '../../../../shared/services/user-identity.s
 import { AnimalStockModel } from '../../models/animal-stock.model';
 
 describe('AnimalStockList', () => {
-
   let component: AnimalStockList;
   let fixture: ComponentFixture<AnimalStockList>;
   let mockFarmService: any;
@@ -16,14 +15,16 @@ describe('AnimalStockList', () => {
   beforeEach(async () => {
     mockFarmService = {
       getMyAnimalsAsync: vi.fn().mockResolvedValue([]),
-      createAnimalStockAsync: vi.fn().mockResolvedValue(new AnimalStockModel())
+      createAnimalStockAsync: vi.fn().mockResolvedValue(new AnimalStockModel()),
     };
 
     mockUserIdentityService = {
-      getUserIdentity: vi.fn().mockReturnValue({ identity: 'Fermier Test', token: 'token' }),
-      getUserAuthorizationHeader: vi.fn().mockReturnValue(
-        new HttpHeaders({ Authorization: 'Bearer token' })
-      )
+      getUserIdentity: vi
+        .fn()
+        .mockReturnValue({ identity: 'Fermier Test', token: 'token' }),
+      getUserAuthorizationHeader: vi
+        .fn()
+        .mockReturnValue(new HttpHeaders({ Authorization: 'Bearer token' })),
     };
 
     await TestBed.configureTestingModule({
@@ -31,8 +32,8 @@ describe('AnimalStockList', () => {
       providers: [
         { provide: FarmService, useValue: mockFarmService },
         { provide: UserIdentityService, useValue: mockUserIdentityService },
-        provideRouter([])
-      ]
+        provideRouter([]),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AnimalStockList);
@@ -45,7 +46,6 @@ describe('AnimalStockList', () => {
   });
 
   describe('ngOnInit — loadAnimalStocksAsync', () => {
-
     it('should call farmService.getMyAnimalsAsync on init', async () => {
       fixture.detectChanges();
       await fixture.whenStable();
@@ -55,7 +55,7 @@ describe('AnimalStockList', () => {
     it('should populate animalStocks after loading', async () => {
       const mockAnimals = [
         new AnimalStockModel({ id: 1, count: 5 }),
-        new AnimalStockModel({ id: 2, count: 10 })
+        new AnimalStockModel({ id: 2, count: 10 }),
       ];
       mockFarmService.getMyAnimalsAsync.mockResolvedValue(mockAnimals);
 
@@ -69,7 +69,7 @@ describe('AnimalStockList', () => {
       const mockAnimals = [
         new AnimalStockModel({ id: 3, count: 1 }),
         new AnimalStockModel({ id: 1, count: 2 }),
-        new AnimalStockModel({ id: 2, count: 3 })
+        new AnimalStockModel({ id: 2, count: 3 }),
       ];
       mockFarmService.getMyAnimalsAsync.mockResolvedValue(mockAnimals);
 
@@ -91,7 +91,9 @@ describe('AnimalStockList', () => {
     it('should navigate to / on a 401 error', async () => {
       mockFarmService.getMyAnimalsAsync.mockRejectedValue({ status: 401 });
       const router = TestBed.inject(Router);
-      const navigateSpy = vi.spyOn(router, 'navigateByUrl').mockResolvedValue(true);
+      const navigateSpy = vi
+        .spyOn(router, 'navigateByUrl')
+        .mockResolvedValue(true);
 
       fixture.detectChanges();
       await fixture.whenStable();
@@ -108,7 +110,5 @@ describe('AnimalStockList', () => {
 
       expect(alertSpy).toHaveBeenCalled();
     });
-
   });
-
 });

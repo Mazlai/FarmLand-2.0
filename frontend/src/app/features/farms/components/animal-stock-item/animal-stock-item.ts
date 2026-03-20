@@ -6,10 +6,9 @@ import { FarmService } from '../../services/farm.service';
 @Component({
   selector: 'animal-stock-item',
   templateUrl: './animal-stock-item.html',
-  styleUrl: './animal-stock-item.scss'
+  styleUrl: './animal-stock-item.scss',
 })
 export class AnimalStockItem {
-
   //region parameters
 
   /** Animal data to display. */
@@ -67,5 +66,4 @@ export class AnimalStockItem {
   }
 
   //endregion
-
 }

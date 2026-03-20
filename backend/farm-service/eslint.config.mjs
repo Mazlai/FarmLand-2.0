@@ -18,6 +18,7 @@ export default [
         module: "readonly",
         process: "readonly",
         console: "readonly",
+        fetch: "readonly",
       },
     },
     plugins: {
@@ -28,7 +29,13 @@ export default [
       ...js.configs.recommended.rules,
       ...tsPlugin.configs.recommended.rules,
       "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+        },
+      ],
       "no-console": "off",
       "prettier/prettier": "error",
     },
@@ -43,6 +50,7 @@ export default [
         module: "readonly",
         process: "readonly",
         console: "readonly",
+        fetch: "readonly",
       },
     },
     plugins: {

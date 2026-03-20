@@ -1,20 +1,12 @@
-import { FlatCompat } from "@eslint/eslintrc";
-import { fileURLToPath } from "url";
-import path from "path";
-import js from "@eslint/js"; // ✅ à la place du require
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended, // ✅ remplace require()
-});
+import js from "@eslint/js";
+import prettier from "eslint-plugin-prettier";
 
 export default [
-  // Reprise des configs classiques (anciennes) avec compatibilité
-  ...compat.extends("eslint:recommended", "plugin:prettier/recommended"),
-
   {
+    ignores: ["node_modules", "dist"],
+  },
+  {
+    files: ["**/*.js", "**/*.ts"],
     languageOptions: {
       ecmaVersion: 2021,
       sourceType: "module",
@@ -25,9 +17,14 @@ export default [
         console: "readonly",
       },
     },
+    plugins: {
+      prettier: prettier,
+    },
     rules: {
+      ...js.configs.recommended.rules,
       "no-unused-vars": "warn",
       "no-console": "off",
+      "prettier/prettier": "error",
     },
   },
 ];

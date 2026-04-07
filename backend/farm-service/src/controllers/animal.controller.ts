@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import AnimalStock from "../models/animalStock.models";
 import AnimalType from "../models/animalType.models";
+import logger from "../utils/logger";
 
 //region animal types
 
@@ -16,7 +17,7 @@ export const getAllAnimalTypesAsync = async (
         await AnimalType.findAll({ attributes: ["id", "label", "textIcon"] }),
       );
   } catch (error) {
-    console.error("Error when getting animal types:", error);
+    logger.error("Error when getting animal types: " + error);
     res.status(500).json({ message: "Error when getting animal types" });
   }
 };
@@ -65,7 +66,7 @@ export const getAnimalStockByIdAsync = async (
       res.status(200).json(animal);
     }
   } catch (error) {
-    console.error("Error when getting the animal stock:", error);
+    logger.error("Error when getting the animal stock: " + error);
     res.status(500).json({ message: "Error when getting the animal stock" });
   }
 };
@@ -95,7 +96,7 @@ export const getCurrentUserAnimalStocksAsync = async (
       res.status(200).json(userAnimals);
     }
   } catch (error) {
-    console.error("Error when getting current user animal stocks:", error);
+    logger.error("Error when getting current user animal stocks: " + error);
     res
       .status(500)
       .json({ message: "Error when getting current user animal stocks" });
@@ -151,7 +152,7 @@ export const addAnimalStockAsync = async (
       res.status(201).json(animalWithRelations);
     }
   } catch (error) {
-    console.error("Error when adding animal stock:", error);
+    logger.error("Error when adding animal stock: " + error);
     res.status(500).json({ message: "Error when adding animal stock" });
   }
 };
@@ -212,7 +213,7 @@ export const updateAnimalStockAsync = async (
       res.json(updatedAnimal);
     }
   } catch (error) {
-    console.error("Error when updating animal stock:", error);
+    logger.error("Error when updating animal stock: " + error);
     res.status(500).json({ message: "Error when updating animal stock" });
   }
 };
@@ -254,7 +255,7 @@ export const deleteAnimalStockAsync = async (
         .json({ message: "Animal stock deleted for the current user" });
     }
   } catch (error) {
-    console.error("Error deleting animal:", error);
+    logger.error("Error deleting animal: " + error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -305,7 +306,7 @@ async function getUserIdFromReqAsync(
     // Return the corresponding user ID
     return response?.userId;
   } catch (error) {
-    console.error("Error fetching user ID from token:", error);
+    logger.error("Error fetching user ID from token: " + error);
     res.status(401).json({ message: "Resource unauthorized" });
     return undefined;
   }

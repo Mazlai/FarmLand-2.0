@@ -6,10 +6,10 @@ import { NotFound } from './features/not-found/not-found';
 import { Defective } from './features/defective/defective';
 
 export const routes: Routes = [
-  {path: 'sign-up', component: SignUpForm},
-  {path: 'sign-in', component: SignInForm},
-  {path: 'my-farm', component: AnimalStockList},
-  {path: 'defective', component: Defective},
-  {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
-  {path: '**', component: NotFound, pathMatch: 'full'},
+  { path: 'sign-up', component: SignUpForm },
+  { path: 'sign-in', component: SignInForm },
+  { path: 'my-farm', component: AnimalStockList },
+  { path: 'defective', component: Defective },
+  { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
+  { path: '**', component: NotFound, pathMatch: 'full' },
 ];

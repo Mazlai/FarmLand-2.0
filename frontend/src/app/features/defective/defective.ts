@@ -7,9 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './defective.scss',
 })
 export class Defective implements OnInit {
-
   ngOnInit() {
     throw new Error('Crash component');
   }
-
 }

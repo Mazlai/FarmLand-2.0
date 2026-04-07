@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import User from "../models/user.models";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import logger from "../utils/logger";
 
 //region auth
 
@@ -28,7 +29,7 @@ export const signUpAsync = async (
       res.status(201).json(user);
     }
   } catch (error) {
-    console.error("Error when signing up new user:", error);
+    logger.error("Error when signing up new user: " + error);
     res.status(500).json({ message: "Server error", error: error?.toString() });
   }
 };
@@ -52,7 +53,7 @@ export const signInAsync = async (
       } else res.status(401).json({ message: "Invalid email or password" });
     }
   } catch (error) {
-    console.error("Error when signing in:", error);
+    logger.error("Error when signing in: " + error);
     res.status(500).json({ message: "Server error", error: error?.toString() });
   }
 };
@@ -91,7 +92,7 @@ export const getCurrentUserAsync = async (
       res.status(200).json(user);
     }
   } catch (error) {
-    console.error("Error when getting current user:", error);
+    logger.error("Error when getting current user: " + error);
     res.status(500).json({
       success: false,
       message: "Error when getting current user",
@@ -148,7 +149,7 @@ export const updateCurrentUserAsync = async (
       );
     }
   } catch (error) {
-    console.error("Error when updating current user:", error);
+    logger.error("Error when updating current user: " + error);
     res.status(500).json({
       success: false,
       message: "Error when updating current user",
@@ -168,7 +169,7 @@ export const deleteCurrentUserAsync = async (
       res.status(200).json({ message: "User deleted" });
     }
   } catch (error) {
-    console.error("Error when deleting current user:", error);
+    logger.error("Error when deleting current user: " + error);
     res.status(500).json({
       success: false,
       message: "Error when deleting current user",

@@ -1,8 +1,9 @@
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
-import morgan from "morgan";
 import sequelize from "./config/database";
 import userRoutes from "./routes/user.routes";
+import logger from "./utils/logger";
+import morganMiddleware from "./utils/morganConfig";
 
 const app = express();
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3001;
@@ -11,7 +12,7 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 3001;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(morgan("dev"));
+app.use(morganMiddleware);
 
 // Routes
 app.use("/", userRoutes);
@@ -27,7 +28,7 @@ app.get("/health", (req: Request, res: Response) => {
 
 // Global Error Handler
 app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
-  console.error("Internal error:", err);
+  logger.error(`Internal error: ${err.message}`, { stack: err.stack });
   res.status(500).json({
     error: "Internal Server Error",
     message: err.message || "Something went wrong",

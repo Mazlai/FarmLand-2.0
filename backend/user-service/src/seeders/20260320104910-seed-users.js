@@ -1,11 +1,9 @@
-import { faker } from "@faker-js/faker";
-import sequelize from "./config/database";
-import User from "./models/user.models";
+"use strict";
 
-async function seed() {
-  try {
-    await sequelize.sync();
-
+const { faker } = require("@faker-js/faker");
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
     const availableGenders = ["male", "female"];
 
     const userData = [];
@@ -21,17 +19,15 @@ async function seed() {
             Math.floor(Math.random() * availableGenders.length)
           ] ?? "",
         passwordHash: faker.internet.password(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
       });
     }
 
-    await User.bulkCreate(userData);
+    return queryInterface.bulkInsert("users", userData);
+  },
 
-    console.log("Seed done: 10 users created");
-    process.exit(0);
-  } catch (err) {
-    console.error("Seed error:", err);
-    process.exit(1);
-  }
-}
-
-seed();
+  async down(queryInterface, Sequelize) {
+    return queryInterface.bulkDelete("users", null, {});
+  },
+};

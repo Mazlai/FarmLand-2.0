@@ -1,11 +1,12 @@
 import { app, PORT, sequelize } from "./server";
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
+import logger from "./utils/logger";
 
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
-      title: "FarmLand user API doc.",
+      title: "FarmLand User API - V2",
       version: "1.0.0",
       description: "FarmLand user API documentation.",
     },
@@ -32,7 +33,7 @@ const startServer = async () => {
       console.log(`🚀 User Service running on port ${PORT}`);
     });
   } catch (error) {
-    console.error("🔴 Unable to connect to the database:", error);
+    logger.error("🔴 Unable to connect to the database:", error);
   }
 };
 

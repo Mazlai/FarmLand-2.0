@@ -15,46 +15,42 @@ import confetti from 'canvas-confetti';
 
 @Component({
   selector: 'app-sign-up',
-  imports: [
-    FarmInput,
-    FormsModule,
-    FarmSelect,
-    FarmButton,
-    RouterLink
-  ],
+  imports: [FarmInput, FormsModule, FarmSelect, FarmButton, RouterLink],
   templateUrl: './sign-up-form.html',
   styleUrl: './sign-up-form.scss',
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class SignUpForm {
-
-  private konamiSequence = ['t','e','s','t','!'];
+  private konamiSequence = ['t', 'e', 's', 't', '!'];
   private konamiIndex = 0;
 
-@HostListener('window:keydown', ['$event'])
-onKeyDown(event: KeyboardEvent): void {
-  if (event.key === this.konamiSequence[this.konamiIndex]) {
-    this.konamiIndex++;
-    if (this.konamiIndex === this.konamiSequence.length) {
-      this.triggerKonamiAnimation();
-      alert("Bravo! Vous avez trouvé l'easter egg TEST!")
+  @HostListener('window:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent): void {
+    if (event.key === this.konamiSequence[this.konamiIndex]) {
+      this.konamiIndex++;
+      if (this.konamiIndex === this.konamiSequence.length) {
+        this.triggerKonamiAnimation();
+        alert("Bravo! Vous avez trouvé l'easter egg TEST!");
+        this.konamiIndex = 0;
+      }
+    } else {
       this.konamiIndex = 0;
     }
-  } else {
-    this.konamiIndex = 0;
   }
-}
 
-private triggerKonamiAnimation(): void {
-  confetti({ particleCount: 200, spread: 90, origin: { y: 0.6 } });
-}
+  private triggerKonamiAnimation(): void {
+    confetti({ particleCount: 200, spread: 90, origin: { y: 0.6 } });
+  }
   //region fields
 
   /** User to create via the form. */
   protected newUser = new UserModel();
 
   /** Genders selectable for the user. */
-  protected selectableGenders = [{label: 'Fermier', value: Genders.MALE}, {label: 'Fermière', value: Genders.FEMALE}];
+  protected selectableGenders = [
+    { label: 'Fermier', value: Genders.MALE },
+    { label: 'Fermière', value: Genders.FEMALE },
+  ];
 
   /** If the component is loading. */
   protected isLoading = false;
@@ -78,16 +74,23 @@ private triggerKonamiAnimation(): void {
    * @returns True if the form is valid, else false.
    */
   protected isFormValid(): boolean {
-    if (!/\S/.test(this.newUser.firstName) || this.newUser.firstName.length > 50) return false;
+    if (
+      !/\S/.test(this.newUser.firstName) ||
+      this.newUser.firstName.length > 50
+    )
+      return false;
     if (this.newUser.lastName.length > 50) return false;
     if (!this.newUser.birthDate) return false;
     if (!this.newUser.gender) return false;
     if (
       !environment.emailRegex.test(this.newUser.email) ||
       this.newUser.email.length > 50
-    ) return false;
+    )
+      return false;
     if (this.newUser.phone.length > 25) return false;
-    return !(!/\S/.test(this.newUser.password) || this.newUser.password.length > 75);
+    return !(
+      !/\S/.test(this.newUser.password) || this.newUser.password.length > 75
+    );
   }
 
   /** Sign up the new user. */
@@ -112,5 +115,4 @@ private triggerKonamiAnimation(): void {
   }
 
   //endregion
-
 }

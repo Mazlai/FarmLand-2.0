@@ -25,12 +25,16 @@ jobs:
           echo "Target branch : $TARGET"
 
           if [[ "$TARGET" == "develop" ]]; then
-            if [[ ! "$SOURCE" == feature/* ]]; then
-              echo "ERROR: Only branches starting with 'feature/' can be merged into 'develop'."
+            if [[ ! "$SOURCE" == feature/* && "$SOURCE" != "main" ]]; then
+              echo "ERROR: Only branches starting with 'feature/' or 'main' can be merged into 'develop'."
               echo "       Current source branch: $SOURCE"
               exit 1
             fi
-            echo "OK: feature/* -> develop"
+            if [[ "$SOURCE" == feature/* ]]; then
+              echo "OK: feature/* -> develop"
+            elif [[ "$SOURCE" == "main" ]]; then
+              echo "OK: main -> develop (sync)"
+            fi
 
           elif [[ "$TARGET" == "main" ]]; then
             if [[ ! "$SOURCE" == release/* ]]; then

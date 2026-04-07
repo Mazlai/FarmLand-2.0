@@ -1,5 +1,5 @@
 import { DataTypes, Model, Optional } from "sequelize";
-import sequelize from '../config/database';
+import sequelize from "../config/database";
 
 // Interface TypeScript représentant les attributs d'un type d'animal
 interface AnimalTypeAttributes {
@@ -9,10 +9,16 @@ interface AnimalTypeAttributes {
 }
 
 // Champs nécessaires lors de la création (id est auto-incrémenté)
-interface AnimalTypeCreationAttributes extends Optional<AnimalTypeAttributes, "id"> {}
+interface AnimalTypeCreationAttributes extends Optional<
+  AnimalTypeAttributes,
+  "id"
+> {}
 
 // Définition du modèle avec sequelize + TS
-class AnimalType extends Model<AnimalTypeAttributes, AnimalTypeCreationAttributes> implements AnimalTypeAttributes {
+class AnimalType
+  extends Model<AnimalTypeAttributes, AnimalTypeCreationAttributes>
+  implements AnimalTypeAttributes
+{
   public id!: number;
   public label!: string;
   public textIcon!: string;
@@ -32,14 +38,14 @@ AnimalType.init(
     },
     textIcon: {
       type: DataTypes.STRING(2),
-      allowNull: true
-    }
+      allowNull: true,
+    },
   },
   {
     sequelize,
     tableName: "animal_types",
     timestamps: true,
-  }
+  },
 );
 
 export default AnimalType;

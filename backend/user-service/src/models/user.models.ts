@@ -14,10 +14,14 @@ interface UserAttributes {
 }
 
 // Champs nécessaires lors de la création (id est auto-incrémenté)
-interface UserCreationAttributes extends Optional<UserAttributes, "id" | "lastName" | "phone"> {}
+interface UserCreationAttributes
+  extends Optional<UserAttributes, "id" | "lastName" | "phone"> {}
 
 // Définition du modèle avec sequelize + TS
-class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
+class User
+  extends Model<UserAttributes, UserCreationAttributes>
+  implements UserAttributes
+{
   public id!: number;
   public firstName!: string;
   public lastName?: string;
@@ -71,7 +75,7 @@ User.init(
     sequelize,
     tableName: "users",
     timestamps: true,
-  }
+  },
 );
 
 export default User;

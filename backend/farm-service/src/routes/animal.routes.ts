@@ -1,12 +1,12 @@
-import express from 'express';
+import express from "express";
 import {
-    addAnimalStockAsync,
-    deleteAnimalStockAsync,
-    getAllAnimalTypesAsync,
-    getAnimalStockByIdAsync,
-    getCurrentUserAnimalStocksAsync,
-    updateAnimalStockAsync
-} from '~/controllers/animal.controller';
+  addAnimalStockAsync,
+  deleteAnimalStockAsync,
+  getAllAnimalTypesAsync,
+  getAnimalStockByIdAsync,
+  getCurrentUserAnimalStocksAsync,
+  updateAnimalStockAsync,
+} from "~/controllers/animal.controller";
 
 const router = express.Router();
 
@@ -25,7 +25,7 @@ const router = express.Router();
  *       "500":
  *         description: Other server error.
  */
-router.get('/my-farm', getCurrentUserAnimalStocksAsync);
+router.get("/my-farm", getCurrentUserAnimalStocksAsync);
 
 /**
  * @swagger
@@ -54,7 +54,7 @@ router.get('/my-farm', getCurrentUserAnimalStocksAsync);
  *       "500":
  *         description: Other server error.
  */
-router.post('/my-farm', addAnimalStockAsync);
+router.post("/my-farm", addAnimalStockAsync);
 
 /**
  * @swagger
@@ -83,7 +83,7 @@ router.post('/my-farm', addAnimalStockAsync);
  *       "500":
  *         description: Other server error.
  */
-router.put('/my-farm', updateAnimalStockAsync);
+router.put("/my-farm", updateAnimalStockAsync);
 
 /**
  * @swagger
@@ -101,7 +101,7 @@ router.put('/my-farm', updateAnimalStockAsync);
  *       "500":
  *         description: Other server error.
  */
-router.get('/my-farm/:id', getAnimalStockByIdAsync);
+router.get("/my-farm/:id", getAnimalStockByIdAsync);
 
 /**
  * @swagger
@@ -119,7 +119,7 @@ router.get('/my-farm/:id', getAnimalStockByIdAsync);
  *       "500":
  *         description: Other server error.
  */
-router.delete('/my-farm/:id', deleteAnimalStockAsync);
+router.delete("/my-farm/:id", deleteAnimalStockAsync);
 
 //endregion
 
@@ -138,7 +138,7 @@ router.delete('/my-farm/:id', deleteAnimalStockAsync);
  *       "500":
  *         description: Other server error.
  */
-router.get('/animal-types', getAllAnimalTypesAsync);
+router.get("/animal-types", getAllAnimalTypesAsync);
 
 //endregion
 

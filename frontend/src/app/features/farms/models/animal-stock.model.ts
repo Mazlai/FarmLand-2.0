@@ -1,7 +1,6 @@
 import { AnimalTypeModel } from './animal-type.model';
 
 export class AnimalStockModel {
-
   public id = NaN;
 
   public description = '';
@@ -19,5 +18,4 @@ export class AnimalStockModel {
       Object.assign(this, data);
     }
   }
-
 }

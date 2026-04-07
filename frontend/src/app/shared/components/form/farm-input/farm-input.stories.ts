@@ -5,7 +5,7 @@ import { FarmInputType } from '../../../enums/farm-input-type';
 const meta: Meta<FarmInput> = {
   title: 'Farm components/Farm input',
   component: FarmInput,
-  tags: ['autodocs']
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -14,28 +14,27 @@ type Story = StoryObj<FarmInput>;
 export const textInput: Story = {
   args: {
     label: 'Text farm input',
-    type: FarmInputType.TEXT
-  }
+    type: FarmInputType.TEXT,
+  },
 };
 
 export const emailInput: Story = {
   args: {
     label: 'Email farm input',
-    type: FarmInputType.EMAIL
-  }
+    type: FarmInputType.EMAIL,
+  },
 };
 
 export const dateInput: Story = {
   args: {
     label: 'Date farm input',
-    type: FarmInputType.DATE
-  }
+    type: FarmInputType.DATE,
+  },
 };
 
 export const passwordInput: Story = {
   args: {
     label: 'Password farm input',
-    type: FarmInputType.PASSWORD
-  }
+    type: FarmInputType.PASSWORD,
+  },
 };
-

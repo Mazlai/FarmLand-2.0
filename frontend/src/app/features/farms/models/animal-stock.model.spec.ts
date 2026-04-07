@@ -2,9 +2,7 @@ import { AnimalStockModel } from './animal-stock.model';
 import { AnimalTypeModel } from './animal-type.model';
 
 describe('AnimalStockModel', () => {
-
   describe('default values', () => {
-
     it('should initialise id as NaN', () => {
       expect(isNaN(new AnimalStockModel().id)).toBe(true);
     });
@@ -20,17 +18,17 @@ describe('AnimalStockModel', () => {
     it('should initialise animalType as an AnimalTypeModel instance', () => {
       expect(new AnimalStockModel().animalType).toBeInstanceOf(AnimalTypeModel);
     });
-
   });
 
   describe('constructor with partial data', () => {
-
     it('should apply provided id', () => {
       expect(new AnimalStockModel({ id: 42 }).id).toBe(42);
     });
 
     it('should apply provided description', () => {
-      expect(new AnimalStockModel({ description: 'Vaches laitières' }).description).toBe('Vaches laitières');
+      expect(
+        new AnimalStockModel({ description: 'Vaches laitières' }).description,
+      ).toBe('Vaches laitières');
     });
 
     it('should apply provided count', () => {
@@ -38,7 +36,12 @@ describe('AnimalStockModel', () => {
     });
 
     it('should apply multiple fields simultaneously', () => {
-      const model = new AnimalStockModel({ id: 1, description: 'Poulets', count: 100, userId: 7 });
+      const model = new AnimalStockModel({
+        id: 1,
+        description: 'Poulets',
+        count: 100,
+        userId: 7,
+      });
       expect(model.id).toBe(1);
       expect(model.description).toBe('Poulets');
       expect(model.count).toBe(100);
@@ -50,7 +53,5 @@ describe('AnimalStockModel', () => {
       expect(model.description).toBe('');
       expect(model.count).toBe(0);
     });
-
   });
-
 });

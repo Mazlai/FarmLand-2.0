@@ -283,11 +283,21 @@ Une gestion des erreurs a été mis en place dans le frontend et le backend de l
 
 === Côté interface
 
-Du côté de l'interface Angular, les erreurs envoyées du backend sont attrapées et des messages sont affichés en conséquence afin d'informer plus convenablement l'utilisateur.
+Du côté de l'interface de l'application les erreurs doivent être affichées de manière compréhensible et à titre indicatif pour les utilisateurs. Plusieurs affichages sont possibles en fonction des erreurs rencontrées :
 
+* *Erreurs backend :* Les erreurs renvoyées du backend sont attrapées et des messages sont affichés en conséquence afin d'informer plus convenablement l'utilisateur.
++
 image::images/frontend_error.jpg[,450]
+* *Erreurs globales :* Si une erreur inattendue se produit dans l'un des composants Angular de l'application, qu'elle n'est pas gérée et remonte toute la pile d'exécution, alors un message d'erreur sera affiché et l'application restera dans un état stable et utilisable.
++
+image::images/frontend_critical_error.jpg[,450]
+* Erreurs 404 : Si aucune page ne correspond à l'URL saisie, une erreur 404 se produit et l'utilisateur est redirigé vers une page dédiée.
++
+image::images/frontend_404.jpg[,350]
 
 === Côté API
+
+==== Erreurs backend
 
 Du côté de l'API backend, plusieurs logiques d'erreurs sont prises en compte :
 
@@ -298,6 +308,18 @@ image::images/backend_db_error.jpg[,650]
 +
 NOTE: Les codes d'erreur correspondant à chaque route de chaque service de l'API sont détaillés dans les <<swagger, documentations Swagger>> correspondantes.
 * *Erreur route :* Si l'API rencontre une erreur quelconque durant le traitement d'une requête, un code d'erreur HTTP 500 sera retournée avec le message de l'erreur correspondant.
+
+==== Logging des erreurs
+
+Pour chaque micro-service backend, les erreurs renvoyées sont enregistrées dans un fichier `log.txt` automatiquement créé à la racine du projet correspondant.
+
+Si un micro-service est marqué comme étant lancé dans un environnement de développement en mettant la valeur du paramètre `environment` à `developement` dans le fichier `package.json` à la racine du projet correspondant, alors les logs enregistreront des traces d'erreurs de code complète pour faciliter de débogage.
+
+// TODO: screenshots exemple traces erreurs avec stack complète -> Afficher date + stack erreur dans fichier log
+
+En revanche, si le micro-service est marqué comme étant lancé dans un environnement de production en mettant la paramètre d'environnement à `production`, alors les logs n'enregistreront que des messages d'erreurs classiques à titre indicatif.
+
+// TODO: screenshot exemple traces erreurs prod avec messages classiques
 
 === Codes d'erreurs HTTP
 

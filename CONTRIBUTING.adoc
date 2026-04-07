@@ -44,6 +44,7 @@ Pour développer une nouvelle fonctionnalité, apporter un correctif ou faire un
 . Créer une branche à partir de l'issue (et à partir de la branche `develop`)
 . Si nécessaire, créer des sous-branches `feature/SU/xxx` implémentant les scénarios utilisateurs spécifiques à la feature
 . Une fois un scénario utilisateur terminé et validé -> Merge sur la branche `feature/xxx` correspondante *via une Pull Request*
+. Une fois l'implémentation de la feature terminée -> Valider le code en <<test_linting,lançant les tests et le code linting>>
 . Une fois la feature complète terminée et validée -> Merge sur la branche `develop` *via une Pull request*
 +
 WARNING: Avant de merge une Pull Request sur une branche `feature/xxx` ou sur la branche `develop`, vérifier que l'issue correspondant au scénario utilisateur ou à la feature est bien associée à la Pull Request.
@@ -56,8 +57,9 @@ WARNING: La branche `develop` doit tout le temps contenir une version stable du 
 ==== Branche de release
 
 . Lorsque toutes les features prévues sur le sprint sont terminées et merge dans `develop` -> Une branche `release/xxx` peut être créée depuis `develop`
-. Une fois la branche prête -> Merge sur la branche `main` *via une Pull Request* et créer un tag correspondant <<version_no, au numéro de la version>>
-. Une fois la Pull Request fusionnée, la branche de la release sera supprimée
+. Dans le fichier `package.json` à la racine de chaque projet frontend et backend, remplacer la valeur `development` du paramètre `environment` par `production`
+. Une fois la branche prête -> Merge sur la branche `main` *via une Pull Request* et créer un tag correspondant <<version_no,au numéro de la version>>
+. Une fois la Pull Request fusionnée, la branche de la release sera supprimée et une 'build prototype' du frontend de l'application sera déployé sur le <<github_pages,GitHub Pages du repo>> du projet
 . Merge en retour `main` dans `develop` afin de conserver l’historique et les correctifs
 
 Les commits effectués sur des branches release doivent respecter le format `Release: x.x.x`.
@@ -80,6 +82,7 @@ Version `1.4.2` de l'application :
 . Prendre une issue existante ou ouvrir une issue en se basant sur le template dédié aux retours de bugs
 . Créer une branche `hotfix/xxx` depuis la branche `main`
 . Associer toutes les issues à prendre en compte dans le correctif à la branche
+. Une fois l'implémentation du correctif terminée -> Valider le code en <<test_linting,lançant les tests et le code linting>>
 . Une fois le correctif terminé et validé, suivre les étapes pour effectuer une release en partant de la branche du correctif plutôt que de `develop`
 +
 WARNING: Avant de merge une Pull Request sur la branche `develop`, vérifier que l'issue correspondant au scénario utilisateur ou à la feature est bien associée à la Pull Request.
@@ -116,19 +119,61 @@ npx sequelize-cli db:seed:all
 
 NOTE: Voir la https://sequelize.org/docs/v7/cli/#running-seeds[documentation de Sequelize] pour les autres commandes permettant la gestion et le versioning des migrations et des seeders.
 
-== Tests unitaires
+== Tests et code linting [[test_linting]]
+
+Des tests ainsi qu'un code linting sont automatiquement exécutés lors de la création d'une Pull Request vers les branches 'develop' et 'main' afin d'attester que seul du code stable est poussé sur ces dernières. Si les tests ne passent pas ou que des erreurs sont repérées lors du code linting, la Pull Request ne sera pas acceptée.
+
+=== Tests frontend
+
+==== Tests unitaires
 
 Des tests unitaires ont été ajoutés pour le projet frontend dans des fichiers `<composant>.spec.ts` afin de vérifier le bon fonctionnement des logiques implémentées dans l'interface utilisateur.
 
-Ces tests sont automatiquement exécutés lors de la création d'une Pull Request vers les branches 'develop' et 'main' afin d'attester que seul du code stable est poussé sur ces dernières.
+Les tests unitaires peuvent être lancés manuellement en exécutant la commande suivante à la racine du projet frontend :
+
+[source, bash]
+----
+npm run test
+----
 
 image::images/tests.jpg[,650]
 
-// TODO :
-// * Workflow release :
-//   * Lint code :
-//     * Linter le code avant de push une branche pour éviter problèmes de CI/CD (+ mise en forme auto formatage code)
-//     * Lint code dans pipeline (bloque si erreurs)
-//   * Tests e2e exécutés en même temps que les tests unitaires existants
-//   * Déploiement prod / front sur GitHub page (artifact créé)
-// * Mise en place logs (back)
+==== Tests end-to-end
+
+Des tests de bout-en-bout (end-to-end) ont également été implémentés avec https://www.cypress.io/[Cypress] afin de vérifier le bon fonctionnement de l'interface utilisateur en simulant des parcours d'utilisateurs automatisés.
+
+Les tests end-to-end peuvent être lancés manuellement en exécutant la commande suivante à la racine du projet frontend :
+
+[source, bash]
+----
+npm run e2e
+----
+
+image::images/tests_cy.jpg[,650]
+
+=== Code linting
+
+Le code linting mis en place permet avant tout de vérifier la stabilité et la qualité du code poussé en soulevant des erreurs si des problèmes de compilation sont trouvées ou si du code est jugé comme pas suffisamment maintenable. Le code linting permet également de formatter le code poussé selon les paramétrages définis pour un rendu plus homogène (des espaces et des retours à la ligne sont ajoutés ou enlevés, certains caractères sont remplacés, etc).
+
+image::images/prettier.jpg[,650]
+
+Un code linting peut être lancé manuellement en exécutant la commande suivante à la racine du projet frontend ou à celle d'un des micro-services backend :
+
+[source, bash]
+----
+npm run lint
+----
+
+== GitHub Pages [[github_pages]]
+
+À chaque nouvelle release de l'application sur la branche 'main', une 'build prototype' de l'interface frontend de l'application est déployée sur le GitHub Pages du repo de FarmLand 2.0, accessible à l'adresse https://mazlai.github.io/FarmLand-2.0.
+
+== Gestion des conflits
+
+Si des conflits sont rencontrés lors du merge d'une branche dans une autre via une Pull Request, suivre les étapes de résolution par lignes de commande comme indiqué sur GitHub en cliquant sur "View command line instructions" dans la page de la Pull Request correspondante.
+
+image::images/commands_conflicts.jpg[,650]
+
+image::images/github_conflicts.jpg[,650]
+
+Pour l'étape 4, une fois les conflits résolus sur votre poste, nommer le commit du correctif en respectant le format `conflict: merge '<source branche name>' into '<target branch name>'`.

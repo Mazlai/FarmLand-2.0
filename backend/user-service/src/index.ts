@@ -6,7 +6,7 @@ import logger from "./utils/logger";
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
-      title: "FarmLand user API doc.",
+      title: "FarmLand User API - Documentation",
       version: "1.0.0",
       description: "FarmLand user API documentation.",
     },

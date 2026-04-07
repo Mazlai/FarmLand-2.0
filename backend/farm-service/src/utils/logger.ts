@@ -28,7 +28,7 @@ const logger = winston.createLogger({
         winston.format.printf(
           ({ timestamp, level, message, stack }) =>
             `[${timestamp}] ${level.toUpperCase()}: ${message}${
-              stack ? "\n" + stack : ""
+              isDev && stack ? "\n" + stack : ""
             }`,
         ),
       ),

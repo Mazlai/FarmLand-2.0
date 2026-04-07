@@ -315,11 +315,11 @@ Pour chaque micro-service backend, les erreurs renvoyées sont enregistrées dan
 
 Si un micro-service est marqué comme étant lancé dans un environnement de développement en mettant la valeur du paramètre `environment` à `developement` dans le fichier `package.json` à la racine du projet correspondant, alors les logs enregistreront des traces d'erreurs de code complète pour faciliter de débogage.
 
-// TODO: screenshots exemple traces erreurs avec stack complète -> Afficher date + stack erreur dans fichier log
+image::images/full_error_log.jpg[,650]
 
 En revanche, si le micro-service est marqué comme étant lancé dans un environnement de production en mettant la paramètre d'environnement à `production`, alors les logs n'enregistreront que des messages d'erreurs classiques à titre indicatif.
 
-// TODO: screenshot exemple traces erreurs prod avec messages classiques
+image::images/light_error_trace.jpg[,450]
 
 === Codes d'erreurs HTTP
 

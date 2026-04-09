@@ -175,6 +175,11 @@ router.put("/current", updateCurrentUserAsync);
  */
 router.delete("/current", deleteCurrentUserAsync);
 
+// Test route crash
+router.get("/defective", (_) => {
+  throw new Error("Crash route");
+});
+
 //endregion
 
 export default router;

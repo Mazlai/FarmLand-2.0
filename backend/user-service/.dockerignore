@@ -27,5 +27,5 @@ coverage
 # Misc
 README.md
 *.log
-.env
+.env.template
 #.env.*

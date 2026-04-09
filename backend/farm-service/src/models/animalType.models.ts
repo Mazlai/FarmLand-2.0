@@ -9,8 +9,10 @@ interface AnimalTypeAttributes {
 }
 
 // Champs nécessaires lors de la création (id est auto-incrémenté)
-interface AnimalTypeCreationAttributes
-  extends Optional<AnimalTypeAttributes, "id"> {}
+interface AnimalTypeCreationAttributes extends Optional<
+  AnimalTypeAttributes,
+  "id"
+> {}
 
 // Définition du modèle avec sequelize + TS
 class AnimalType

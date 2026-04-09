@@ -12,8 +12,10 @@ interface AnimalStockAttributes {
 }
 
 // Champs nécessaires lors de la création (id est auto-incrémenté)
-interface AnimalStockCreationAttributes
-  extends Optional<AnimalStockAttributes, "id"> {}
+interface AnimalStockCreationAttributes extends Optional<
+  AnimalStockAttributes,
+  "id"
+> {}
 
 // Définition du modèle avec sequelize + TS
 class AnimalStock
